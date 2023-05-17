@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author Joy Cruz
  */
-public class Presentacion {
+public class POJOPresentacion {
     
     //Atributos
     int IDPresentacion;
@@ -16,7 +16,7 @@ public class Presentacion {
     String FormaDosificacion;
     
     //Constructor
-    public Presentacion(int IDPresentacion, double TamPresentacion, String FormaDosificacion) {
+    public POJOPresentacion(int IDPresentacion, double TamPresentacion, String FormaDosificacion) {
         this.IDPresentacion = IDPresentacion;
         this.TamPresentacion = TamPresentacion;
         this.FormaDosificacion = FormaDosificacion;

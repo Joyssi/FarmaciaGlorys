@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author Joy Cruz
  */
-public class Conexión {
+public class POJOConexión {
     
     public static Connection conectar() {
         String conexionUR1 = "jdbc:sqlserver://localhost:1433;"

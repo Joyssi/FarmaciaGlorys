@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author Joy Cruz
  */
-public class Empleado {
+public class POJOEmpleado {
  
     //Atributos
     int IDEmpleado;
@@ -21,7 +21,7 @@ public class Empleado {
 
     //Constructor
 
-public Empleado(int IDEmpleado, String NombresE, String ApellidosE, String TelEmpleado, String DirecEmpleado, String CorreoE, String Edad) {
+public POJOEmpleado(int IDEmpleado, String NombresE, String ApellidosE, String TelEmpleado, String DirecEmpleado, String CorreoE, String Edad) {
         this.IDEmpleado = IDEmpleado;
         this.NombresE = NombresE;
         this.ApellidosE = ApellidosE;

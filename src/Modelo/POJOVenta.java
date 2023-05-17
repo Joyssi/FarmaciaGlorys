@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author Joy Cruz
  */
-public class Venta {
+public class POJOVenta {
     
     //Atributos
     int IDVenta;
@@ -20,7 +20,7 @@ public class Venta {
     String DirecPedidoVenta;
     
     //Constructor
-  public Venta(int IDVenta, int IDEmpleado, int IDCliente, Date FechaVenta, String DirecPedidoVenta) {
+  public POJOVenta(int IDVenta, int IDEmpleado, int IDCliente, Date FechaVenta, String DirecPedidoVenta) {
         this.IDVenta = IDVenta;
         this.IDEmpleado = IDEmpleado;
         this.IDCliente = IDCliente;

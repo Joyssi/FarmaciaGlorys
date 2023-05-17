@@ -8,14 +8,14 @@ package Modelo;
  *
  * @author Joy Cruz
  */
-public class Marca {
+public class POJOMarca {
     
     //Atributos
     int IDMarca;
     String NombreMarca;
     
     //Constructor
-    public Marca(int IDMarca, String NombreMarca) {
+    public POJOMarca(int IDMarca, String NombreMarca) {
         this.IDMarca = IDMarca;
         this.NombreMarca = NombreMarca;
     }

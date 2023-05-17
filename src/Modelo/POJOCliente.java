@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author Joy Cruz
  */
-public class Cliente {
+public class POJOCliente {
     
     //Atributos
     int IDCliente;
@@ -20,7 +20,7 @@ public class Cliente {
     
     //Contructor
    
-    public Cliente(int IDCliente, String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente) {
+    public POJOCliente(int IDCliente, String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente) {
         this.IDCliente = IDCliente;
         this.NombresC = NombresC;
         this.ApellidosC = ApellidosC;

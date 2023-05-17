@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author Joy Cruz
  */
-public class Producto {
+public class POJOProducto {
     
     //Atributos
     int IDProducto;
@@ -24,7 +24,7 @@ public class Producto {
     int IDPresentacion;
     
     //Constructor
-    public Producto(int IDProducto, String NomProducto, String DescripProducto, int CantProducto, double PrecioProducto, Date FechaVencimiento, int IDMarca, int IDCategoria, int IDPresentacion) {
+    public POJOProducto(int IDProducto, String NomProducto, String DescripProducto, int CantProducto, double PrecioProducto, Date FechaVencimiento, int IDMarca, int IDCategoria, int IDPresentacion) {
         this.IDProducto = IDProducto;
         this.NomProducto = NomProducto;
         this.DescripProducto = DescripProducto;
