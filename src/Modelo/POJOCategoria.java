@@ -6,7 +6,7 @@ package Modelo;
 
 /**
  *
- * @author Joy Cruz
+ * @author Joy Cruz 
  */
 public class POJOCategoria {
     
