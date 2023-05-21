@@ -2,21 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
  */
-package Controlador;
+package Vista.Menu;
 
-import Vista.*;
-
+import Vista.formularios.*;
 
 /**
  *
  * @author Joy Cruz
  */
-public class MenuAdministrador extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuAdministrador
+     * Creates new form Menu
      */
-    public MenuAdministrador() {
+    public Menu() {
         initComponents();
     }
 
@@ -38,11 +37,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
         Clientes = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Empleados = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         InformeVentas = new javax.swing.JButton();
         InformeCompras = new javax.swing.JButton();
         ListadoProductos = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -145,20 +144,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
         desktopPane.add(jToolBar1);
         jToolBar1.setBounds(240, 0, 1370, 110);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1090, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-
-        desktopPane.add(jDesktopPane1);
-        jDesktopPane1.setBounds(470, 110, 1090, 560);
-
         InformeVentas.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         InformeVentas.setForeground(new java.awt.Color(51, 102, 255));
         InformeVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Informe de compras1.png"))); // NOI18N
@@ -218,6 +203,20 @@ public class MenuAdministrador extends javax.swing.JFrame {
         desktopPane.add(jPanel1);
         jPanel1.setBounds(240, 110, 230, 580);
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 980, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
+
+        desktopPane.add(jDesktopPane1);
+        jDesktopPane1.setBounds(470, 110, 980, 610);
+
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
 
@@ -251,11 +250,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
         );
 
         pack();
@@ -266,9 +268,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
-       VistaProducto producto = new VistaProducto();
-       jDesktopPane1.add(producto);
-       producto.setVisible(true);
+        VistaProducto producto = new VistaProducto();
+        jDesktopPane1.add(producto);
+        producto.setVisible(true);
     }//GEN-LAST:event_ProductosActionPerformed
 
     private void ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprasActionPerformed
@@ -278,33 +280,33 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_ComprasActionPerformed
 
     private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
-       VistaVenta venta = new VistaVenta();
-       jDesktopPane1.add(venta);
-       venta.setVisible(true);
+        VistaVenta venta = new VistaVenta();
+        jDesktopPane1.add(venta);
+        venta.setVisible(true);
     }//GEN-LAST:event_VentasActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
-       VistaCliente cliente = new VistaCliente();
-       jDesktopPane1.add(cliente);
-       cliente.setVisible(true);
+        VistaCliente cliente = new VistaCliente();
+        jDesktopPane1.add(cliente);
+        cliente.setVisible(true);
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    VistaProveedor proveedor = new VistaProveedor();
-    jDesktopPane1.add(proveedor);
-    proveedor.setVisible(true);
+        VistaProveedor proveedor = new VistaProveedor();
+        jDesktopPane1.add(proveedor);
+        proveedor.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadosActionPerformed
-    VistaEmpleado empleado = new VistaEmpleado();
-    jDesktopPane1.add(empleado);
-    empleado.setVisible(true);
+        VistaEmpleado empleado = new VistaEmpleado();
+        jDesktopPane1.add(empleado);
+        empleado.setVisible(true);
     }//GEN-LAST:event_EmpleadosActionPerformed
 
     private void InformeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeVentasActionPerformed
-     VistaInformeVenta informeventa = new VistaInformeVenta();
-     jDesktopPane1.add(informeventa);
-     informeventa.setVisible(true);
+        VistaInformeVenta informeventa = new VistaInformeVenta();
+        jDesktopPane1.add(informeventa);
+        informeventa.setVisible(true);
     }//GEN-LAST:event_InformeVentasActionPerformed
 
     private void InformeComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeComprasActionPerformed
@@ -336,20 +338,20 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAdministrador().setVisible(true);
+                new Menu().setVisible(true);
             }
         });
     }
