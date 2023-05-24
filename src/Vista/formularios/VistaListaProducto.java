@@ -35,8 +35,6 @@ public class VistaListaProducto extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
 
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/informe.png"))); // NOI18N
 

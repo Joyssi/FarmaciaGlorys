@@ -16,13 +16,16 @@ public class POJOCliente {
     
     //Contructor
    
-    public POJOCliente(int IDCliente, String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente) {
+    public POJOCliente(String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente, String text5) {
         this.IDCliente = IDCliente;
         this.NombresC = NombresC;
         this.ApellidosC = ApellidosC;
         this.Cedula = Cedula;
         this.TelCliente = TelCliente;
         this.DirecCliente = DirecCliente;
+    }
+
+    public POJOCliente(String text, String text1, String text2, String text3, String text4) {
     }
    
     //Getter and Setter

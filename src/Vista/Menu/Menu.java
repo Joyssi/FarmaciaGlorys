@@ -37,10 +37,6 @@ public class Menu extends javax.swing.JFrame {
         Clientes = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Empleados = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        InformeVentas = new javax.swing.JButton();
-        InformeCompras = new javax.swing.JButton();
-        ListadoProductos = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -142,90 +138,31 @@ public class Menu extends javax.swing.JFrame {
         jToolBar1.add(Empleados);
 
         desktopPane.add(jToolBar1);
-        jToolBar1.setBounds(240, 0, 1370, 110);
-
-        InformeVentas.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        InformeVentas.setForeground(new java.awt.Color(51, 102, 255));
-        InformeVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Informe de compras1.png"))); // NOI18N
-        InformeVentas.setText("Informe de ventas");
-        InformeVentas.setToolTipText("");
-        InformeVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InformeVentasActionPerformed(evt);
-            }
-        });
-
-        InformeCompras.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        InformeCompras.setForeground(new java.awt.Color(51, 102, 255));
-        InformeCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Informe de ventas1.png"))); // NOI18N
-        InformeCompras.setText("Informe de compras");
-        InformeCompras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InformeComprasActionPerformed(evt);
-            }
-        });
-
-        ListadoProductos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        ListadoProductos.setForeground(new java.awt.Color(51, 102, 255));
-        ListadoProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Listado de productos1.png"))); // NOI18N
-        ListadoProductos.setText("Listado de productos");
-        ListadoProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListadoProductosActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(InformeCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(InformeVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(ListadoProductos))
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(InformeVentas)
-                .addGap(33, 33, 33)
-                .addComponent(InformeCompras)
-                .addGap(35, 35, 35)
-                .addComponent(ListadoProductos)
-                .addContainerGap(303, Short.MAX_VALUE))
-        );
-
-        desktopPane.add(jPanel1);
-        jPanel1.setBounds(240, 110, 230, 580);
+        jToolBar1.setBounds(240, 0, 1370, 90);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
+            .addGap(0, 1140, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
 
         desktopPane.add(jDesktopPane1);
-        jDesktopPane1.setBounds(470, 110, 980, 610);
+        jDesktopPane1.setBounds(240, 90, 1140, 590);
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        fileMenu.setText("Informes");
 
         openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
+        openMenuItem.setText("Infrome de Ventas");
         fileMenu.add(openMenuItem);
 
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
+        exitMenuItem.setText("Inorme de Compras");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
@@ -236,10 +173,10 @@ public class Menu extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        helpMenu.setText("Listas");
 
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("Listados de Productos");
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -252,12 +189,12 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();
@@ -269,57 +206,57 @@ public class Menu extends javax.swing.JFrame {
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
         VistaProducto producto = new VistaProducto();
+        int x = (jDesktopPane1.getWidth() / 2) - producto.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - producto.getHeight() / 2;
+        producto.setLocation(x, y);
         jDesktopPane1.add(producto);
-        producto.setVisible(true);
+        producto.show();
     }//GEN-LAST:event_ProductosActionPerformed
 
     private void ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprasActionPerformed
         VistaCompra compra = new VistaCompra();
+        int x = (jDesktopPane1.getWidth() / 2) - compra.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - compra.getHeight() / 2;
+        compra.setLocation(x, y);
         jDesktopPane1.add(compra);
-        compra.setVisible(true);
+        compra.show();
     }//GEN-LAST:event_ComprasActionPerformed
 
     private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
         VistaVenta venta = new VistaVenta();
+        int x = (jDesktopPane1.getWidth() / 2) - venta.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - venta.getHeight() / 2;
+        venta.setLocation(x, y);
         jDesktopPane1.add(venta);
-        venta.setVisible(true);
+        venta.show();
     }//GEN-LAST:event_VentasActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
         VistaCliente cliente = new VistaCliente();
+        int x = (jDesktopPane1.getWidth() / 2) - cliente.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - cliente.getHeight() / 2;
+        cliente.setLocation(x, y);
         jDesktopPane1.add(cliente);
-        cliente.setVisible(true);
+        cliente.show();
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         VistaProveedor proveedor = new VistaProveedor();
+        int x = (jDesktopPane1.getWidth() / 2) - proveedor.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - proveedor.getHeight() / 2;
+        proveedor.setLocation(x, y);
         jDesktopPane1.add(proveedor);
-        proveedor.setVisible(true);
+        proveedor.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadosActionPerformed
         VistaEmpleado empleado = new VistaEmpleado();
+        int x = (jDesktopPane1.getWidth() / 2) - empleado.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - empleado.getHeight() / 2;
+        empleado.setLocation(x, y);
         jDesktopPane1.add(empleado);
-        empleado.setVisible(true);
+        empleado.show();
     }//GEN-LAST:event_EmpleadosActionPerformed
-
-    private void InformeVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeVentasActionPerformed
-        VistaInformeVenta informeventa = new VistaInformeVenta();
-        jDesktopPane1.add(informeventa);
-        informeventa.setVisible(true);
-    }//GEN-LAST:event_InformeVentasActionPerformed
-
-    private void InformeComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeComprasActionPerformed
-        VistaInformeCompra informecompra = new VistaInformeCompra();
-        jDesktopPane1.add(informecompra);
-        informecompra.setVisible(true);
-    }//GEN-LAST:event_InformeComprasActionPerformed
-
-    private void ListadoProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoProductosActionPerformed
-        VistaListaProducto listadoproducto = new VistaListaProducto();
-        jDesktopPane1.add(listadoproducto);
-        listadoproducto.setVisible(true);
-    }//GEN-LAST:event_ListadoProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,9 +297,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton Clientes;
     private javax.swing.JButton Compras;
     private javax.swing.JButton Empleados;
-    private javax.swing.JButton InformeCompras;
-    private javax.swing.JButton InformeVentas;
-    private javax.swing.JButton ListadoProductos;
     private javax.swing.JButton Productos;
     private javax.swing.JButton Ventas;
     private javax.swing.JMenuItem aboutMenuItem;
@@ -373,7 +307,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;

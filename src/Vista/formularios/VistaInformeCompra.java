@@ -37,8 +37,6 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
 
         setBorder(null);
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/informe.png"))); // NOI18N
 
