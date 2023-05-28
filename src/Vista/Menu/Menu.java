@@ -40,10 +40,10 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
+        InformeVenta = new javax.swing.JMenuItem();
+        InformeCompra = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        ListadoProducto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,30 +154,52 @@ public class Menu extends javax.swing.JFrame {
         desktopPane.add(jDesktopPane1);
         jDesktopPane1.setBounds(240, 90, 1140, 590);
 
+        fileMenu.setForeground(new java.awt.Color(0, 102, 255));
         fileMenu.setMnemonic('f');
         fileMenu.setText("Informes");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Infrome de Ventas");
-        fileMenu.add(openMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Inorme de Compras");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        InformeVenta.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        InformeVenta.setForeground(new java.awt.Color(0, 102, 255));
+        InformeVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Informe de compras1.png"))); // NOI18N
+        InformeVenta.setMnemonic('o');
+        InformeVenta.setText("Informe de Ventas");
+        InformeVenta.setToolTipText("");
+        InformeVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                InformeVentaActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        fileMenu.add(InformeVenta);
+
+        InformeCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        InformeCompra.setForeground(new java.awt.Color(0, 102, 255));
+        InformeCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Informe de ventas1.png"))); // NOI18N
+        InformeCompra.setMnemonic('x');
+        InformeCompra.setText("Informe de Compras");
+        InformeCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InformeCompraActionPerformed(evt);
+            }
+        });
+        fileMenu.add(InformeCompra);
 
         menuBar.add(fileMenu);
 
+        helpMenu.setForeground(new java.awt.Color(0, 102, 255));
         helpMenu.setMnemonic('h');
         helpMenu.setText("Listas");
 
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("Listados de Productos");
-        helpMenu.add(aboutMenuItem);
+        ListadoProducto.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ListadoProducto.setForeground(new java.awt.Color(0, 102, 255));
+        ListadoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Listado de productos1.png"))); // NOI18N
+        ListadoProducto.setMnemonic('a');
+        ListadoProducto.setText("Listados de Productos");
+        ListadoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListadoProductoActionPerformed(evt);
+            }
+        });
+        helpMenu.add(ListadoProducto);
 
         menuBar.add(helpMenu);
 
@@ -200,9 +222,14 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    private void InformeCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeCompraActionPerformed
+         VistaInformeCompra informecompra = new VistaInformeCompra();
+        int x = (jDesktopPane1.getWidth() / 2) - informecompra.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - informecompra.getHeight() / 2;
+        informecompra.setLocation(x, y);
+        jDesktopPane1.add(informecompra);
+        informecompra.show();
+    }//GEN-LAST:event_InformeCompraActionPerformed
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
         VistaProducto producto = new VistaProducto();
@@ -258,6 +285,24 @@ public class Menu extends javax.swing.JFrame {
         empleado.show();
     }//GEN-LAST:event_EmpleadosActionPerformed
 
+    private void InformeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeVentaActionPerformed
+         VistaInformeVenta informeventa = new VistaInformeVenta();
+        int x = (jDesktopPane1.getWidth() / 2) - informeventa.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - informeventa.getHeight() / 2;
+        informeventa.setLocation(x, y);
+        jDesktopPane1.add(informeventa);
+        informeventa.show();
+    }//GEN-LAST:event_InformeVentaActionPerformed
+
+    private void ListadoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoProductoActionPerformed
+         VistaListaProducto listaproducto = new VistaListaProducto();
+        int x = (jDesktopPane1.getWidth() / 2) - listaproducto.getWidth() / 2;
+        int y = (jDesktopPane1.getHeight() / 2) - listaproducto.getHeight() / 2;
+        listaproducto.setLocation(x, y);
+        jDesktopPane1.add(listaproducto);
+        listaproducto.show();
+    }//GEN-LAST:event_ListadoProductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,19 +342,19 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton Clientes;
     private javax.swing.JButton Compras;
     private javax.swing.JButton Empleados;
+    private javax.swing.JMenuItem InformeCompra;
+    private javax.swing.JMenuItem InformeVenta;
+    private javax.swing.JMenuItem ListadoProducto;
     private javax.swing.JButton Productos;
     private javax.swing.JButton Ventas;
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton4;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }

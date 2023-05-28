@@ -3,8 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista.formularios;
-import javax.swing.JOptionPane;
+
+import Controlador.CRUDCliente;
 import java.awt.event.KeyEvent;
+import Controlador.CRUDProveedor;
+import Modelo.POJOProveedor;
+import java.awt.Color;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,11 +19,62 @@ import java.awt.event.KeyEvent;
  */
 public class VistaProveedor extends javax.swing.JInternalFrame {
 
+    int datoSeleccionado = -1;
+
     /**
      * Creates new form VistaProveedor
      */
     public VistaProveedor() {
         initComponents();
+        mostrar();
+        CodigoProveedor.setEnabled(false);
+    }
+
+    public void mostrar() {
+        try {
+            DefaultTableModel modelo;
+            CRUDProveedor pro = new CRUDProveedor();
+            modelo = pro.mostrarDatos();
+            TablaProveedor.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    public void limpiar() {
+        CodigoProveedor.setText("");
+        NombresP.setText("");
+        ApellidosP.setText("");
+        TelProveedor.setText("");
+        DirecP.setText("");
+    }
+
+    public void guardarProveedor() {
+
+        CRUDProveedor cc = new CRUDProveedor();
+
+        POJOProveedor cl = new POJOProveedor(0,
+                NombresP.getText(),
+                ApellidosP.getText(),
+                TelProveedor.getText(),
+                DirecP.getText());
+        cc.Guardar(cl);
+
+    }
+
+    public void editarProveedor() {
+
+        CRUDProveedor cc = new CRUDProveedor();
+
+        POJOProveedor cl = new POJOProveedor(
+                Integer.parseInt(CodigoProveedor.getText()),
+                NombresP.getText(),
+                ApellidosP.getText(),
+                TelProveedor.getText(),
+                DirecP.getText());
+        cc.actualizar(cl);
+
     }
 
     /**
@@ -48,8 +106,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         TablaProveedor = new javax.swing.JTable();
         EliminarProveedor = new javax.swing.JButton();
         BuscarProveedor = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        EditarProveedor = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,6 +244,11 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         ActualizarProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ActualizarProveedor.setForeground(new java.awt.Color(0, 102, 255));
         ActualizarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
+        ActualizarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarProveedorActionPerformed(evt);
+            }
+        });
 
         TablaProveedor.setBackground(new java.awt.Color(204, 204, 255));
         TablaProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -222,19 +284,37 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
                 "Código de proveedor", "Nombres", "Apellidos", "Teléfono", "Dirección"
             }
         ));
+        TablaProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaProveedorMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(TablaProveedor);
 
         EliminarProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         EliminarProveedor.setForeground(new java.awt.Color(0, 102, 255));
         EliminarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/borrar.png"))); // NOI18N
+        EliminarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarProveedorActionPerformed(evt);
+            }
+        });
 
         BuscarProveedor.setBackground(new java.awt.Color(255, 255, 255));
         BuscarProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BuscarProveedor.setForeground(new java.awt.Color(51, 51, 51));
+        BuscarProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BuscarProveedorKeyReleased(evt);
+            }
+        });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
+        EditarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
+        EditarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarProveedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -246,12 +326,10 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(BuscarProveedor)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(78, 78, 78)
                         .addComponent(GuardarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -264,11 +342,10 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(GuardarProveedor)
                         .addComponent(EliminarProveedor)
                         .addComponent(ActualizarProveedor)
-                        .addComponent(jButton2)
-                        .addComponent(jButton1))
+                        .addComponent(EditarProveedor)
+                        .addComponent(GuardarProveedor))
                     .addComponent(BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,8 +377,8 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NombresPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombresPKeyTyped
-         char car = evt.getKeyChar();
-        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
+        char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'z')
                 && car != 'á'
                 && car != 'é'
                 && car != 'í'
@@ -318,12 +395,12 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
                 && car != 'ñ'
                 && (car != (char) KeyEvent.VK_SPACE)) {
             evt.consume();
-        }    
+        }
     }//GEN-LAST:event_NombresPKeyTyped
 
     private void ApellidosPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosPKeyTyped
-          char car = evt.getKeyChar();
-        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
+        char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'z')
                 && car != 'á'
                 && car != 'é'
                 && car != 'í'
@@ -340,26 +417,116 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
                 && car != 'ñ'
                 && (car != (char) KeyEvent.VK_SPACE)) {
             evt.consume();
-        }    
+        }
     }//GEN-LAST:event_ApellidosPKeyTyped
 
     private void GuardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarProveedorActionPerformed
-       try {
-           if((CodigoProveedor.getText().equals("")|| (NombresP.getText().equals(""))
-                   || (ApellidosP.getText().equals(""))|| (TelProveedor.getText().equals(""))
-                   || (DirecP.getText().equals("")))){
-               JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
-           }else{
-               JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
-           }
-       }catch (Exception e) {
-           JOptionPane.showConfirmDialog(null,"Error: e"+e);
-       }
+        CRUDProveedor pl = new CRUDProveedor();
+        try {
+            if ((NombresP.getText().equals(""))
+                    || (ApellidosP.getText().equals(""))
+                    || (TelProveedor.getText().equals("    -    "))
+                    || (DirecP.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+            } else {
+                guardarProveedor();
+                limpiar();
+                mostrar();
+                JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+
     }//GEN-LAST:event_GuardarProveedorActionPerformed
 
     private void DirecPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DirecPKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_DirecPKeyTyped
+
+    private void TablaProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProveedorMouseClicked
+        datoSeleccionado = TablaProveedor.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_TablaProveedorMouseClicked
+
+    private void EliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarProveedorActionPerformed
+        if (datoSeleccionado >= 0) {
+            String dato = String.valueOf(TablaProveedor.getValueAt(datoSeleccionado, 0));
+            CRUDProveedor pro = new CRUDProveedor();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                    "Se eliminará el registro, ¿desea continuar?",
+                    "Eliminar Registro",
+                    JOptionPane.WARNING_MESSAGE,
+                    JOptionPane.YES_NO_OPTION)
+                    == JOptionPane.YES_OPTION) {
+                pro.eliminar(dato);
+                mostrar();
+                JOptionPane.showMessageDialog(null,
+                        "Dato eliminado correctamente");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Debe seleccionar un registro de la tabla");
+        }
+
+    }//GEN-LAST:event_EliminarProveedorActionPerformed
+
+    private void EditarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarProveedorActionPerformed
+        int fila = this.TablaProveedor.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione un registro de la tabla");
+        } else {
+
+            try {
+                int cod = Integer.parseInt((String) this.TablaProveedor.getValueAt(fila, 0).toString());
+                String nombres = (String) this.TablaProveedor.getValueAt(fila, 1);
+                String apellidos = (String) this.TablaProveedor.getValueAt(fila, 2);
+                String telefono = (String) this.TablaProveedor.getValueAt(fila, 3);
+                String direc = (String) this.TablaProveedor.getValueAt(fila, 4);
+
+                CodigoProveedor.setEnabled(false);
+
+                CodigoProveedor.setText("" + cod);
+                NombresP.setText(nombres);
+                ApellidosP.setText(apellidos);
+                TelProveedor.setText(telefono);
+                DirecP.setText(direc);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_EditarProveedorActionPerformed
+
+    private void ActualizarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarProveedorActionPerformed
+        try {
+            if ((CodigoProveedor.getText().equals(""))
+                    || (NombresP.getText().equals(""))
+                    || (ApellidosP.getText().equals(""))
+                    || (TelProveedor.getText().equals(""))
+                    || (DirecP.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+            } else {
+                editarProveedor();
+                mostrar();
+                JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+
+            }
+
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+    }//GEN-LAST:event_ActualizarProveedorActionPerformed
+
+    private void BuscarProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarProveedorKeyReleased
+        try {
+
+            DefaultTableModel modelo;
+            CRUDProveedor pro = new CRUDProveedor();
+            modelo = pro.buscarDatos(BuscarProveedor.getText());
+            TablaProveedor.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_BuscarProveedorKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -368,13 +535,12 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField BuscarProveedor;
     private javax.swing.JTextField CodigoProveedor;
     private javax.swing.JTextField DirecP;
+    private javax.swing.JButton EditarProveedor;
     private javax.swing.JButton EliminarProveedor;
     private javax.swing.JButton GuardarProveedor;
     private javax.swing.JTextField NombresP;
     private javax.swing.JTable TablaProveedor;
     private javax.swing.JFormattedTextField TelProveedor;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

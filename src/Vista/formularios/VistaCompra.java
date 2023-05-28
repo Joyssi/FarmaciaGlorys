@@ -4,6 +4,13 @@
  */
 package Vista.formularios;
 import javax.swing.JOptionPane;
+import Controlador.CRUDCompra;
+import Modelo.POJOCompra;
+import java.awt.Color;
+import java.awt.HeadlessException;
+
+
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Joy Cruz
@@ -13,10 +20,34 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaCompra
      */
+    int datoSeleccionado = -1;
+    
     public VistaCompra() {
         initComponents();
+        mostrar();
+        CodigoCompra.setEnabled(false);
     }
 
+    public void mostrar() {
+        try {
+            DefaultTableModel modelo;
+            CRUDCompra cli = new CRUDCompra();
+            modelo = cli.mostrarDatos();
+            TablaCompra.setModel(modelo);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+      public void limpiar() {
+        CodigoCompra.setText("");
+        CodProveedor.setText("");
+        FechaCompra.setText("");
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,12 +66,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         FechaCompra = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaCompra1 = new javax.swing.JTable();
+        TablaCompra = new javax.swing.JTable();
         BuscarCompra = new javax.swing.JTextField();
         EliminarCompra = new javax.swing.JButton();
         GuardarCompra = new javax.swing.JButton();
         ActualizarCompra = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BuscarCompr = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
@@ -105,15 +136,15 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestión de compras", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 36), new java.awt.Color(0, 102, 255))); // NOI18N
 
-        TablaCompra1.setBackground(new java.awt.Color(204, 204, 255));
-        TablaCompra1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TablaCompra1.setForeground(new java.awt.Color(51, 51, 51));
-        TablaCompra1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaCompra.setBackground(new java.awt.Color(204, 204, 255));
+        TablaCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TablaCompra.setForeground(new java.awt.Color(51, 51, 51));
+        TablaCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -144,7 +175,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 "Código de compra", "Código de proveedor", "Fecha de compra"
             }
         ));
-        jScrollPane1.setViewportView(TablaCompra1);
+        jScrollPane1.setViewportView(TablaCompra);
 
         BuscarCompra.setBackground(new java.awt.Color(255, 255, 255));
         BuscarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -167,7 +198,12 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         ActualizarCompra.setForeground(new java.awt.Color(0, 102, 255));
         ActualizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        BuscarCompr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        BuscarCompr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarComprActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
 
@@ -181,8 +217,8 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(BuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addComponent(BuscarCompr)
                         .addGap(18, 18, 18)
                         .addComponent(GuardarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -206,7 +242,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                             .addComponent(ActualizarCompra, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(GuardarCompra, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BuscarCompr, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(BuscarCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,17 +255,17 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -249,17 +285,39 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_GuardarCompraActionPerformed
 
+    private void BuscarComprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarComprActionPerformed
+         try {
+            
+            DefaultTableModel modelo;
+            CRUDCompra cli = new CRUDCompra();
+            modelo = cli.buscarDatos(BuscarCompra.getText());
+            if ((BuscarCompra.getText().equals("Escribe la cédula, nombres o apellidos"))
+                    || (BuscarCompra.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+                BuscarCompra.setText("Escribe la cédula, nombres o apellidos");
+                BuscarCompra.setForeground(Color.gray);
+                mostrar();
+            } else {
+                TablaCompra.setModel(modelo);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_BuscarComprActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizarCompra;
+    private javax.swing.JButton BuscarCompr;
     private javax.swing.JTextField BuscarCompra;
     private javax.swing.JTextField CodProveedor;
     private javax.swing.JTextField CodigoCompra;
     private javax.swing.JButton EliminarCompra;
     private javax.swing.JFormattedTextField FechaCompra;
     private javax.swing.JButton GuardarCompra;
-    private javax.swing.JTable TablaCompra1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable TablaCompra;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

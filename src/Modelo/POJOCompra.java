@@ -10,16 +10,20 @@ public class POJOCompra {
     
   //Atributos
     int IDCompra;
-    Date FechaCompra;
+    String FechaCompra;
     int IDProveedor;
     
     //Constructor
-  public POJOCompra(int IDCompra, Date FechaCompra, int IDProveedor) {
+  public POJOCompra(int IDCompra, String FechaCompra, int IDProveedor) {
         this.IDCompra = IDCompra;
         this.FechaCompra = FechaCompra;
         this.IDProveedor = IDProveedor;
     }
    
+  //Constructor vacío
+
+    public POJOCompra() {
+    }
     
     //Getter and Setter
     public int getIDCompra() {
@@ -30,11 +34,11 @@ public class POJOCompra {
         this.IDCompra = IDCompra;
     }
 
-    public Date getFechaCompra() {
+    public String getFechaCompra() {
         return FechaCompra;
     }
 
-    public void setFechaCompra(Date FechaCompra) {
+    public void setFechaCompra(String FechaCompra) {
         this.FechaCompra = FechaCompra;
     }
 

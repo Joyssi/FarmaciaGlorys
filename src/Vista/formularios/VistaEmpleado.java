@@ -3,8 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista.formularios;
-import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
+import Controlador.CRUDEmpleado;
+import Modelo.POJOEmpleado;
+import java.awt.Color;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -15,18 +21,66 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaEmpleado
      */
+    
+     int datoSeleccionado = -1;
+     
     public VistaEmpleado() {
         initComponents();
+        mostrar();
+        CodigoEmpleado.setEnabled(false);
     }
     
-    public void limpiarCampos(){
+    public void mostrar() {
+        try {
+            DefaultTableModel modelo;
+            CRUDEmpleado emp = new CRUDEmpleado();
+            modelo = emp.mostrarDatos();
+            TablaEmpleado.setModel(modelo);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void limpiar(){
         CodigoEmpleado.setText("");
-        Nombre1E.setText("");
-        Nombre2E.setText("");
+        NombresE.setText("");
+        ApellidosE.setText("");
         TelEmpleado.setText("");
         Edad.setText("");
-        Correo.setText("");
+        CorreoE.setText("");
         DirecEmpleado.setText("");
+    }
+    
+     public void guardarEmpleado() {
+
+        CRUDEmpleado emp = new CRUDEmpleado();
+
+        POJOEmpleado em = new POJOEmpleado(0,
+                NombresE.getText(),
+                ApellidosE.getText(),
+                DirecEmpleado.getText(),
+                TelEmpleado.getText(),
+                CorreoE.getText(),
+                 Edad.getText());
+        emp.Guardar(em);
+
+    }
+
+    public void editarEmpleado() {
+
+        CRUDEmpleado emple = new CRUDEmpleado();
+
+        POJOEmpleado emp = new POJOEmpleado(
+                Integer.parseInt(CodigoEmpleado.getText()),
+                NombresE.getText(),
+                ApellidosE.getText(),
+                DirecEmpleado.getText(),
+                TelEmpleado.getText(),
+                CorreoE.getText(),
+                Edad.getText());
+        emple.actualizar(emp);
+
     }
 
     /**
@@ -47,10 +101,10 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         CodigoEmpleado = new javax.swing.JTextField();
-        Nombre1E = new javax.swing.JTextField();
+        NombresE = new javax.swing.JTextField();
         Edad = new javax.swing.JTextField();
-        Nombre2E = new javax.swing.JTextField();
-        Correo = new javax.swing.JTextField();
+        ApellidosE = new javax.swing.JTextField();
+        CorreoE = new javax.swing.JTextField();
         TelEmpleado = new javax.swing.JFormattedTextField();
         DirecEmpleado = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -60,7 +114,6 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         ActualizarEmpleado = new javax.swing.JButton();
         BuscarEmpleado = new javax.swing.JTextField();
         EliminarEmpleado = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
@@ -99,12 +152,12 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         CodigoEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         CodigoEmpleado.setForeground(new java.awt.Color(51, 51, 51));
 
-        Nombre1E.setBackground(new java.awt.Color(255, 255, 255));
-        Nombre1E.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Nombre1E.setForeground(new java.awt.Color(51, 51, 51));
-        Nombre1E.addKeyListener(new java.awt.event.KeyAdapter() {
+        NombresE.setBackground(new java.awt.Color(255, 255, 255));
+        NombresE.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        NombresE.setForeground(new java.awt.Color(51, 51, 51));
+        NombresE.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                Nombre1EKeyTyped(evt);
+                NombresEKeyTyped(evt);
             }
         });
 
@@ -112,18 +165,18 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         Edad.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Edad.setForeground(new java.awt.Color(51, 51, 51));
 
-        Nombre2E.setBackground(new java.awt.Color(255, 255, 255));
-        Nombre2E.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Nombre2E.setForeground(new java.awt.Color(51, 51, 51));
-        Nombre2E.addKeyListener(new java.awt.event.KeyAdapter() {
+        ApellidosE.setBackground(new java.awt.Color(255, 255, 255));
+        ApellidosE.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ApellidosE.setForeground(new java.awt.Color(51, 51, 51));
+        ApellidosE.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                Nombre2EKeyTyped(evt);
+                ApellidosEKeyTyped(evt);
             }
         });
 
-        Correo.setBackground(new java.awt.Color(255, 255, 255));
-        Correo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Correo.setForeground(new java.awt.Color(51, 51, 51));
+        CorreoE.setBackground(new java.awt.Color(255, 255, 255));
+        CorreoE.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        CorreoE.setForeground(new java.awt.Color(51, 51, 51));
 
         TelEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         TelEmpleado.setForeground(new java.awt.Color(51, 51, 51));
@@ -162,11 +215,11 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                         .addGap(0, 47, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Correo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(Nombre2E, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CorreoE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(ApellidosE, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CodigoEmpleado, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nombre1E, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(NombresE, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -186,16 +239,16 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre1E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombresE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Nombre2E, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ApellidosE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(1, 1, 1)
-                .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CorreoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,6 +292,11 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                 "Código de empleado", "Nombres", "Apellidos", "Teléfono", "Edad", "Correo", "Dirección"
             }
         ));
+        TablaEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaEmpleadoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(TablaEmpleado);
 
         GuardarEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -253,18 +311,36 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         ActualizarEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ActualizarEmpleado.setForeground(new java.awt.Color(51, 102, 255));
         ActualizarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
+        ActualizarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarEmpleadoActionPerformed(evt);
+            }
+        });
 
         BuscarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         BuscarEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BuscarEmpleado.setForeground(new java.awt.Color(51, 51, 51));
+        BuscarEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BuscarEmpleadoKeyReleased(evt);
+            }
+        });
 
         EliminarEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         EliminarEmpleado.setForeground(new java.awt.Color(51, 102, 255));
         EliminarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/borrar.png"))); // NOI18N
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        EliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarEmpleadoActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -276,9 +352,7 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(BuscarEmpleado)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(77, 77, 77)
                         .addComponent(GuardarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,10 +369,9 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(BuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GuardarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(GuardarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -330,7 +403,7 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Nombre1EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre1EKeyTyped
+    private void NombresEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombresEKeyTyped
          char car = evt.getKeyChar();
         if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
                 && car != 'á'
@@ -350,9 +423,9 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                 && (car != (char) KeyEvent.VK_SPACE)) {
             evt.consume();
         }
-    }//GEN-LAST:event_Nombre1EKeyTyped
+    }//GEN-LAST:event_NombresEKeyTyped
 
-    private void Nombre2EKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre2EKeyTyped
+    private void ApellidosEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosEKeyTyped
         char car = evt.getKeyChar();
         if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
                 && car != 'á'
@@ -372,44 +445,131 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
                 && (car != (char) KeyEvent.VK_SPACE)) {
             evt.consume();
         }
-    }//GEN-LAST:event_Nombre2EKeyTyped
+    }//GEN-LAST:event_ApellidosEKeyTyped
 
     private void GuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarEmpleadoActionPerformed
+           CRUDEmpleado emp = new CRUDEmpleado();
         try {
-           if ((CodigoEmpleado.getText().equals(""))|| (Nombre1E.getText().equals(""))
-                   || (Nombre2E.getText().equals(""))|| (TelEmpleado.getText().equals(""))
-                   || (Edad.getText().equals(""))|| (Correo.getText().equals(""))
-                   || (DirecEmpleado.getText().equals(""))){
-               JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
-           }else{
-               if ((Integer.parseInt(Edad.getText())>120)||(Integer.parseInt(Edad.getText())<18)){
-               JOptionPane.showMessageDialog(null,"Edad no válida");
-           }else{
-                   JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
-               }
-           }
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: "+e);
+            if ((NombresE.getText().equals(""))
+                    || (ApellidosE.getText().equals(""))
+                    || (DirecEmpleado.getText().equals("    -    "))
+                    || (TelEmpleado.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+            } else {
+                guardarEmpleado();
+                limpiar();
+                mostrar();
+                JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-        
-        limpiarCampos();
+
     }//GEN-LAST:event_GuardarEmpleadoActionPerformed
+
+    private void TablaEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaEmpleadoMouseClicked
+         datoSeleccionado = TablaEmpleado.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_TablaEmpleadoMouseClicked
+
+    private void EliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarEmpleadoActionPerformed
+        if (datoSeleccionado >= 0) {
+            String dato = String.valueOf(TablaEmpleado.getValueAt(datoSeleccionado, 0));
+            CRUDEmpleado emp = new CRUDEmpleado();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                    "Se eliminará el registro, ¿Desea continuar?",
+                    "Eliminar Registro",
+                    JOptionPane.WARNING_MESSAGE,
+                    JOptionPane.YES_NO_OPTION)
+                    == JOptionPane.YES_OPTION) {
+                emp.eliminar(dato);
+                mostrar();
+                JOptionPane.showMessageDialog(null,
+                        "Dato eliminado correctamente");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Debe seleccionar un registro de la tabla");
+        }
+    }//GEN-LAST:event_EliminarEmpleadoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         int fila = this.TablaEmpleado.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Seleccione un registro de la tabla");
+        } else {
+
+            try {
+                int cod = Integer.parseInt((String) this.TablaEmpleado.getValueAt(fila, 0).toString());
+                String nombres = (String) this.TablaEmpleado.getValueAt(fila, 1);
+                String apellidos = (String) this.TablaEmpleado.getValueAt(fila, 2);
+                String direc = (String) this.TablaEmpleado.getValueAt(fila, 3);
+                String telefono = (String) this.TablaEmpleado.getValueAt(fila, 4);
+                String correo = (String) this.TablaEmpleado.getValueAt(fila, 5);
+                String edad = (String) this.TablaEmpleado.getValueAt(fila, 6);
+
+                CodigoEmpleado.setEnabled(false);
+
+                CodigoEmpleado.setText("" + cod);
+                NombresE.setText(nombres);
+                ApellidosE.setText(apellidos);
+                DirecEmpleado.setText(direc);
+                TelEmpleado.setText(telefono);
+                CorreoE.setText(correo);
+                Edad.setText(edad);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ActualizarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarEmpleadoActionPerformed
+        try {
+            if ((CodigoEmpleado.getText().equals(""))
+                    || (NombresE.getText().equals(""))
+                    || (ApellidosE.getText().equals(""))
+                    || (DirecEmpleado.getText().equals(""))
+                    || (TelEmpleado.getText().equals(""))
+                    || (CorreoE.getText().equals(""))
+                    || (Edad.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+            } else {
+                editarEmpleado();
+                mostrar();
+                JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+
+            }
+
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+    }//GEN-LAST:event_ActualizarEmpleadoActionPerformed
+
+    private void BuscarEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarEmpleadoKeyReleased
+         try {
+
+            DefaultTableModel modelo;
+            CRUDEmpleado emp = new CRUDEmpleado();
+            modelo = emp.buscarDatos(BuscarEmpleado.getText());
+            TablaEmpleado.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_BuscarEmpleadoKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizarEmpleado;
+    private javax.swing.JTextField ApellidosE;
     private javax.swing.JTextField BuscarEmpleado;
     private javax.swing.JTextField CodigoEmpleado;
-    private javax.swing.JTextField Correo;
+    private javax.swing.JTextField CorreoE;
     private javax.swing.JTextField DirecEmpleado;
     private javax.swing.JTextField Edad;
     private javax.swing.JButton EliminarEmpleado;
     private javax.swing.JButton GuardarEmpleado;
-    private javax.swing.JTextField Nombre1E;
-    private javax.swing.JTextField Nombre2E;
+    private javax.swing.JTextField NombresE;
     private javax.swing.JTable TablaEmpleado;
     private javax.swing.JFormattedTextField TelEmpleado;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

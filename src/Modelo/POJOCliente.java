@@ -16,7 +16,7 @@ public class POJOCliente {
     
     //Contructor
    
-    public POJOCliente(String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente, String text5) {
+    public POJOCliente(int IDCliente, String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente) {
         this.IDCliente = IDCliente;
         this.NombresC = NombresC;
         this.ApellidosC = ApellidosC;
@@ -25,9 +25,10 @@ public class POJOCliente {
         this.DirecCliente = DirecCliente;
     }
 
-    public POJOCliente(String text, String text1, String text2, String text3, String text4) {
+    //Constructor vacío
+    public POJOCliente() {
     }
-   
+
     //Getter and Setter
 
     public int getIDCliente() {

@@ -10,21 +10,27 @@ public class POJOEmpleado {
     int IDEmpleado;
     String NombresE;
     String ApellidosE;
-    String TelEmpleado;
     String DirecEmpleado;
+    String TelEmpledao;
     String CorreoE;
     String Edad;
 
     //Constructor
 
-public POJOEmpleado(int IDEmpleado, String NombresE, String ApellidosE, String TelEmpleado, String DirecEmpleado, String CorreoE, String Edad) {
+    public POJOEmpleado(int IDEmpleado, String NombresE, String ApellidosE, 
+            String DirecEmpleado, String TelEmpleado, String CorreoE, String Edad) {
         this.IDEmpleado = IDEmpleado;
         this.NombresE = NombresE;
         this.ApellidosE = ApellidosE;
-        this.TelEmpleado = TelEmpleado;
         this.DirecEmpleado = DirecEmpleado;
+        this.TelEmpledao = TelEmpleado;
         this.CorreoE = CorreoE;
         this.Edad = Edad;
+    }
+    
+    //Constructor vacío
+
+    public POJOEmpleado() {
     }
 
     //Getter and Setter
@@ -53,12 +59,12 @@ public POJOEmpleado(int IDEmpleado, String NombresE, String ApellidosE, String T
         this.ApellidosE = ApellidosE;
     }
 
-    public String getTelEmpleado() {
-        return TelEmpleado;
+    public String getTelEmpledao() {
+        return TelEmpledao;
     }
 
-    public void setTelEmpleado(String TelEmpleado) {
-        this.TelEmpleado = TelEmpleado;
+    public void setTelEmpledao(String TelEmpleado) {
+        this.TelEmpledao = TelEmpleado;
     }
 
     public String getDirecEmpleado() {

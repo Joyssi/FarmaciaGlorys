@@ -29,12 +29,12 @@ public class CRUDCliente {
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("Código de Cliente");
-                registro[1] = rs.getString("Nombres");
-                registro[2] = rs.getString("Apellidos");
-                registro[3] = rs.getString("Cédula");
-                registro[4] = rs.getString("Teléfono");
-                registro[5] = rs.getString("DirecciÓn");
+                registro[0] = rs.getString("IDCliente");
+                registro[1] = rs.getString("NombresC");
+                registro[2] = rs.getString("ApellidosC");
+                registro[3] = rs.getString("Cedula");
+                registro[4] = rs.getString("TelCliente");
+                registro[5] = rs.getString("DirecCliente");
 
                 modelo.addRow(registro);
             }
@@ -61,12 +61,12 @@ public class CRUDCliente {
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("Código de Cliente");
-                registro[1] = rs.getString("Nombres");
-                registro[2] = rs.getString("Apellidos");
-                registro[3] = rs.getString("Cédula");
-                registro[4] = rs.getString("Teléfono");
-                registro[5] = rs.getString("Dirección");
+                registro[0] = rs.getString("IDCliente");
+                registro[1] = rs.getString("NombresC");
+                registro[2] = rs.getString("ApellidosC");
+                registro[3] = rs.getString("Cedula");
+                registro[4] = rs.getString("TelCliente");
+                registro[5] = rs.getString("DirecCliente");
 
                 modelo.addRow(registro);
             }
@@ -98,11 +98,11 @@ public class CRUDCliente {
     public void Guardar(POJOCliente cl) {
         try {
             CallableStatement cbst = cn.prepareCall("{call InsertarCliente(?,?,?,?,?)}");
-            cbst.setString(2, cl.getNombresC());
-            cbst.setString(3, cl.getApellidosC());
-            cbst.setString(4, cl.getCedula());
-            cbst.setString(5, cl.getTelCliente());
-            cbst.setString(6, cl.getDirecCliente());
+            cbst.setString(1, cl.getNombresC());
+            cbst.setString(2, cl.getApellidosC());
+            cbst.setString(3, cl.getCedula());
+            cbst.setString(4, cl.getTelCliente());
+            cbst.setString(5, cl.getDirecCliente());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -123,7 +123,8 @@ public class CRUDCliente {
     
     public void actualizar(POJOCliente cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call ModificarCliente(?,?,?,?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call ActualizarCliente(?,?,?,?,?,?)}");
+            cbst.setInt(1, cl.getIDCliente());
             cbst.setString(2, cl.getNombresC());
             cbst.setString(3, cl.getApellidosC());
             cbst.setString(4, cl.getCedula());

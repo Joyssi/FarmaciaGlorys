@@ -8,6 +8,7 @@ import Controlador.CRUDCliente;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Modelo.POJOCliente;
+import java.awt.Color;
 import java.awt.HeadlessException;
 
 /**
@@ -20,6 +21,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
   
     public VistaCliente() {
         initComponents();
+        CodigoC.setEnabled(false);
          mostrar();
     }
 
@@ -48,7 +50,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         CRUDCliente cc = new CRUDCliente();
 
-        POJOCliente cl = new POJOCliente(NombresC.getText(),
+        POJOCliente cl = new POJOCliente(0,
+                NombresC.getText(),
                 ApellidosC.getText(),
                 Cedula.getText(),
                 TelCliente.getText(),
@@ -61,12 +64,12 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         CRUDCliente cc = new CRUDCliente();
 
-        POJOCliente cl = new POJOCliente(CodigoC.getText(),
+        POJOCliente cl = new POJOCliente(Integer.parseInt(CodigoC.getText()),
                 NombresC.getText(),
                 ApellidosC.getText(),
                 Cedula.getText(),
                 TelCliente.getText(),
-                DirecCliente.getText());
+        DirecCliente.getText());
         cc.actualizar(cl);
 
     }
@@ -94,13 +97,12 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         Cedula = new javax.swing.JFormattedTextField();
         TelCliente = new javax.swing.JFormattedTextField();
         DirecCliente = new javax.swing.JTextField();
+        GuardarCliente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         BuscarCliente = new javax.swing.JTextField();
-        GuardarCliente = new javax.swing.JButton();
         AcualizarCliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaCliente = new javax.swing.JTable();
-        BuscarClient = new javax.swing.JButton();
         EliminarCliente = new javax.swing.JButton();
         EditarCliente = new javax.swing.JButton();
 
@@ -185,24 +187,23 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        GuardarCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        GuardarCliente.setForeground(new java.awt.Color(0, 102, 255));
+        GuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/disquete.png"))); // NOI18N
+        GuardarCliente.setText("Guardar");
+        GuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CodigoC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                                .addComponent(NombresC, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ApellidosC, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel6)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -210,7 +211,24 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel7)
                                 .addComponent(Cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                                 .addComponent(TelCliente))
-                            .addComponent(DirecCliente))))
+                            .addComponent(DirecCliente)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CodigoC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                        .addComponent(NombresC, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ApellidosC, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLabel6)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(GuardarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
@@ -240,7 +258,9 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DirecCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(GuardarCliente)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestión de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 36), new java.awt.Color(0, 102, 255))); // NOI18N
@@ -248,13 +268,9 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         BuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
         BuscarCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BuscarCliente.setForeground(new java.awt.Color(51, 51, 51));
-
-        GuardarCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        GuardarCliente.setForeground(new java.awt.Color(0, 102, 255));
-        GuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/disquete.png"))); // NOI18N
-        GuardarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarClienteActionPerformed(evt);
+        BuscarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BuscarClienteKeyReleased(evt);
             }
         });
 
@@ -269,8 +285,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         TablaCliente.setBackground(new java.awt.Color(204, 204, 255));
         TablaCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TablaCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TablaCliente.setForeground(new java.awt.Color(0, 102, 255));
+        TablaCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TablaCliente.setForeground(new java.awt.Color(51, 51, 51));
         TablaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -309,8 +325,6 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(TablaCliente);
 
-        BuscarClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
-
         EliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/borrar.png"))); // NOI18N
         EliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,11 +349,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(BuscarCliente)
-                        .addGap(18, 18, 18)
-                        .addComponent(BuscarClient)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GuardarCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(67, 67, 67)
                         .addComponent(EditarCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AcualizarCliente)
@@ -354,13 +364,11 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(EditarCliente)
-                        .addComponent(GuardarCliente)
-                        .addComponent(BuscarClient)
                         .addComponent(AcualizarCliente)
                         .addComponent(BuscarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(EliminarCliente))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -376,11 +384,10 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -433,18 +440,19 @@ public class VistaCliente extends javax.swing.JInternalFrame {
     private void GuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarClienteActionPerformed
           CRUDCliente cl = new CRUDCliente();
         try {
-            if ((NombresC.getText().equals("   -      -     "))
+            if ((NombresC.getText().equals(""))
                     || (ApellidosC.getText().equals(""))
-                    || (Cedula.getText().equals(""))
-                    || (TelCliente.getText().equals("    -    "))
+                    || (Cedula.getText().equals("   -      -      "))
+                    || (TelCliente.getText().equals("    -     "))
                     || (DirecCliente.getText().equals(""))) {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
             } else {
-                if (cl.verificarDatos(CodigoC.getText())) {
-                    JOptionPane.showMessageDialog(null, "Ya existe cliente con ese Código");
+                if (cl.verificarDatos(Cedula.getText())) {
+                    JOptionPane.showMessageDialog(null, "Ya existe Cliente con esa Cédula");
                 } else {
                     guardarCliente();
                     limpiar();
+                    mostrar();
                     JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
                 }
 
@@ -467,7 +475,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
             String dato = String.valueOf(TablaCliente.getValueAt(datoSeleccionado, 0));
             CRUDCliente cli = new CRUDCliente();
             if (JOptionPane.showConfirmDialog(rootPane,
-                    "Se eliminará el registro, ¿desea continuar?",
+                    "Se eliminará el registro, ¿Desea continuar?",
                     "Eliminar Registro",
                     JOptionPane.WARNING_MESSAGE,
                     JOptionPane.YES_NO_OPTION)
@@ -498,7 +506,9 @@ public class VistaCliente extends javax.swing.JInternalFrame {
                String telefono=(String)this.TablaCliente.getValueAt(fila, 4);
                String direc=(String)this.TablaCliente.getValueAt(fila, 5);
                
-        
+       CodigoC.setEnabled(false);
+       Cedula.setEnabled(false);
+               
         CodigoC.setText(""+cod);       
         NombresC.setText(nombres);
         ApellidosC.setText(apellidos);
@@ -513,16 +523,18 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
     private void AcualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcualizarClienteActionPerformed
         try {
-            if ((NombresC.getText().equals(""))
+            if ((CodigoC.getText().equals(""))
+                    ||(NombresC.getText().equals(""))
                     || (ApellidosC.getText().equals(""))
-                    || (Cedula.getText().equals(""))
-                    || (TelCliente.getText().equals(""))
+                    || (Cedula.getText().equals("   -      -     "))
+                    || (TelCliente.getText().equals("    -    "))
                     || (DirecCliente.getText().equals(""))) {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
             } else {
                 editarCliente();
+                mostrar();
                 JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
-                dispose();
+                limpiar();
 
             }
 
@@ -531,11 +543,22 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_AcualizarClienteActionPerformed
 
+    private void BuscarClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarClienteKeyReleased
+        try {
+
+            DefaultTableModel modelo;
+            CRUDCliente cli = new CRUDCliente();
+            modelo = cli.buscarDatos(BuscarCliente.getText());
+            TablaCliente.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_BuscarClienteKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AcualizarCliente;
     private javax.swing.JTextField ApellidosC;
-    private javax.swing.JButton BuscarClient;
     private javax.swing.JTextField BuscarCliente;
     private javax.swing.JFormattedTextField Cedula;
     private javax.swing.JTextField CodigoC;

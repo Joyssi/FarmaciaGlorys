@@ -14,12 +14,17 @@ public class POJOProveedor {
     String TelProveedor;
    
     //Constructor
-    public POJOProveedor(int IDProveedor, String NombresP, String ApellidosP, String DirecProveedor, String TelProveedor) {
-        this.IDProveedor = IDProveedor;
+    public POJOProveedor(int cod, String NombresP, String ApellidosP,  String TelProveedor, String DirecProveedor) {
+        this.IDProveedor = cod;
         this.NombresP = NombresP;
         this.ApellidosP = ApellidosP;
         this.DirecProveedor = DirecProveedor;
         this.TelProveedor = TelProveedor;
+    }
+    
+    //Constructor vacío
+
+    public POJOProveedor() {
     }
     
 
