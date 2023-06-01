@@ -4,6 +4,12 @@
  */
 package Vista.formularios;
 
+import Controlador.CRUDPresentacion;
+import Modelo.POJOPresentacion;
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Joy Cruz
@@ -15,6 +21,23 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
      */
     public VistaPresentacion() {
         initComponents();
+        CodPresentacion.setEnabled(false);
+    }
+    
+    public void limpiar() {
+        CodPresentacion.setText("");
+        Tamaño.setText("");
+        FormaD.setText("");
+    }
+     
+      public void guardarPresentacion() {
+
+        CRUDPresentacion cc = new CRUDPresentacion();
+
+        POJOPresentacion cl = new POJOPresentacion(0,
+                Double.parseDouble(Tamaño.getText()),
+                FormaD.getText());
+        cc.Guardar(cl);
     }
 
     /**
@@ -30,11 +53,11 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        CodPresentacion = new javax.swing.JTextField();
+        FormaD = new javax.swing.JTextField();
+        Tamaño = new javax.swing.JTextField();
+        Agregar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -53,25 +76,40 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText("Tamaño");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
+        CodPresentacion.setBackground(new java.awt.Color(255, 255, 255));
+        CodPresentacion.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        CodPresentacion.setForeground(new java.awt.Color(51, 51, 51));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(51, 51, 51));
+        FormaD.setBackground(new java.awt.Color(255, 255, 255));
+        FormaD.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        FormaD.setForeground(new java.awt.Color(51, 51, 51));
+        FormaD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FormaDKeyTyped(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(51, 51, 51));
+        Tamaño.setBackground(new java.awt.Color(255, 255, 255));
+        Tamaño.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Tamaño.setForeground(new java.awt.Color(51, 51, 51));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 102, 255));
-        jButton1.setText("Agregar");
+        Agregar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Agregar.setForeground(new java.awt.Color(0, 102, 255));
+        Agregar.setText("Agregar");
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 102, 255));
-        jButton2.setText("Cancelar");
+        Cancelar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Cancelar.setForeground(new java.awt.Color(0, 102, 255));
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,12 +123,12 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton1)
+                            .addComponent(Agregar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                            .addComponent(jButton2))
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(Cancelar))
+                        .addComponent(Tamaño, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(FormaD, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CodPresentacion, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,19 +137,19 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CodPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FormaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(Cancelar)
+                    .addComponent(Agregar))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -129,16 +167,59 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void FormaDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FormaDKeyTyped
+         char car = evt.getKeyChar();
+        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
+                && car != 'á'
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á'
+                && car != 'É'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ü'
+                && car != 'ü'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_FormaDKeyTyped
+
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+         CRUDPresentacion pre = new CRUDPresentacion();
+        try {
+            if ((Tamaño.getText().equals(""))
+             || (FormaD.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+            } else {
+                guardarPresentacion();
+                limpiar();
+                JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+            }
+            dispose();
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+    }//GEN-LAST:event_AgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Agregar;
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JTextField CodPresentacion;
+    private javax.swing.JTextField FormaD;
+    private javax.swing.JTextField Tamaño;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

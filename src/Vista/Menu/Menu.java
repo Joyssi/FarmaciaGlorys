@@ -37,7 +37,6 @@ public class Menu extends javax.swing.JFrame {
         Clientes = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Empleados = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         InformeVenta = new javax.swing.JMenuItem();
@@ -140,20 +139,6 @@ public class Menu extends javax.swing.JFrame {
         desktopPane.add(jToolBar1);
         jToolBar1.setBounds(240, 0, 1370, 90);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-        );
-
-        desktopPane.add(jDesktopPane1);
-        jDesktopPane1.setBounds(240, 90, 1140, 590);
-
         fileMenu.setForeground(new java.awt.Color(0, 102, 255));
         fileMenu.setMnemonic('f');
         fileMenu.setText("Informes");
@@ -211,7 +196,7 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -224,82 +209,82 @@ public class Menu extends javax.swing.JFrame {
 
     private void InformeCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeCompraActionPerformed
          VistaInformeCompra informecompra = new VistaInformeCompra();
-        int x = (jDesktopPane1.getWidth() / 2) - informecompra.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - informecompra.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - informecompra.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - informecompra.getHeight() / 2;
         informecompra.setLocation(x, y);
-        jDesktopPane1.add(informecompra);
+        desktopPane.add(informecompra);
         informecompra.show();
     }//GEN-LAST:event_InformeCompraActionPerformed
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
         VistaProducto producto = new VistaProducto();
-        int x = (jDesktopPane1.getWidth() / 2) - producto.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - producto.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - producto.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - producto.getHeight() / 2;
         producto.setLocation(x, y);
-        jDesktopPane1.add(producto);
+        desktopPane.add(producto);
         producto.show();
     }//GEN-LAST:event_ProductosActionPerformed
 
     private void ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprasActionPerformed
         VistaCompra compra = new VistaCompra();
-        int x = (jDesktopPane1.getWidth() / 2) - compra.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - compra.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - compra.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - compra.getHeight() / 2;
         compra.setLocation(x, y);
-        jDesktopPane1.add(compra);
+        desktopPane.add(compra);
         compra.show();
     }//GEN-LAST:event_ComprasActionPerformed
 
     private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
         VistaVenta venta = new VistaVenta();
-        int x = (jDesktopPane1.getWidth() / 2) - venta.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - venta.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - venta.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - venta.getHeight() / 2;
         venta.setLocation(x, y);
-        jDesktopPane1.add(venta);
+        desktopPane.add(venta);
         venta.show();
     }//GEN-LAST:event_VentasActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
         VistaCliente cliente = new VistaCliente();
-        int x = (jDesktopPane1.getWidth() / 2) - cliente.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - cliente.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - cliente.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - cliente.getHeight() / 2;
         cliente.setLocation(x, y);
-        jDesktopPane1.add(cliente);
+        desktopPane.add(cliente);
         cliente.show();
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         VistaProveedor proveedor = new VistaProveedor();
-        int x = (jDesktopPane1.getWidth() / 2) - proveedor.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - proveedor.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - proveedor.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - proveedor.getHeight() / 2;
         proveedor.setLocation(x, y);
-        jDesktopPane1.add(proveedor);
+        desktopPane.add(proveedor);
         proveedor.show();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadosActionPerformed
         VistaEmpleado empleado = new VistaEmpleado();
-        int x = (jDesktopPane1.getWidth() / 2) - empleado.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - empleado.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - empleado.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - empleado.getHeight() / 2;
         empleado.setLocation(x, y);
-        jDesktopPane1.add(empleado);
+        desktopPane.add(empleado);
         empleado.show();
     }//GEN-LAST:event_EmpleadosActionPerformed
 
     private void InformeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeVentaActionPerformed
          VistaInformeVenta informeventa = new VistaInformeVenta();
-        int x = (jDesktopPane1.getWidth() / 2) - informeventa.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - informeventa.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - informeventa.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - informeventa.getHeight() / 2;
         informeventa.setLocation(x, y);
-        jDesktopPane1.add(informeventa);
+        desktopPane.add(informeventa);
         informeventa.show();
     }//GEN-LAST:event_InformeVentaActionPerformed
 
     private void ListadoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadoProductoActionPerformed
          VistaListaProducto listaproducto = new VistaListaProducto();
-        int x = (jDesktopPane1.getWidth() / 2) - listaproducto.getWidth() / 2;
-        int y = (jDesktopPane1.getHeight() / 2) - listaproducto.getHeight() / 2;
+        int x = (desktopPane.getWidth() / 2) - listaproducto.getWidth() / 2;
+        int y = (desktopPane.getHeight() / 2) - listaproducto.getHeight() / 2;
         listaproducto.setLocation(x, y);
-        jDesktopPane1.add(listaproducto);
+        desktopPane.add(listaproducto);
         listaproducto.show();
     }//GEN-LAST:event_ListadoProductoActionPerformed
 
@@ -347,11 +332,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem ListadoProducto;
     private javax.swing.JButton Productos;
     private javax.swing.JButton Ventas;
-    private javax.swing.JDesktopPane desktopPane;
+    public static javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton4;
-    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuBar menuBar;

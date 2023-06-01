@@ -4,75 +4,40 @@ package Modelo;
  *
  * @author Joy Cruz
  */
-public class POJOEmpleado {
+public class POJOEmpleado extends POJOPersona {
  
     //Atributos
     int IDEmpleado;
-    String NombresE;
-    String ApellidosE;
-    String DirecEmpleado;
-    String TelEmpledao;
     String CorreoE;
-    String Edad;
+    int Edad;
 
     //Constructor
-
-    public POJOEmpleado(int IDEmpleado, String NombresE, String ApellidosE, 
-            String DirecEmpleado, String TelEmpleado, String CorreoE, String Edad) {
-        this.IDEmpleado = IDEmpleado;
-        this.NombresE = NombresE;
-        this.ApellidosE = ApellidosE;
-        this.DirecEmpleado = DirecEmpleado;
-        this.TelEmpledao = TelEmpleado;
-        this.CorreoE = CorreoE;
-        this.Edad = Edad;
+    public POJOEmpleado(int IDEmpleado, String Cedula, String Nombres,
+            String Apellidos, String Direccion, String Telefono, String CorreoE, int Edad) {
+        super(Cedula, Nombres, Apellidos, Direccion, Telefono);
+        this.IDEmpleado=IDEmpleado;   
+        this.CorreoE=CorreoE; 
+        this.Edad=Edad;
     }
     
     //Constructor vacío
-
     public POJOEmpleado() {
     }
 
+    //Constructor para mostrar datos en el ComboBox
+    public POJOEmpleado(int IDEmpleado, String Nombres) {
+        super(Nombres);
+        this.IDEmpleado = IDEmpleado;
+    }
+    
+    
     //Getter and Setter
-
     public int getIDEmpleado() {
         return IDEmpleado;
     }
 
     public void setIDEmpleado(int IDEmpleado) {
         this.IDEmpleado = IDEmpleado;
-    }
-
-    public String getNombresE() {
-        return NombresE;
-    }
-
-    public void setNombresE(String NombresE) {
-        this.NombresE = NombresE;
-    }
-
-    public String getApellidosE() {
-        return ApellidosE;
-    }
-
-    public void setApellidosE(String ApellidosE) {
-        this.ApellidosE = ApellidosE;
-    }
-
-    public String getTelEmpledao() {
-        return TelEmpledao;
-    }
-
-    public void setTelEmpledao(String TelEmpleado) {
-        this.TelEmpledao = TelEmpleado;
-    }
-
-    public String getDirecEmpleado() {
-        return DirecEmpleado;
-    }
-
-    public void setDirecEmpleado(String DirecEmpleado) {
-        this.DirecEmpleado = DirecEmpleado;
     }
 
     public String getCorreoE() {
@@ -83,16 +48,18 @@ public class POJOEmpleado {
         this.CorreoE = CorreoE;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return Edad;
     }
 
-    public void setEdad(String Edad) {
+    public void setEdad(int Edad) {
         this.Edad = Edad;
     }
-
     
-
+    //Método para mostrar datos en el ComboBox
+     public String toString(){
+        return IDEmpleado +"-"+Nombres;
+    }
    
    
     

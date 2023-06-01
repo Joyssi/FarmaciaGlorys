@@ -15,7 +15,11 @@ public class POJOMarca {
         this.IDMarca = IDMarca;
         this.NombreMarca = NombreMarca;
     }
-    
+
+    //Constructor vacío
+    public POJOMarca() {
+    }
+
     //Getter and Setter
     public int getIDMarca() {
         return IDMarca;
@@ -33,4 +37,9 @@ public class POJOMarca {
         this.NombreMarca = NombreMarca;
     }
     
+    //Método para mostrar datos en el ComboBox
+       public String toString(){
+        return IDMarca +"-"+NombreMarca;
+    }
 }
+

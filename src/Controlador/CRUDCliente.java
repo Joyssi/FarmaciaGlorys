@@ -5,6 +5,7 @@
 package Controlador;
 import Modelo.POJOCliente;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -19,8 +20,8 @@ public class CRUDCliente {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Cliente", "Nombres", "Apellidos", "Cédula", "Teléfono", "Dirección"};
-        String[] registro = new String[6];
+        String[] titulos = {"Código de Cliente", "Cedula", "Nombres", "Apellidos", "Dirección", "Teléfono", "Correo"};
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -30,11 +31,12 @@ public class CRUDCliente {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDCliente");
-                registro[1] = rs.getString("NombresC");
-                registro[2] = rs.getString("ApellidosC");
-                registro[3] = rs.getString("Cedula");
-                registro[4] = rs.getString("TelCliente");
-                registro[5] = rs.getString("DirecCliente");
+                registro[1] = rs.getString("Cedula");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("Apellidos");
+                registro[4] = rs.getString("Direccion");
+                registro[5] = rs.getString("Telefono");
+                registro[6] = rs.getString("CorreoC");
 
                 modelo.addRow(registro);
             }
@@ -50,8 +52,8 @@ public class CRUDCliente {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Cliente", "Nombres", "Apellidos", "Cédula", "Teléfono", "Dirección"};
-        String[] registro = new String[6];
+        String[] titulos = {"Código de Cliente", "Cédula", "Nombres", "Apellidos", "Dirección", "Teléfono", "Correo"};
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -62,11 +64,12 @@ public class CRUDCliente {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDCliente");
-                registro[1] = rs.getString("NombresC");
-                registro[2] = rs.getString("ApellidosC");
-                registro[3] = rs.getString("Cedula");
-                registro[4] = rs.getString("TelCliente");
-                registro[5] = rs.getString("DirecCliente");
+                registro[1] = rs.getString("Cedula");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("Apellidos");
+                registro[4] = rs.getString("Direccion");
+                registro[5] = rs.getString("Telefono");
+                registro[6] = rs.getString("CorreoC");
 
                 modelo.addRow(registro);
             }
@@ -97,12 +100,13 @@ public class CRUDCliente {
 
     public void Guardar(POJOCliente cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarCliente(?,?,?,?,?)}");
-            cbst.setString(1, cl.getNombresC());
-            cbst.setString(2, cl.getApellidosC());
-            cbst.setString(3, cl.getCedula());
-            cbst.setString(4, cl.getTelCliente());
-            cbst.setString(5, cl.getDirecCliente());
+            CallableStatement cbst = cn.prepareCall("{call InsertarCliente(?,?,?,?,?,?)}");
+            cbst.setString(1, cl.getCedula());
+            cbst.setString(2, cl.getNombres());
+            cbst.setString(3, cl.getApellidos());
+            cbst.setString(4, cl.getDireccion());
+            cbst.setString(5, cl.getTelefono());
+            cbst.setString(6, cl.getCorreoC());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -110,10 +114,10 @@ public class CRUDCliente {
         }
     }
     
-    public void eliminar(String codigo) {
+    public void eliminar(String Cedula) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarCliente(?)}");
-            cbst.setString(1, codigo);
+            cbst.setString(1, Cedula);
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -124,16 +128,35 @@ public class CRUDCliente {
     public void actualizar(POJOCliente cl) {
         try {
             CallableStatement cbst = cn.prepareCall("{call ActualizarCliente(?,?,?,?,?,?)}");
-            cbst.setInt(1, cl.getIDCliente());
-            cbst.setString(2, cl.getNombresC());
-            cbst.setString(3, cl.getApellidosC());
-            cbst.setString(4, cl.getCedula());
-            cbst.setString(5, cl.getTelCliente());
-            cbst.setString(6, cl.getDirecCliente());
+            cbst.setString(1, cl.getCedula());
+            cbst.setString(2, cl.getNombres());
+            cbst.setString(3, cl.getApellidos());
+            cbst.setString(4, cl.getDireccion());
+            cbst.setString(5, cl.getTelefono());
+            cbst.setString(6, cl.getCorreoC());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+    
+    public ArrayList mostrarDatosCombo() {
+
+        ArrayList<POJOCliente> Empleado = new ArrayList();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarCliente}");
+            ResultSet rs = cbstc.executeQuery();
+            while (rs.next()) {
+                POJOCliente gr = new POJOCliente();
+                gr.setIDCliente(Integer.parseInt(rs.getString("IDCliente")));
+                gr.setNombres(rs.getString("Nombres"));
+                Empleado.add(gr);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return Empleado;
     }
 }

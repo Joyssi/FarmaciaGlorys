@@ -17,7 +17,17 @@ public class POJOPresentacion {
         this.TamPresentacion = TamPresentacion;
         this.FormaDosificacion = FormaDosificacion;
     }
-    
+
+    //Constructor vacío
+    public POJOPresentacion() {
+    }
+
+    //Constructor para mostrar datos en el ComboBox
+    public POJOPresentacion(int IDPresentacion, String FormaDosificacion) {
+        this.IDPresentacion = IDPresentacion;
+        this.FormaDosificacion = FormaDosificacion;
+    }
+     
     //Getter and Setter
     public int getIDPresentacion() {
         return IDPresentacion;
@@ -43,4 +53,8 @@ public class POJOPresentacion {
         this.FormaDosificacion = FormaDosificacion;
     }
     
+    //Método para mostrar datos en el ComboBox
+      public String toString(){
+        return IDPresentacion +"-"+FormaDosificacion;
+    }
 }

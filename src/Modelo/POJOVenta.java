@@ -16,16 +16,20 @@ public class POJOVenta {
     String DirecPedidoVenta;
     
     //Constructor
-  public POJOVenta(int IDVenta, int IDEmpleado, int IDCliente, Date FechaVenta, String DirecPedidoVenta) {
+  public POJOVenta(int IDVenta, int IDEmpleado, int IDCliente, Date FechaVenta,
+          String DirecPedidoVenta) {
         this.IDVenta = IDVenta;
         this.IDEmpleado = IDEmpleado;
         this.IDCliente = IDCliente;
         this.FechaVenta = FechaVenta;
         this.DirecPedidoVenta = DirecPedidoVenta;
     }
+  
+   //Constructor vacío
+    public POJOVenta() {
+    }
 
     //Getter and Setter
-
     public int getIDVenta() {
         return IDVenta;
     }
@@ -65,8 +69,5 @@ public class POJOVenta {
     public void setDirecPedidoVenta(String DirecPedidoVenta) {
         this.DirecPedidoVenta = DirecPedidoVenta;
     }
-
-  
-    
     
 }

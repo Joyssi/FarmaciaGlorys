@@ -20,7 +20,7 @@ public class CRUDProducto {
         ResultSet rs;
         DefaultTableModel modelo;
         String[] titulos = {"Código de Produco", "Nombre de Producto", "Descripción de Producto", 
-          "Cantidad", "Precio","Fecha de Vencimiento", "Marca", "Categoria", "Presentación"};
+          "Cantidad", "Precio", "Fecha de Vencimiento", "Marca", "Categoria", "Presentación"};
         String[] registro = new String[9];
 
         modelo = new DefaultTableModel(null, titulos);
@@ -55,7 +55,7 @@ public class CRUDProducto {
         DefaultTableModel modelo;
 
         String[] titulos = {"Código de Produco", "Nombre de Producto", "Descripción de Producto", 
-          "Cantidad", "Precio","Fecha de Vencimiento", "Marca", "Categoria", "Presentación"};
+          "Cantidad", "Precio", "Fecha de Vencimiento", "Marca", "Categoria", "Presentación"};
         String[] registro = new String[9];
 
         modelo = new DefaultTableModel(null, titulos);
@@ -110,10 +110,29 @@ public class CRUDProducto {
             cbst.setString(2, cl.getDescripProducto());
             cbst.setDouble(3, cl.getCantProducto());
             cbst.setDouble(4, cl.getPrecioProducto());
-            cbst.setString(5, cl.getFechaVencimiento());
+            cbst.setDate(5, (Date) cl.getFechaVencimiento());
             cbst.setInt(6, cl.getIDMarca());
             cbst.setInt(7, cl.getIDCategoria());
             cbst.setInt(8, cl.getIDPresentacion());
+            cbst.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+        public void actualizar(POJOProducto cl) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call ActualizarProducto(?,?,?,?,?,?,?,?,?)}");
+            cbst.setInt(1,cl.getIDProducto());
+            cbst.setString(2, cl.getNomProducto());
+            cbst.setString(3, cl.getDescripProducto());
+            cbst.setInt(4, cl.getCantProducto());
+            cbst.setDouble(5, cl.getPrecioProducto());
+            cbst.setDate(6, (Date) cl.getFechaVencimiento());
+            cbst.setInt(7, cl.getIDMarca());
+            cbst.setInt(8, cl.getIDCategoria());
+            cbst.setInt(9, cl.getIDPresentacion());
             cbst.executeUpdate();
 
         } catch (SQLException e) {

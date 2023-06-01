@@ -4,33 +4,31 @@ package Modelo;
  *
  * @author Joy Cruz
  */
-public class POJOCliente {
+public class POJOCliente extends POJOPersona {
     
     //Atributos
     int IDCliente;
-    String NombresC;
-    String ApellidosC;
-    String Cedula;
-    String TelCliente;
-    String DirecCliente;
+    String CorreoC;
     
-    //Contructor
-   
-    public POJOCliente(int IDCliente, String NombresC, String ApellidosC, String Cedula, String TelCliente, String DirecCliente) {
-        this.IDCliente = IDCliente;
-        this.NombresC = NombresC;
-        this.ApellidosC = ApellidosC;
-        this.Cedula = Cedula;
-        this.TelCliente = TelCliente;
-        this.DirecCliente = DirecCliente;
+    //Constructor
+    public POJOCliente(int IDCliente, String Cedula, String Nombres,
+            String Apellidos, String Direccion, String Telefono, String CorreoC) {
+        super(Cedula, Nombres, Apellidos, Direccion, Telefono);
+        this.IDCliente=IDCliente;   
+        this.CorreoC=CorreoC; 
     }
 
     //Constructor vacío
     public POJOCliente() {
     }
 
+    //Constructor para mostrar datos en el ComboBox
+    public POJOCliente(int IDCliente, String Nombres) {
+        super(Nombres);
+        this.IDCliente = IDCliente;
+    }
+    
     //Getter and Setter
-
     public int getIDCliente() {
         return IDCliente;
     }
@@ -39,47 +37,17 @@ public class POJOCliente {
         this.IDCliente = IDCliente;
     }
 
-    public String getNombresC() {
-        return NombresC;
+    public String getCorreoC() {
+        return CorreoC;
     }
 
-    public void setNombresC(String NombresC) {
-        this.NombresC = NombresC;
+    public void setCorreoC(String CorreoC) {
+        this.CorreoC = CorreoC;
     }
-
-    public String getApellidosC() {
-        return ApellidosC;
-    }
-
-    public void setApellidosC(String ApellidosC) {
-        this.ApellidosC = ApellidosC;
-    }
-
-    public String getCedula() {
-        return Cedula;
-    }
-
-    public void setCedula(String Cedula) {
-        this.Cedula = Cedula;
-    }
-
-    public String getTelCliente() {
-        return TelCliente;
-    }
-
-    public void setTelCliente(String TelCliente) {
-        this.TelCliente = TelCliente;
-    }
-
-    public String getDirecCliente() {
-        return DirecCliente;
-    }
-
-    public void setDirecCliente(String DirecCliente) {
-        this.DirecCliente = DirecCliente;
-    }
-
-
     
+    //Método para mostrar datos en el ComboBox
+     public String toString(){
+        return IDCliente +"-"+Nombres;
+    }
 
 }

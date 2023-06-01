@@ -15,6 +15,10 @@ public class POJOCategoria {
         this.IDCategoria = IDCategoria;
         this.NombreCategoria = NombreCategoria;
     }
+
+    //Contructor vacío
+    public POJOCategoria() {
+    }
     
     //Getter and Setter
     public int getIDCategoria() {
@@ -31,6 +35,11 @@ public class POJOCategoria {
 
     public void setNombreCategoria(String NombreCategoria) {
         this.NombreCategoria = NombreCategoria;
+    }
+    
+    //Moétodo para mostrar datos en el ComboBox
+    public String toString(){
+        return IDCategoria +"-"+NombreCategoria;
     }
     
 }

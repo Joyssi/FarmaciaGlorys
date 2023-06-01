@@ -5,6 +5,7 @@
 package Controlador;
 import Modelo.POJOEmpleado;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -19,9 +20,9 @@ public class CRUDEmpleado {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Empleado", "Nombres", "Apellidos", 
-            "Dirección", "Teléfono", "Correo Electrónico", "Edad"};
-        String[] registro = new String[7];
+        String[] titulos = {"Código de Empleado", "Cedula", "Nombres", "Apellidos", 
+            "Dirección", "Teléfono", "Correo", "Edad"};
+        String[] registro = new String[8];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -31,12 +32,13 @@ public class CRUDEmpleado {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDEmpleado");
-                registro[1] = rs.getString("NombresE");
-                registro[2] = rs.getString("ApellidosE");
-                registro[3] = rs.getString("DirecEmpleado");
-                registro[4] = rs.getString("Telempledao");
-                registro[5] = rs.getString("CorreoE");
-                registro[6] = rs.getString("Edad");
+                registro[1] = rs.getString("Cedula");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("Apellidos");
+                registro[4] = rs.getString("Direccion");
+                registro[5] = rs.getString("Telefono");
+                registro[6] = rs.getString("CorreoE");
+                registro[7] = rs.getString("Edad");
 
                 modelo.addRow(registro);
             }
@@ -52,9 +54,9 @@ public class CRUDEmpleado {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Empleado", "Nombres", "Apellidos", 
-            "Dirección", "Teléfono", "Correo Electrónico", "Edad"};
-        String[] registro = new String[7];
+        String[] titulos = {"Código de Empleado", "Cedula", "Nombres", "Apellidos", 
+            "Dirección", "Teléfono", "Correo", "Edad"};
+        String[] registro = new String[8];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -65,12 +67,13 @@ public class CRUDEmpleado {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDEmpleado");
-                registro[1] = rs.getString("NombresE");
-                registro[2] = rs.getString("ApellidosE");
-                registro[3] = rs.getString("DirecEmpleado");
-                registro[4] = rs.getString("Telempledao");
-                registro[5] = rs.getString("CorreoE");
-                registro[6] = rs.getString("Edad");
+                registro[1] = rs.getString("Cedula");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("Apellidos");
+                registro[4] = rs.getString("Direccion");
+                registro[5] = rs.getString("Telefono");
+                registro[6] = rs.getString("CorreoE");
+                registro[7] = rs.getString("Edad");
 
                 modelo.addRow(registro);
             }
@@ -102,13 +105,14 @@ public class CRUDEmpleado {
 
     public void Guardar(POJOEmpleado cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarEmpleado(?,?,?,?,?,?)}");
-            cbst.setString(1, cl.getNombresE());
-            cbst.setString(2, cl.getApellidosE());
-            cbst.setString(3, cl.getDirecEmpleado());
-            cbst.setString(4, cl.getTelEmpledao());
-            cbst.setString(5, cl.getCorreoE());
-            cbst.setString(6, cl.getEdad());
+            CallableStatement cbst = cn.prepareCall("{call InsertarEmpleado(?,?,?,?,?,?,?)}");
+            cbst.setString(1, cl.getCedula());
+            cbst.setString(2, cl.getNombres());
+            cbst.setString(3, cl.getApellidos());
+            cbst.setString(4, cl.getDireccion());
+            cbst.setString(5, cl.getTelefono());
+            cbst.setString(6, cl.getCorreoE());
+            cbst.setInt(7, cl.getEdad());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -119,13 +123,13 @@ public class CRUDEmpleado {
     public void actualizar(POJOEmpleado cl) {
         try {
             CallableStatement cbst = cn.prepareCall("{call ActualizarEmpleado(?,?,?,?,?,?,?)}");
-            cbst.setInt(1, cl.getIDEmpleado());
-            cbst.setString(2, cl.getNombresE());
-            cbst.setString(3, cl.getApellidosE());
-            cbst.setString(4, cl.getDirecEmpleado());
-            cbst.setString(5, cl.getTelEmpledao());
+            cbst.setString(1, cl.getCedula());
+            cbst.setString(2, cl.getNombres());
+            cbst.setString(3, cl.getApellidos());
+            cbst.setString(4, cl.getDireccion());
+            cbst.setString(5, cl.getTelefono());
             cbst.setString(6, cl.getCorreoE());
-            cbst.setString(7, cl.getEdad());
+            cbst.setInt(7, cl.getEdad());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -133,14 +137,33 @@ public class CRUDEmpleado {
         }
     }
 
-    public void eliminar(String cedula) {
+    public void eliminar(String Cedula) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarEmpleado(?)}");
-            cbst.setString(1, cedula);
+            cbst.setString(1, Cedula);
             cbst.executeUpdate();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+    
+    public ArrayList mostrarDatosCombo() {
+
+        ArrayList<POJOEmpleado> Empleado = new ArrayList();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarEmpleado}");
+            ResultSet rs = cbstc.executeQuery();
+            while (rs.next()) {
+                POJOEmpleado gr = new POJOEmpleado();
+                gr.setIDEmpleado(Integer.parseInt(rs.getString("IDEmpleado")));
+                gr.setNombres(rs.getString("Nombres"));
+                Empleado.add(gr);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return Empleado;
     }
 }

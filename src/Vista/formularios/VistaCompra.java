@@ -5,9 +5,12 @@
 package Vista.formularios;
 import javax.swing.JOptionPane;
 import Controlador.CRUDCompra;
+import Controlador.CRUDProveedor;
 import Modelo.POJOCompra;
+import Modelo.POJOProveedor;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
 
 
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +28,10 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     public VistaCompra() {
         initComponents();
         mostrar();
+        llenarProveedor();
         CodigoCompra.setEnabled(false);
+        ActualizarCompra.setVisible(false);
+        Cancelar.setVisible(false);
     }
 
     public void mostrar() {
@@ -42,10 +48,42 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     
       public void limpiar() {
         CodigoCompra.setText("");
-        CodProveedor.setText("");
         FechaCompra.setText("");
     }
 
+       public void guardarCompra() {
+
+        CRUDCompra cc = new CRUDCompra();
+
+        POJOCompra cl = new POJOCompra(0,
+                FechaCompra.getText(),
+                ComboProveedor.getItemAt(ComboProveedor.getSelectedIndex()).getIDProveedor());
+        cc.Guardar(cl);
+
+    }
+      
+        public void editarCompra() {
+
+        CRUDCompra cc = new CRUDCompra();
+
+        POJOCompra cl = new POJOCompra (0,
+                FechaCompra.getText(),
+                ComboProveedor.getItemAt(ComboProveedor.getSelectedIndex()).getIDProveedor());
+        cc.actualizar(cl);
+
+    }
+        
+         public void llenarProveedor() {
+
+        CRUDProveedor gr = new CRUDProveedor();
+        ArrayList<POJOProveedor> listaProveedor =  gr.mostrarDatosCombo();
+        ComboProveedor.removeAllItems();
+        for (int i = 0; i < listaProveedor.size(); i++) {
+            ComboProveedor.addItem(new POJOProveedor(
+                    listaProveedor.get(i).getIDProveedor(),
+                    listaProveedor.get(i).getNombres()));
+        }
+       }
     
     
     /**
@@ -62,17 +100,18 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         CodigoCompra = new javax.swing.JTextField();
-        CodProveedor = new javax.swing.JTextField();
         FechaCompra = new javax.swing.JFormattedTextField();
+        GuardarCompra = new javax.swing.JButton();
+        ActualizarCompra = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        ComboProveedor = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaCompra = new javax.swing.JTable();
         BuscarCompra = new javax.swing.JTextField();
-        EliminarCompra = new javax.swing.JButton();
-        GuardarCompra = new javax.swing.JButton();
-        ActualizarCompra = new javax.swing.JButton();
-        BuscarCompr = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Eliminar = new javax.swing.JButton();
+        EditarCompra = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -94,10 +133,6 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         CodigoCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         CodigoCompra.setForeground(new java.awt.Color(51, 51, 51));
 
-        CodProveedor.setBackground(new java.awt.Color(255, 255, 255));
-        CodProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        CodProveedor.setForeground(new java.awt.Color(51, 51, 51));
-
         FechaCompra.setBackground(new java.awt.Color(255, 255, 255));
         FechaCompra.setForeground(new java.awt.Color(51, 51, 51));
         try {
@@ -106,10 +141,47 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        GuardarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        GuardarCompra.setForeground(new java.awt.Color(0, 102, 255));
+        GuardarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/disquete.png"))); // NOI18N
+        GuardarCompra.setText("Guardar");
+        GuardarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarCompraActionPerformed(evt);
+            }
+        });
+
+        ActualizarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ActualizarCompra.setForeground(new java.awt.Color(0, 102, 255));
+        ActualizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
+        ActualizarCompra.setText("Actualizar");
+        ActualizarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarCompraActionPerformed(evt);
+            }
+        });
+
+        Cancelar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Cancelar.setForeground(new java.awt.Color(51, 102, 255));
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ActualizarCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(GuardarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -117,9 +189,9 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(CodigoCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addComponent(CodProveedor)
-                    .addComponent(FechaCompra))
-                .addContainerGap(117, Short.MAX_VALUE))
+                    .addComponent(FechaCompra)
+                    .addComponent(ComboProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,11 +203,16 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CodProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(ComboProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ActualizarCompra)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GuardarCompra))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,32 +257,29 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         BuscarCompra.setBackground(new java.awt.Color(255, 255, 255));
         BuscarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BuscarCompra.setForeground(new java.awt.Color(51, 51, 51));
-
-        EliminarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        EliminarCompra.setForeground(new java.awt.Color(0, 102, 255));
-        EliminarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/borrar.png"))); // NOI18N
-
-        GuardarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        GuardarCompra.setForeground(new java.awt.Color(0, 102, 255));
-        GuardarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/disquete.png"))); // NOI18N
-        GuardarCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarCompraActionPerformed(evt);
+        BuscarCompra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                BuscarCompraKeyReleased(evt);
             }
         });
 
-        ActualizarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        ActualizarCompra.setForeground(new java.awt.Color(0, 102, 255));
-        ActualizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
-
-        BuscarCompr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
-        BuscarCompr.addActionListener(new java.awt.event.ActionListener() {
+        Eliminar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Eliminar.setForeground(new java.awt.Color(0, 102, 255));
+        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/borrar.png"))); // NOI18N
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarComprActionPerformed(evt);
+                EliminarActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
+        EditarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
+        EditarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarCompraActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -214,39 +288,34 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(BuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(BuscarCompr)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(GuardarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EditarCompra)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(ActualizarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(EliminarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(EliminarCompra))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ActualizarCompra, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(GuardarCompra, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BuscarCompr, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BuscarCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(EditarCompra)
+                            .addComponent(Eliminar))))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,13 +329,10 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -274,10 +340,14 @@ public class VistaCompra extends javax.swing.JInternalFrame {
 
     private void GuardarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCompraActionPerformed
         try {
-            if((CodigoCompra.getText().equals(""))|| (CodProveedor.getText().equals(""))
-                    || (FechaCompra.getText().equals(""))){
+            if((FechaCompra.getText().equals(""))
+                || (ComboProveedor.getItemAt(ComboProveedor.getSelectedIndex()).equals(""))){
                 JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
             }else{
+            guardarCompra();
+            limpiar();
+            mostrar();
+            ActualizarCompra.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
             }
         }catch (Exception e) {
@@ -285,43 +355,92 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_GuardarCompraActionPerformed
 
-    private void BuscarComprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarComprActionPerformed
+    private void ActualizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarCompraActionPerformed
+        try {
+            if ((CodigoCompra.getText().equals(""))
+                    ||(FechaCompra.getText().equals(""))
+                    ||(ComboProveedor.getItemAt(ComboProveedor.getSelectedIndex()).equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+            } else {
+                editarCompra();
+                mostrar();
+                limpiar();
+                ActualizarCompra.setVisible(false);
+                GuardarCompra.setVisible(true);
+                Cancelar.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+                
+
+            }
+
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+    }//GEN-LAST:event_ActualizarCompraActionPerformed
+
+    private void BuscarCompraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarCompraKeyReleased
          try {
-            
+
             DefaultTableModel modelo;
             CRUDCompra cli = new CRUDCompra();
             modelo = cli.buscarDatos(BuscarCompra.getText());
-            if ((BuscarCompra.getText().equals("Escribe la cédula, nombres o apellidos"))
-                    || (BuscarCompra.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
-                BuscarCompra.setText("Escribe la cédula, nombres o apellidos");
-                BuscarCompra.setForeground(Color.gray);
-                mostrar();
-            } else {
-                TablaCompra.setModel(modelo);
-            }
-            
+            TablaCompra.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }//GEN-LAST:event_BuscarCompraKeyReleased
+
+    private void EditarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarCompraActionPerformed
+         int fila=this.TablaCompra.getSelectedRow();
+       if(fila==-1){
+           JOptionPane.showMessageDialog(rootPane, "Seleccione un registro de la tabla");
+       }
+       else{
+           
+           try{
+               int cod=Integer.parseInt((String)this.TablaCompra.getValueAt(fila, 0).toString());
+               String fecha=(String)this.TablaCompra.getValueAt(fila, 1);
+               String codp=(String)this.TablaCompra.getValueAt(fila, 2);
+
+       GuardarCompra.setVisible(false);
+       ActualizarCompra.setVisible(true);
+       Cancelar.setVisible(true);
+  
+        ComboProveedor.setToolTipText(""+codp);       
+        FechaCompra.setText(fecha);
+        CodigoCompra.setText(String.valueOf(cod));
+           }catch(NumberFormatException e){
+               e.printStackTrace();
+           }
+       }
+    }//GEN-LAST:event_EditarCompraActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         
-    }//GEN-LAST:event_BuscarComprActionPerformed
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        limpiar();
+        ActualizarCompra.setVisible(false);
+        GuardarCompra.setVisible(true);
+    }//GEN-LAST:event_CancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizarCompra;
-    private javax.swing.JButton BuscarCompr;
     private javax.swing.JTextField BuscarCompra;
-    private javax.swing.JTextField CodProveedor;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JTextField CodigoCompra;
-    private javax.swing.JButton EliminarCompra;
+    private javax.swing.JComboBox<POJOProveedor> ComboProveedor;
+    private javax.swing.JButton EditarCompra;
+    private javax.swing.JButton Eliminar;
     private javax.swing.JFormattedTextField FechaCompra;
     private javax.swing.JButton GuardarCompra;
     private javax.swing.JTable TablaCompra;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

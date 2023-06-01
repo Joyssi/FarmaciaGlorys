@@ -7,6 +7,7 @@ package Controlador;
 import Modelo.POJOCompra;
 import Modelo.POJOProveedor;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -22,8 +23,8 @@ public class CRUDProveedor {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Proveedor", "Nombres", "Apellidos", "Telefono", "Dirección"};
-        String[] registro = new String[5];
+        String[] titulos = {"Código de Proveedor", "Cédula", "Nombres", "Apellidos", "Dirección", "Telefono", "Correo"};
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -33,10 +34,12 @@ public class CRUDProveedor {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDProveedor");
-                registro[1] = rs.getString("NombresP");
-                registro[2] = rs.getString("ApellidosP");
-                registro[3] = rs.getString("TelProveedor");
-                registro[4] = rs.getString("DirecProveedor");
+                registro[1] = rs.getString("Cedula");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("Apellidos");
+                registro[4] = rs.getString("Direccion");
+                registro[5] = rs.getString("Telefono");
+                registro[6] = rs.getString("CorreoP");
 
                 modelo.addRow(registro);
             }
@@ -52,8 +55,8 @@ public class CRUDProveedor {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Proveedor", "Nombres", "Apellidos","Telefono", "Dirección"};
-        String[] registro = new String[5];
+        String[] titulos = {"Código de Proveedor", "Cedula", "Nombres", "Apellidos", "Dirección", "Telefono", "Correo"};
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -64,10 +67,12 @@ public class CRUDProveedor {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDProveedor");
-                registro[1] = rs.getString("NombresP");
-                registro[2] = rs.getString("ApellidosP");
-                registro[3] = rs.getString("telProveedor");
-                registro[4] = rs.getString("DirecProveedor");
+                registro[1] = rs.getString("Cedula");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("Apellidos");
+                registro[4] = rs.getString("Direccion");
+                registro[5] = rs.getString("Telefono");
+                registro[6] = rs.getString("CorreoP");
 
                 modelo.addRow(registro);
             }
@@ -98,11 +103,13 @@ public class CRUDProveedor {
 
     public void Guardar(POJOProveedor cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarProveedor(?,?,?,?)}");
-            cbst.setString(1, cl.getNombresP());
-            cbst.setString(2, cl.getApellidosP());
-            cbst.setString(3, cl.getTelProveedor());
-            cbst.setString(4, cl.getDirecProveedor());
+            CallableStatement cbst = cn.prepareCall("{call InsertarProveedor(?,?,?,?,?,?)}");
+            cbst.setString(1, cl.getCedula());
+            cbst.setString(2, cl.getNombres());
+            cbst.setString(3, cl.getApellidos());
+            cbst.setString(4, cl.getDireccion());
+            cbst.setString(5, cl.getTelefono());
+            cbst.setString(6, cl.getCorreoP());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -110,10 +117,10 @@ public class CRUDProveedor {
         }
     }
     
-    public void eliminar(String codigo) {
+    public void eliminar(String Cedula) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarProveedor(?)}");
-            cbst.setString(1, codigo);
+            cbst.setString(1, Cedula);
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -123,16 +130,36 @@ public class CRUDProveedor {
     
       public void actualizar(POJOProveedor cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call ActualizarProveedor(?,?,?,?,?)}");
-            cbst.setInt(1, cl.getIDProveedor());
-            cbst.setString(2, cl.getNombresP());
-            cbst.setString(3, cl.getApellidosP());
-            cbst.setString(4, cl.getTelProveedor());
-            cbst.setString(5, cl.getDirecProveedor());
+            CallableStatement cbst = cn.prepareCall("{call ActualizarProveedor(?,?,?,?,?,?)}");
+            cbst.setString(1, cl.getCedula());
+            cbst.setString(2, cl.getNombres());
+            cbst.setString(3, cl.getApellidos());
+            cbst.setString(4, cl.getDireccion());
+            cbst.setString(5, cl.getTelefono());
+            cbst.setString(6, cl.getCorreoP());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+      
+        public ArrayList mostrarDatosCombo() {
+
+        ArrayList<POJOProveedor> Proveedor = new ArrayList();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarProveedor}");
+            ResultSet rs = cbstc.executeQuery();
+            while (rs.next()) {
+                POJOProveedor gr = new POJOProveedor();
+                gr.setIDProveedor(Integer.parseInt(rs.getString("IDProveedor")));
+                gr.setNombres(rs.getString("Nombres"));
+                Proveedor.add(gr);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return Proveedor;
     }
 }
