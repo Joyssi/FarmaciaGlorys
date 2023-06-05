@@ -108,9 +108,9 @@ public class CRUDProducto {
             CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?)}");
             cbst.setString(1, cl.getNomProducto());
             cbst.setString(2, cl.getDescripProducto());
-            cbst.setDouble(3, cl.getCantProducto());
+            cbst.setInt(3, cl.getCantProducto());
             cbst.setDouble(4, cl.getPrecioProducto());
-            cbst.setDate(5, (Date) cl.getFechaVencimiento());
+            cbst.setString(5,cl.getFechaVencimiento());
             cbst.setInt(6, cl.getIDMarca());
             cbst.setInt(7, cl.getIDCategoria());
             cbst.setInt(8, cl.getIDPresentacion());
@@ -129,10 +129,20 @@ public class CRUDProducto {
             cbst.setString(3, cl.getDescripProducto());
             cbst.setInt(4, cl.getCantProducto());
             cbst.setDouble(5, cl.getPrecioProducto());
-            cbst.setDate(6, (Date) cl.getFechaVencimiento());
+            cbst.setString(6,cl.getFechaVencimiento());
             cbst.setInt(7, cl.getIDMarca());
             cbst.setInt(8, cl.getIDCategoria());
             cbst.setInt(9, cl.getIDPresentacion());
+            cbst.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+         public void eliminar(int codigo) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call EliminarProducto(?)}");
+            cbst.setInt(1, codigo);
             cbst.executeUpdate();
 
         } catch (SQLException e) {

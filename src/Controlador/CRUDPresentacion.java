@@ -21,8 +21,8 @@ public class CRUDPresentacion {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Presentación", "Tamaño", "Forma de Dosificación"};
-        String[] registro = new String[3];
+        String[] titulos = {"Código de Presentación", "Forma de Dosificación"};
+        String[] registro = new String[2];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -33,8 +33,7 @@ public class CRUDPresentacion {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDPresentacion");
-                registro[1] = rs.getString("TamPresentacion");
-                registro[2] = rs.getString("FormaDosificacion");
+                registro[1] = rs.getString("FormaDosificacion");
 
                 modelo.addRow(registro);
             }
@@ -64,9 +63,8 @@ public class CRUDPresentacion {
 
     public void Guardar(POJOPresentacion cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarPresentacion(?,?)}");
-            cbst.setDouble(1, cl.getTamPresentacion());
-            cbst.setString(2, cl.getFormaDosificacion());
+            CallableStatement cbst = cn.prepareCall("{call InsertarPresentacion(?)}");
+            cbst.setString(1, cl.getFormaDosificacion());
             cbst.executeUpdate();
 
         } catch (SQLException e) {

@@ -23,8 +23,8 @@ public class CRUDProveedor {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Proveedor", "Cédula", "Nombres", "Apellidos", "Dirección", "Telefono", "Correo"};
-        String[] registro = new String[7];
+        String[] titulos = {"Cédula", "Nombres", "Apellidos", "Dirección", "Telefono", "Correo"};
+        String[] registro = new String[6];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -33,13 +33,12 @@ public class CRUDProveedor {
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDProveedor");
-                registro[1] = rs.getString("Cedula");
-                registro[2] = rs.getString("Nombres");
-                registro[3] = rs.getString("Apellidos");
-                registro[4] = rs.getString("Direccion");
-                registro[5] = rs.getString("Telefono");
-                registro[6] = rs.getString("CorreoP");
+                registro[0] = rs.getString("Cedula");
+                registro[1] = rs.getString("Nombres");
+                registro[2] = rs.getString("Apellidos");
+                registro[3] = rs.getString("Direccion");
+                registro[4] = rs.getString("Telefono");
+                registro[5] = rs.getString("CorreoP");
 
                 modelo.addRow(registro);
             }
@@ -55,8 +54,8 @@ public class CRUDProveedor {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Proveedor", "Cedula", "Nombres", "Apellidos", "Dirección", "Telefono", "Correo"};
-        String[] registro = new String[7];
+        String[] titulos = {"Cedula", "Nombres", "Apellidos", "Dirección", "Telefono", "Correo"};
+        String[] registro = new String[6];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -66,13 +65,12 @@ public class CRUDProveedor {
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDProveedor");
-                registro[1] = rs.getString("Cedula");
-                registro[2] = rs.getString("Nombres");
-                registro[3] = rs.getString("Apellidos");
-                registro[4] = rs.getString("Direccion");
-                registro[5] = rs.getString("Telefono");
-                registro[6] = rs.getString("CorreoP");
+                registro[0] = rs.getString("Cedula");
+                registro[1] = rs.getString("Nombres");
+                registro[2] = rs.getString("Apellidos");
+                registro[3] = rs.getString("Direccion");
+                registro[4] = rs.getString("Telefono");
+                registro[5] = rs.getString("CorreoP");
 
                 modelo.addRow(registro);
             }
@@ -153,7 +151,7 @@ public class CRUDProveedor {
             ResultSet rs = cbstc.executeQuery();
             while (rs.next()) {
                 POJOProveedor gr = new POJOProveedor();
-                gr.setIDProveedor(Integer.parseInt(rs.getString("IDProveedor")));
+                gr.setCedula(rs.getString("Cedula"));
                 gr.setNombres(rs.getString("Nombres"));
                 Proveedor.add(gr);
             }

@@ -51,7 +51,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         CRUDCliente cc = new CRUDCliente();
 
-        POJOCliente cl = new POJOCliente(0,
+        POJOCliente cl = new POJOCliente(
                 Cedula.getText(),
                 NombresC.getText(),
                 ApellidosC.getText(),
@@ -66,7 +66,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         CRUDCliente cc = new CRUDCliente();
 
-        POJOCliente cl = new POJOCliente (0,
+        POJOCliente cl = new POJOCliente (
                 Cedula.getText(),
                 NombresC.getText(),
                 ApellidosC.getText(),
@@ -563,16 +563,14 @@ public class VistaCliente extends javax.swing.JInternalFrame {
        else{
            
            try{
-               int cod=Integer.parseInt((String)this.TablaCliente.getValueAt(fila, 0).toString());
-               String ced=(String)this.TablaCliente.getValueAt(fila, 1);
-               String nombres=(String)this.TablaCliente.getValueAt(fila, 2);
-               String apellidos=(String)this.TablaCliente.getValueAt(fila, 3);
-               String direc=(String)this.TablaCliente.getValueAt(fila, 4);
-               String telefono=(String)this.TablaCliente.getValueAt(fila, 5);
-               String correo=(String)this.TablaCliente.getValueAt(fila, 6);
+               String ced=(String)this.TablaCliente.getValueAt(fila, 0);
+               String nombres=(String)this.TablaCliente.getValueAt(fila, 1);
+               String apellidos=(String)this.TablaCliente.getValueAt(fila, 2);
+               String direc=(String)this.TablaCliente.getValueAt(fila, 3);
+               String telefono=(String)this.TablaCliente.getValueAt(fila, 4);
+               String correo=(String)this.TablaCliente.getValueAt(fila, 5);
                
        Cedula.setEnabled(false);
-       Cod.setEnabled(false);
        GuardarCliente.setVisible(false);
        AcualizarCliente.setVisible(true);
        Cancelar.setVisible(true);

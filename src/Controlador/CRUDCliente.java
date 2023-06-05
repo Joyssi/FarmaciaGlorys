@@ -20,8 +20,8 @@ public class CRUDCliente {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Cliente", "Cedula", "Nombres", "Apellidos", "Dirección", "Teléfono", "Correo"};
-        String[] registro = new String[7];
+        String[] titulos = {"Cedula", "Nombres", "Apellidos", "Dirección", "Teléfono", "Correo"};
+        String[] registro = new String[6];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -30,13 +30,12 @@ public class CRUDCliente {
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDCliente");
-                registro[1] = rs.getString("Cedula");
-                registro[2] = rs.getString("Nombres");
-                registro[3] = rs.getString("Apellidos");
-                registro[4] = rs.getString("Direccion");
-                registro[5] = rs.getString("Telefono");
-                registro[6] = rs.getString("CorreoC");
+                registro[0] = rs.getString("Cedula");
+                registro[1] = rs.getString("Nombres");
+                registro[2] = rs.getString("Apellidos");
+                registro[3] = rs.getString("Direccion");
+                registro[4] = rs.getString("Telefono");
+                registro[5] = rs.getString("CorreoC");
 
                 modelo.addRow(registro);
             }
@@ -52,8 +51,8 @@ public class CRUDCliente {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Cliente", "Cédula", "Nombres", "Apellidos", "Dirección", "Teléfono", "Correo"};
-        String[] registro = new String[7];
+        String[] titulos = {"Cédula", "Nombres", "Apellidos", "Dirección", "Teléfono", "Correo"};
+        String[] registro = new String[6];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -63,13 +62,12 @@ public class CRUDCliente {
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDCliente");
-                registro[1] = rs.getString("Cedula");
-                registro[2] = rs.getString("Nombres");
-                registro[3] = rs.getString("Apellidos");
-                registro[4] = rs.getString("Direccion");
-                registro[5] = rs.getString("Telefono");
-                registro[6] = rs.getString("CorreoC");
+                registro[0] = rs.getString("Cedula");
+                registro[1] = rs.getString("Nombres");
+                registro[2] = rs.getString("Apellidos");
+                registro[3] = rs.getString("Direccion");
+                registro[4] = rs.getString("Telefono");
+                registro[5] = rs.getString("CorreoC");
 
                 modelo.addRow(registro);
             }
@@ -150,7 +148,7 @@ public class CRUDCliente {
             ResultSet rs = cbstc.executeQuery();
             while (rs.next()) {
                 POJOCliente gr = new POJOCliente();
-                gr.setIDCliente(Integer.parseInt(rs.getString("IDCliente")));
+                gr.setCedula(rs.getString("Cedula"));
                 gr.setNombres(rs.getString("Nombres"));
                 Empleado.add(gr);
             }

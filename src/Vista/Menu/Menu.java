@@ -17,6 +17,13 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        this.setExtendedState(Menu.MAXIMIZED_BOTH);
+        this.setTitle("Sistema de Inventario Farmacia Glorys");
+        this.setLayout(null);
+        
+        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        desktopPane.setBounds(0, 0, ancho, (alto));
     }
 
     /**

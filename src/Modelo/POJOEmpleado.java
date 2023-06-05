@@ -7,15 +7,13 @@ package Modelo;
 public class POJOEmpleado extends POJOPersona {
  
     //Atributos
-    int IDEmpleado;
     String CorreoE;
     int Edad;
 
     //Constructor
-    public POJOEmpleado(int IDEmpleado, String Cedula, String Nombres,
+    public POJOEmpleado(String Cedula, String Nombres,
             String Apellidos, String Direccion, String Telefono, String CorreoE, int Edad) {
-        super(Cedula, Nombres, Apellidos, Direccion, Telefono);
-        this.IDEmpleado=IDEmpleado;   
+        super(Cedula, Nombres, Apellidos, Direccion, Telefono); 
         this.CorreoE=CorreoE; 
         this.Edad=Edad;
     }
@@ -25,21 +23,11 @@ public class POJOEmpleado extends POJOPersona {
     }
 
     //Constructor para mostrar datos en el ComboBox
-    public POJOEmpleado(int IDEmpleado, String Nombres) {
-        super(Nombres);
-        this.IDEmpleado = IDEmpleado;
-    }
-    
+    public POJOEmpleado(String Cedula, String Nombres) {
+        super(Cedula, Nombres);
+    }   
     
     //Getter and Setter
-    public int getIDEmpleado() {
-        return IDEmpleado;
-    }
-
-    public void setIDEmpleado(int IDEmpleado) {
-        this.IDEmpleado = IDEmpleado;
-    }
-
     public String getCorreoE() {
         return CorreoE;
     }
@@ -58,7 +46,7 @@ public class POJOEmpleado extends POJOPersona {
     
     //Método para mostrar datos en el ComboBox
      public String toString(){
-        return IDEmpleado +"-"+Nombres;
+        return Cedula +"-"+Nombres;
     }
    
    

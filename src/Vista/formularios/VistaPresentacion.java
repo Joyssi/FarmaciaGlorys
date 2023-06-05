@@ -35,7 +35,6 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
         CRUDPresentacion cc = new CRUDPresentacion();
 
         POJOPresentacion cl = new POJOPresentacion(0,
-                Double.parseDouble(Tamaño.getText()),
                 FormaD.getText());
         cc.Guardar(cl);
     }
@@ -196,8 +195,7 @@ public class VistaPresentacion extends javax.swing.JInternalFrame {
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
          CRUDPresentacion pre = new CRUDPresentacion();
         try {
-            if ((Tamaño.getText().equals(""))
-             || (FormaD.getText().equals(""))) {
+            if ((FormaD.getText().equals(""))) {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
             } else {
                 guardarPresentacion();

@@ -6,6 +6,7 @@ package Vista.formularios;
 
 import Controlador.CRUDCategoria;
 import Modelo.POJOCategoria;
+import Vista.formularios.VistaProducto;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
 import java.awt.HeadlessException;

@@ -58,7 +58,7 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
 
         CRUDEmpleado emp = new CRUDEmpleado();
 
-        POJOEmpleado em = new POJOEmpleado(0,
+        POJOEmpleado em = new POJOEmpleado(
                 Cedula.getText(),
                 NombresE.getText(),
                 ApellidosE.getText(),
@@ -74,7 +74,7 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
 
         CRUDEmpleado emple = new CRUDEmpleado();
 
-        POJOEmpleado emp = new POJOEmpleado(0,
+        POJOEmpleado emp = new POJOEmpleado(
                 Cedula.getText(),
                 NombresE.getText(),
                 ApellidosE.getText(),
@@ -544,21 +544,18 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         } else {
 
             try {
-                int cod = Integer.parseInt((String) this.TablaEmpleado.getValueAt(fila, 0).toString());
-                String ced = (String) this.TablaEmpleado.getValueAt(fila, 1);
-                String nombres = (String) this.TablaEmpleado.getValueAt(fila, 2);
-                String apellidos = (String) this.TablaEmpleado.getValueAt(fila, 3);
-                String direc = (String) this.TablaEmpleado.getValueAt(fila, 4);
-                String telefono = (String) this.TablaEmpleado.getValueAt(fila, 5);
-                String correo = (String) this.TablaEmpleado.getValueAt(fila, 6);
-                String edad = (String) this.TablaEmpleado.getValueAt(fila, 7);
+                String ced = (String) this.TablaEmpleado.getValueAt(fila, 0);
+                String nombres = (String) this.TablaEmpleado.getValueAt(fila, 1);
+                String apellidos = (String) this.TablaEmpleado.getValueAt(fila, 2);
+                String direc = (String) this.TablaEmpleado.getValueAt(fila, 3);
+                String telefono = (String) this.TablaEmpleado.getValueAt(fila, 4);
+                String correo = (String) this.TablaEmpleado.getValueAt(fila, 5);
+                String edad = (String) this.TablaEmpleado.getValueAt(fila, 6);
 
-                CodigoEmpleado.setEnabled(false);
                 GuardarEmpleado.setVisible(false);
                 ActualizarEmpleado.setVisible(true);
                 Cancelar.setVisible(true);
 
-                CodigoEmpleado.setText("" + cod);
                 Cedula.setText(ced);
                 NombresE.setText(nombres);
                 ApellidosE.setText(apellidos);

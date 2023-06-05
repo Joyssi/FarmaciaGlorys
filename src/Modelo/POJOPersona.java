@@ -17,13 +17,17 @@ public class POJOPersona {
     String Telefono;
     
     //Constructor para mostrar ese dato en el ComboBox
-    public POJOPersona(String Nombres) {
-        this.Nombres = Nombres;
+
+    public POJOPersona() {
     }
 
     //Constructor vacío
-    public POJOPersona() {
+
+    public POJOPersona(String Cedula, String Nombres) {
+        this.Cedula = Cedula;
+        this.Nombres = Nombres;
     }
+    
     
     //Constructor con parámetros
     public POJOPersona(String Cedula, String Nombres, String Apellidos, String Direccion, String Telefono) {

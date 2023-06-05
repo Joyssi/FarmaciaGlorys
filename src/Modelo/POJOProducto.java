@@ -14,14 +14,14 @@ public class POJOProducto {
     String DescripProducto;
     int CantProducto;
     double PrecioProducto;
-    Date FechaVencimiento;
+    String FechaVencimiento;
     int IDMarca;
     int IDCategoria;
     int IDPresentacion;
     
     //Constructor
     public POJOProducto(int IDProducto, String NomProducto, String DescripProducto, 
-            int CantProducto, double PrecioProducto, Date FechaVencimiento, 
+            int CantProducto, double PrecioProducto, String FechaVencimiento, 
             int IDMarca, int IDCategoria, int IDPresentacion) {
         this.IDProducto = IDProducto;
         this.NomProducto = NomProducto;
@@ -79,11 +79,11 @@ public class POJOProducto {
         this.PrecioProducto = PrecioProducto;
     }
 
-    public Date getFechaVencimiento() {
+    public String getFechaVencimiento() {
         return FechaVencimiento;
     }
 
-    public void setFechaVencimiento(Date FechaVencimiento) {
+    public void setFechaVencimiento(String FechaVencimiento) {
         this.FechaVencimiento = FechaVencimiento;
     }
 

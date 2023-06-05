@@ -90,4 +90,30 @@ public class CRUDCategoria {
         }
         return Categoria;
     }
+     
+     public DefaultTableModel mostrarDatos() {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"Código de categoría", "Nombre de categoría"};
+        String[] registro = new String[2];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarCategoria}");
+            rs = cbstc.executeQuery();
+
+            while (rs.next()) {
+                registro[0] = rs.getString("IDCategoria");
+                registro[1] = rs.getString("NombreCategoria");
+
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+
+    }
 }

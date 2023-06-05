@@ -20,9 +20,9 @@ public class CRUDEmpleado {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Empleado", "Cedula", "Nombres", "Apellidos", 
+        String[] titulos = {"Cedula", "Nombres", "Apellidos", 
             "Dirección", "Teléfono", "Correo", "Edad"};
-        String[] registro = new String[8];
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -31,14 +31,13 @@ public class CRUDEmpleado {
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDEmpleado");
-                registro[1] = rs.getString("Cedula");
-                registro[2] = rs.getString("Nombres");
-                registro[3] = rs.getString("Apellidos");
-                registro[4] = rs.getString("Direccion");
-                registro[5] = rs.getString("Telefono");
-                registro[6] = rs.getString("CorreoE");
-                registro[7] = rs.getString("Edad");
+                registro[0] = rs.getString("Cedula");
+                registro[1] = rs.getString("Nombres");
+                registro[2] = rs.getString("Apellidos");
+                registro[3] = rs.getString("Direccion");
+                registro[4] = rs.getString("Telefono");
+                registro[5] = rs.getString("CorreoE");
+                registro[6] = rs.getString("Edad");
 
                 modelo.addRow(registro);
             }
@@ -54,9 +53,9 @@ public class CRUDEmpleado {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Empleado", "Cedula", "Nombres", "Apellidos", 
+        String[] titulos = {"Cedula", "Nombres", "Apellidos", 
             "Dirección", "Teléfono", "Correo", "Edad"};
-        String[] registro = new String[8];
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -66,14 +65,13 @@ public class CRUDEmpleado {
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDEmpleado");
-                registro[1] = rs.getString("Cedula");
-                registro[2] = rs.getString("Nombres");
-                registro[3] = rs.getString("Apellidos");
-                registro[4] = rs.getString("Direccion");
-                registro[5] = rs.getString("Telefono");
-                registro[6] = rs.getString("CorreoE");
-                registro[7] = rs.getString("Edad");
+                registro[0] = rs.getString("Cedula");
+                registro[1] = rs.getString("Nombres");
+                registro[2] = rs.getString("Apellidos");
+                registro[3] = rs.getString("Direccion");
+                registro[4] = rs.getString("Telefono");
+                registro[5] = rs.getString("CorreoE");
+                registro[6] = rs.getString("Edad");
 
                 modelo.addRow(registro);
             }
@@ -157,7 +155,7 @@ public class CRUDEmpleado {
             ResultSet rs = cbstc.executeQuery();
             while (rs.next()) {
                 POJOEmpleado gr = new POJOEmpleado();
-                gr.setIDEmpleado(Integer.parseInt(rs.getString("IDEmpleado")));
+                gr.setCedula(rs.getString("Cedula"));
                 gr.setNombres(rs.getString("Nombres"));
                 Empleado.add(gr);
             }

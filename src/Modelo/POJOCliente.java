@@ -7,14 +7,12 @@ package Modelo;
 public class POJOCliente extends POJOPersona {
     
     //Atributos
-    int IDCliente;
     String CorreoC;
     
     //Constructor
-    public POJOCliente(int IDCliente, String Cedula, String Nombres,
+    public POJOCliente(String Cedula, String Nombres,
             String Apellidos, String Direccion, String Telefono, String CorreoC) {
-        super(Cedula, Nombres, Apellidos, Direccion, Telefono);
-        this.IDCliente=IDCliente;   
+        super(Cedula, Nombres, Apellidos, Direccion, Telefono);  
         this.CorreoC=CorreoC; 
     }
 
@@ -23,20 +21,11 @@ public class POJOCliente extends POJOPersona {
     }
 
     //Constructor para mostrar datos en el ComboBox
-    public POJOCliente(int IDCliente, String Nombres) {
-        super(Nombres);
-        this.IDCliente = IDCliente;
+    public POJOCliente(String Cedula, String Nombres) {
+        super(Cedula, Nombres);
     }
     
     //Getter and Setter
-    public int getIDCliente() {
-        return IDCliente;
-    }
-
-    public void setIDCliente(int IDCliente) {
-        this.IDCliente = IDCliente;
-    }
-
     public String getCorreoC() {
         return CorreoC;
     }
@@ -47,7 +36,7 @@ public class POJOCliente extends POJOPersona {
     
     //Método para mostrar datos en el ComboBox
      public String toString(){
-        return IDCliente +"-"+Nombres;
+        return Cedula +"-"+Nombres;
     }
 
 }
