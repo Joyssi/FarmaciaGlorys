@@ -478,23 +478,11 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ActualizarVentaActionPerformed
 
     private void AgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarEmpleadoActionPerformed
-        AgregarEmpleado empleado = new AgregarEmpleado();
-        int x = (Menu.desktopPane.getWidth() / 2) - empleado.getWidth() / 2;
-        int y = (Menu.desktopPane.getHeight() / 2) - empleado.getHeight() / 2;
-        empleado.setLocation(x, y);
-        Menu.desktopPane.add(empleado);
-        empleado.toFront();
-        empleado.setVisible(true);
+
     }//GEN-LAST:event_AgregarEmpleadoActionPerformed
 
     private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
-        AgregarCliente cli = new AgregarCliente();
-        int x = (Menu.desktopPane.getWidth() / 2) - cli.getWidth() / 2;
-        int y = (Menu.desktopPane.getHeight() / 2) - cli.getHeight() / 2;
-        cli.setLocation(x, y);
-        Menu.desktopPane.add(cli);
-        cli.toFront();
-        cli.setVisible(true);
+
     }//GEN-LAST:event_AgregarClienteActionPerformed
 
     private void AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoActionPerformed
