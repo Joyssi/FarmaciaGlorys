@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class Conexion { 
     private final String
-url="jdbc:sqlserver://localhost:1433;databaseName=FarmaciaGlorys;"
+url="jdbc:sqlserver://localhost:1433;databaseName=FarmaciaGlorys; user=yoi; password=123;"
 + "integratedSecurity=true;" + "encrypt=true;trustServerCertificate=true";
     
 Connection cn;
