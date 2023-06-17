@@ -486,7 +486,7 @@ public class VistaVenta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_AgregarClienteActionPerformed
 
     private void AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoActionPerformed
-        AgregarProducto pro = new AgregarProducto();
+        VistaProducto pro = new VistaProducto();
         int x = (Menu.desktopPane.getWidth() / 2) - pro.getWidth() / 2;
         int y = (Menu.desktopPane.getHeight() / 2) - pro.getHeight() / 2;
         pro.setLocation(x, y);

@@ -12,6 +12,7 @@ import Vista.Menu.Menu;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 
 import javax.swing.table.DefaultTableModel;
@@ -100,6 +101,7 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         AgregarProducto = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaProducto = new javax.swing.JTable();
+        EliminarProducto = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -218,26 +220,36 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                 "Código de Producto", "Nombre de Producto"
             }
         ));
+        TablaProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaProductoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(TablaProducto);
+
+        EliminarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/borrar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(AgregarProducto)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AgregarProducto)
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EliminarProducto)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EliminarProducto))
                 .addGap(18, 18, 18)
                 .addComponent(AgregarProducto)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -250,13 +262,13 @@ public class VistaCompra extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ActualizarCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(GuardarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,10 +277,10 @@ public class VistaCompra extends javax.swing.JInternalFrame {
                             .addComponent(FechaCompra, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PrecioCompra, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,13 +340,17 @@ public class VistaCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoActionPerformed
-        AgregarProducto pro = new AgregarProducto();
+        VistaProducto pro = new VistaProducto();
         int x = (Menu.desktopPane.getWidth() / 2) - pro.getWidth() / 2;
         int y = (Menu.desktopPane.getHeight() / 2) - pro.getHeight() / 2;
         pro.setLocation(x, y);
         Menu.desktopPane.add(pro);
         pro.toFront();
         pro.setVisible(true);
+        VistaProducto.EditarProducto.setVisible(false);
+        VistaProducto.EliminarProducto.setVisible(false);
+        VistaProducto.EnmarcarProducto.setVisible(false);
+        VistaProducto.InsertarProducto.setVisible(true);
     }//GEN-LAST:event_AgregarProductoActionPerformed
 
     private void AgregarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProveedorActionPerformed
@@ -350,18 +366,23 @@ public class VistaCompra extends javax.swing.JInternalFrame {
         VistaProveedor.InsertarProveedor.setVisible(true);
     }//GEN-LAST:event_AgregarProveedorActionPerformed
 
+    private void TablaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoMouseClicked
+      datoSeleccionado = TablaProducto.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_TablaProductoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActualizarCompra;
     private javax.swing.JButton AgregarProducto;
     private javax.swing.JButton AgregarProveedor;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JTextField CodProveedor;
+    public static javax.swing.JTextField CodProveedor;
     private javax.swing.JTextField CodigoCompra;
+    private javax.swing.JButton EliminarProducto;
     private javax.swing.JFormattedTextField FechaCompra;
     private javax.swing.JButton GuardarCompra;
     private javax.swing.JTextField PrecioCompra;
-    private javax.swing.JTable TablaProducto;
+    public static javax.swing.JTable TablaProducto;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

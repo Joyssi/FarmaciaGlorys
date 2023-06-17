@@ -184,6 +184,11 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
         InsertarProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         InsertarProveedor.setForeground(new java.awt.Color(51, 102, 255));
         InsertarProveedor.setText("Insertar");
+        InsertarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarProveedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -342,6 +347,16 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
     private void BotonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarActionPerformed
         mostrar();
     }//GEN-LAST:event_BotonMostrarActionPerformed
+
+    private void InsertarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarProveedorActionPerformed
+      if (datoSeleccionado >=0){
+          VistaCompra.CodProveedor.setText(String.valueOf(TablaProveedor.getValueAt(datoSeleccionado, 0)));
+          dispose(); 
+          JOptionPane.showMessageDialog(null, "Dato insertado correctamente");
+      }else{
+         JOptionPane.showMessageDialog(null, "Debe seleccionar un registro"); 
+      }
+    }//GEN-LAST:event_InsertarProveedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
