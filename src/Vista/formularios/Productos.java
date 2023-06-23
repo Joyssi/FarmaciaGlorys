@@ -43,7 +43,7 @@ public class Productos extends javax.swing.JInternalFrame {
             DefaultTableModel modelo;
             CRUDProducto pro = new CRUDProducto();
             modelo = pro.mostrarDatos();
-            VistaProducto.TablaProducto.setModel(modelo);
+            VistaProductos.TablaProducto.setModel(modelo);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

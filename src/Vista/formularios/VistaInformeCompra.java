@@ -4,6 +4,8 @@
  */
 package Vista.formularios;
 import Controlador.CRUDCompra;
+import Vista.Menu.Menu;
+import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 /**
@@ -15,9 +17,12 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaInformeCompra
      */
+    int datoSeleccionado = -1;
+    
     public VistaInformeCompra() {
         initComponents();
         mostrar();
+        Mostrar.setVisible(false);
     }
     
      public void mostrar() {
@@ -42,26 +47,32 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         BuscarCompra = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaCompra = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        DetalleCompra = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        AgregarCompra = new javax.swing.JButton();
+        Mostrar = new javax.swing.JButton();
+        EditarCompra = new javax.swing.JButton();
 
         setBorder(null);
         setClosable(true);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/informe.png"))); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel1.setText("Informe de compras");
-
         BuscarCompra.setBackground(new java.awt.Color(255, 255, 255));
         BuscarCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BuscarCompra.setForeground(new java.awt.Color(51, 51, 51));
+        BuscarCompra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BuscarCompraFocusLost(evt);
+            }
+        });
+        BuscarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BuscarCompraMouseClicked(evt);
+            }
+        });
         BuscarCompra.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 BuscarCompraKeyReleased(evt);
@@ -103,52 +114,79 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TablaCompra);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 102, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/imprimir.png"))); // NOI18N
-        jButton1.setText("Imprimir");
+        DetalleCompra.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        DetalleCompra.setForeground(new java.awt.Color(51, 102, 255));
+        DetalleCompra.setText("Detalle de Compra");
+        DetalleCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DetalleCompraActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
+
+        AgregarCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        AgregarCompra.setText("+");
+        AgregarCompra.setToolTipText("");
+        AgregarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarCompraActionPerformed(evt);
+            }
+        });
+
+        EditarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/editar.png"))); // NOI18N
+        EditarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarCompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BuscarCompra))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(20, 30, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BuscarCompra)
+                        .addGap(18, 18, 18)
+                        .addComponent(AgregarCompra)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditarCompra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(DetalleCompra)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Mostrar)
+                .addGap(151, 151, 151))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1)
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))))
+                .addGap(38, 38, 38)
+                .addComponent(Mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BuscarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AgregarCompra)
+                        .addComponent(EditarCompra))
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(19, 19, 19))
+                .addComponent(DetalleCompra)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,13 +215,71 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_BuscarCompraKeyReleased
 
+    private void AgregarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompraActionPerformed
+        VistaCompra com = new VistaCompra();
+        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
+        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
+        com.setLocation(x, y);
+        Menu.desktopPane.add(com);
+        com.toFront();
+        com.setVisible(true);
+    }//GEN-LAST:event_AgregarCompraActionPerformed
+
+    private void BuscarCompraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarCompraFocusLost
+        BuscarCompra.setText("Buscar por fecha o cédula");
+       BuscarCompra.setForeground(Color.gray);
+    }//GEN-LAST:event_BuscarCompraFocusLost
+
+    private void BuscarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarCompraMouseClicked
+        BuscarCompra.setText("");
+    }//GEN-LAST:event_BuscarCompraMouseClicked
+
+    private void DetalleCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetalleCompraActionPerformed
+        DetallaVenta com = new DetallaVenta();
+        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
+        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
+        com.setLocation(x, y);
+        Menu.desktopPane.add(com);
+        com.toFront();
+        com.setVisible(true);
+    }//GEN-LAST:event_DetalleCompraActionPerformed
+
+    private void EditarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarCompraActionPerformed
+//        VistaCompra com = new VistaCompra();
+//        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
+//        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
+//        com.setLocation(x, y);
+//        Menu.desktopPane.add(com);
+//
+//        if (datoSeleccionado >= 0) {
+//            //mandar datos al formulario
+//            Proveedor.Ced.setText(String.valueOf(TablaCompra.getValueAt(datoSeleccionado, 0)));
+//            Proveedor.NombresP.setText(String.valueOf(TablaCompra.getValueAt(datoSeleccionado, 1)));
+//            Proveedor.ApellidosP.setText(String.valueOf(TablaCompra.getValueAt(datoSeleccionado, 2)));
+//            Proveedor.DirecP.setText(String.valueOf(TablaCompra.getValueAt(datoSeleccionado, 3)));
+//            Proveedor.TelProveedor.setText(String.valueOf(TablaProveedor.getValueAt(datoSeleccionado, 4)));
+//            Proveedor.Correo.setText(String.valueOf(TablaProveedor.getValueAt(datoSeleccionado, 5)));
+//            Proveedor.Ced.enable(false);
+//            //hacer al frente y visible
+//            prove.toFront();
+//            Proveedor.GuardarProveedor.setVisible(false);
+//            Proveedor.ActualizarProveedor.setVisible(true);
+//            Proveedor.Cancelar.setVisible(true);
+//            prove.setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
+//        }
+    }//GEN-LAST:event_EditarCompraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarCompra;
     private javax.swing.JTextField BuscarCompra;
+    private javax.swing.JButton DetalleCompra;
+    private javax.swing.JButton EditarCompra;
+    private javax.swing.JButton Mostrar;
     private javax.swing.JTable TablaCompra;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

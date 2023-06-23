@@ -21,7 +21,7 @@ public class CRUDCompra {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Compra", "Fecha de Compra", "Código de Proveedor"};
+        String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor"};
         String[] registro = new String[3];
 
         modelo = new DefaultTableModel(null, titulos);
@@ -33,7 +33,7 @@ public class CRUDCompra {
             while (rs.next()) {
                 registro[0] = rs.getString("IDCompra");
                 registro[1] = rs.getString("FechaCompra");
-                registro[2] = rs.getString("IDProveedor");
+                registro[2] = rs.getString("CedulaP");
 
                 modelo.addRow(registro);
             }
@@ -49,7 +49,7 @@ public class CRUDCompra {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Compra", "Fecha de Compra", "Código de Proveedor"};
+        String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor"};
         String[] registro = new String[3];
 
         modelo = new DefaultTableModel(null, titulos);
@@ -62,7 +62,7 @@ public class CRUDCompra {
             while (rs.next()) {
                 registro[0] = rs.getString("IDCompra");
                 registro[1] = rs.getString("FechaCompra");
-                registro[2] = rs.getString("IDProveedor");
+                registro[2] = rs.getString("CedulaP");
                 modelo.addRow(registro);
             }
             return modelo;
@@ -93,8 +93,8 @@ public class CRUDCompra {
     public void Guardar(POJOCompra cl) {
         try {
             CallableStatement cbst = cn.prepareCall("{call InsertarCompra(?,?)}");
-            cbst.setDate(1, (Date) cl.getFechaCompra());
-            cbst.setInt(2, cl.getIDProveedor());
+            cbst.setString(1,  cl.getFechaCompra());
+            cbst.setString(2, cl.getCedulaP());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -102,28 +102,28 @@ public class CRUDCompra {
         }
     }
     
-      public void eliminar(String dato) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call EliminarCompra(?)}");
-            cbst.setString(1, dato);
-            cbst.executeUpdate();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
-    public void actualizar(POJOCompra cl) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call ActualizarCompra(?,?,?)}");
-            cbst.setInt(1, cl.getIDCompra());
-            cbst.setDate(2, (Date) cl.getFechaCompra());
-            cbst.setInt(3, cl.getIDProveedor());
-            cbst.executeUpdate();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
+//      public void eliminar(String dato) {
+//        try {
+//            CallableStatement cbst = cn.prepareCall("{call EliminarCompra(?)}");
+//            cbst.setString(1, dato);
+//            cbst.executeUpdate();
+//
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
+//    }
+//    
+//    public void actualizar(POJOCompra cl) {
+//        try {
+//            CallableStatement cbst = cn.prepareCall("{call ActualizarCompra(?,?,?)}");
+//            cbst.setInt(1, cl.getIDCompra());
+//            cbst.setDate(2, (Date) cl.getFechaCompra());
+//            cbst.setString(3, cl.getCedulaP());
+//            cbst.executeUpdate();
+//
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
+//    }
 
 }

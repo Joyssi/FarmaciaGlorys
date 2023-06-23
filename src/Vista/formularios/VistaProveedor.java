@@ -352,7 +352,7 @@ public class VistaProveedor extends javax.swing.JInternalFrame {
       if (datoSeleccionado >=0){
           VistaCompra.CodProveedor.setText(String.valueOf(TablaProveedor.getValueAt(datoSeleccionado, 0)));
           dispose(); 
-          JOptionPane.showMessageDialog(null, "Dato insertado correctamente");
+          JOptionPane.showMessageDialog(null, "Dato agregado correctamente");
       }else{
          JOptionPane.showMessageDialog(null, "Debe seleccionar un registro"); 
       }

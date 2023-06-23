@@ -37,6 +37,19 @@ public class POJOProducto {
     //Constructor vacío
     public POJOProducto() {
     }   
+
+    public POJOProducto(int IDProducto, String NomProducto, double PrecioProducto) {
+        this.IDProducto = IDProducto;
+        this.NomProducto = NomProducto;
+        this.PrecioProducto = PrecioProducto;
+    }
+
+    public POJOProducto(int IDProducto, String NomProducto) {
+        this.IDProducto = IDProducto;
+        this.NomProducto = NomProducto;
+    }
+
+    
   
     //Getter and Setter
     public int getIDProducto() {
@@ -112,9 +125,13 @@ public class POJOProducto {
     }
 
   
+  public String toString(){
+        return IDProducto +"-"+NomProducto +"-"
+                +PrecioProducto;
+    }
 
-    
-
-   
+  public String String() {
+      return IDProducto +"-"+NomProducto;
+  }
     
 }

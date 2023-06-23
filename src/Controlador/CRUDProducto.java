@@ -5,6 +5,7 @@
 package Controlador;
 import Modelo.POJOProducto;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -50,6 +51,45 @@ public class CRUDProducto {
 
     }
     
+    public ArrayList mostrarDatosCombo() {
+
+        ArrayList<POJOProducto> Producto = new ArrayList();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarProducto}");
+            ResultSet rs = cbstc.executeQuery();
+            while (rs.next()) {
+                POJOProducto gr = new POJOProducto();
+                gr.setIDProducto(Integer.parseInt(rs.getString("IDProducto")));
+                gr.setNomProducto(rs.getString("NomProducto"));
+                gr.setPrecioProducto(Double.parseDouble(rs.getString("PrecioProducto")));
+                Producto.add(gr);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return Producto;
+    }
+    
+    public ArrayList MostrarDatosCombo() {
+
+        ArrayList<POJOProducto> Producto = new ArrayList();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarProducto}");
+            ResultSet rs = cbstc.executeQuery();
+            while (rs.next()) {
+                POJOProducto gr = new POJOProducto();
+                gr.setIDProducto(Integer.parseInt(rs.getString("IDProducto")));
+                gr.setNomProducto(rs.getString("NomProducto"));
+                Producto.add(gr);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return Producto;
+    }
+    
      public DefaultTableModel buscarDatos(String dato) {
         ResultSet rs;
         DefaultTableModel modelo;
@@ -80,6 +120,25 @@ public class CRUDProducto {
             }
             return modelo;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+
+    }
+     
+     public String buscarDatosProducto(String dato) {
+        ResultSet rs;
+        String respuesta="";
+
+        try {
+            CallableStatement call = cn.prepareCall("{call ConsultarProducto(?)}");
+            call.setString(1, dato);
+            rs = call.executeQuery();
+            while (rs.next()) {
+                respuesta = rs.getString("Nombre");
+            }
+            return respuesta;
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             return null;
         }

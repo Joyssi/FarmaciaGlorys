@@ -12,6 +12,10 @@ import java.sql.SQLException;
  * @author Joy Cruz
  */
 public class Conexion { 
+
+    public static com.sun.jdi.connect.spi.Connection getConexion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private final String
 url="jdbc:sqlserver://localhost:1433;databaseName=FarmaciaGlorys;"
 + "integratedSecurity=true;" + "encrypt=true;trustServerCertificate=true; user=yoi; password=123";

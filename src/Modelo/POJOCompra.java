@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.Date;
+import javax.swing.JFormattedTextField;
 
 /**
  *
@@ -10,19 +11,23 @@ public class POJOCompra {
     
   //Atributos
     int IDCompra;
-    Date FechaCompra;
-    int IDProveedor;
+    String FechaCompra;
+    String CedulaP;
     
     //Constructor
-  public POJOCompra(int IDCompra, Date FechaCompra, int IDProveedor) {
+  public POJOCompra(int IDCompra, String FechaCompra, String CedulaP) {
         this.IDCompra = IDCompra;
         this.FechaCompra = FechaCompra;
-        this.IDProveedor = IDProveedor;
+        this.CedulaP = CedulaP;
     }
    
   //Constructor vacío
-    public POJOCompra() {
+
+    public POJOCompra(String FechaCompra, String CedulaP) {
+        this.FechaCompra = FechaCompra;
+        this.CedulaP = CedulaP;
     }
+
     
     //Getter and Setter
     public int getIDCompra() {
@@ -33,20 +38,20 @@ public class POJOCompra {
         this.IDCompra = IDCompra;
     }
 
-    public Date getFechaCompra() {
+    public String getFechaCompra() {
         return FechaCompra;
     }
 
-    public void setFechaCompra(Date FechaCompra) {
+    public void setFechaCompra(String FechaCompra) {
         this.FechaCompra = FechaCompra;
     }
 
-    public int getIDProveedor() {
-        return IDProveedor;
+    public String getCedulaP() {
+        return CedulaP;
     }
 
-    public void setIDProveedor(int IDProveedor) {
-        this.IDProveedor = IDProveedor;
-    }
+    public void setCedulaP(String CedulaP) {
+        this.CedulaP = CedulaP;
    
+}
 }

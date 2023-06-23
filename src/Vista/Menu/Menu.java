@@ -5,6 +5,7 @@
 package Vista.Menu;
 
 import Vista.formularios.*;
+import java.awt.Color;
 
 /**
  *
@@ -57,6 +58,7 @@ public class Menu extends javax.swing.JFrame {
         desktopPane.add(jLabel1);
         jLabel1.setBounds(0, 0, 240, 680);
 
+        jToolBar1.setBackground(new java.awt.Color(204, 204, 255));
         jToolBar1.setRollover(true);
 
         Productos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -203,7 +205,7 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -224,7 +226,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_InformeCompraActionPerformed
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
-        VistaProducto producto = new VistaProducto();
+        VistaProductos producto = new VistaProductos();
         int x = (desktopPane.getWidth() / 2) - producto.getWidth() / 2;
         int y = (desktopPane.getHeight() / 2) - producto.getHeight() / 2;
         producto.setLocation(x, y);

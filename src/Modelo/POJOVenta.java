@@ -10,26 +10,31 @@ public class POJOVenta {
     
     //Atributos
     int IDVenta;
-    int IDEmpleado;
-    int IDCliente;
-    Date FechaVenta;
+    String CedulaE;
+    String CedulaC;
+    String FechaVenta;
     String DirecPedidoVenta;
     
     //Constructor
-  public POJOVenta(int IDVenta, int IDEmpleado, int IDCliente, Date FechaVenta,
-          String DirecPedidoVenta) {
-        this.IDVenta = IDVenta;
-        this.IDEmpleado = IDEmpleado;
-        this.IDCliente = IDCliente;
+
+    public POJOVenta(String CedulaE, String CedulaC, String FechaVenta, String DirecPedidoVenta) {
+        this.CedulaE = CedulaE;
+        this.CedulaC = CedulaC;
         this.FechaVenta = FechaVenta;
         this.DirecPedidoVenta = DirecPedidoVenta;
     }
-  
-   //Constructor vacío
+
+    public POJOVenta(int IDVenta, String CedulaE, String CedulaC, String FechaVenta, String DirecPedidoVenta) {
+        this.IDVenta = IDVenta;
+        this.CedulaE = CedulaE;
+        this.CedulaC = CedulaC;
+        this.FechaVenta = FechaVenta;
+        this.DirecPedidoVenta = DirecPedidoVenta;
+    }
+
     public POJOVenta() {
     }
 
-    //Getter and Setter
     public int getIDVenta() {
         return IDVenta;
     }
@@ -38,27 +43,27 @@ public class POJOVenta {
         this.IDVenta = IDVenta;
     }
 
-    public int getIDEmpleado() {
-        return IDEmpleado;
+    public String getCedulaE() {
+        return CedulaE;
     }
 
-    public void setIDEmpleado(int IDEmpleado) {
-        this.IDEmpleado = IDEmpleado;
+    public void setCedulaE(String CedulaE) {
+        this.CedulaE = CedulaE;
     }
 
-    public int getIDCliente() {
-        return IDCliente;
+    public String getCedulaC() {
+        return CedulaC;
     }
 
-    public void setIDCliente(int IDCliente) {
-        this.IDCliente = IDCliente;
+    public void setCedulaC(String CedulaC) {
+        this.CedulaC = CedulaC;
     }
 
-    public Date getFechaVenta() {
+    public String getFechaVenta() {
         return FechaVenta;
     }
 
-    public void setFechaVenta(Date FechaVenta) {
+    public void setFechaVenta(String FechaVenta) {
         this.FechaVenta = FechaVenta;
     }
 
@@ -69,5 +74,6 @@ public class POJOVenta {
     public void setDirecPedidoVenta(String DirecPedidoVenta) {
         this.DirecPedidoVenta = DirecPedidoVenta;
     }
+
     
 }

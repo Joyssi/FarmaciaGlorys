@@ -3,34 +3,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista.formularios;
-import Vista.Menu.Menu;
+
 import Controlador.CRUDProducto;
-import static Vista.formularios.VistaProveedor.TablaProveedor;
+import Vista.Menu.Menu;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Joy Cruz
  */
-public class VistaProducto extends javax.swing.JInternalFrame {
+public class VistaProductos extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Producto
+     * Creates new form VistaProductos
      */
-    int datoSeleccionado = -1;
-
-    public VistaProducto() {
+    
+      int datoSeleccionado = -1;
+    public VistaProductos() {
         initComponents();
         mostrar();
         BotonMostrar.setVisible(false);
         InsertarProducto.setVisible(false);
-
     }
 
-    public void mostrar() {
+     public void mostrar() {
         try {
             DefaultTableModel modelo;
             CRUDProducto produc = new CRUDProducto();
@@ -41,8 +39,6 @@ public class VistaProducto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,17 +60,23 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         InsertarProducto = new javax.swing.JButton();
         BotonMostrar = new javax.swing.JButton();
         AgregarProducto = new javax.swing.JButton();
+        lista = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setClosable(true);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestión de productos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 36), new java.awt.Color(51, 102, 255))); // NOI18N
 
         EnmarcarProducto.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         EnmarcarProducto.setForeground(new java.awt.Color(0, 102, 255));
         EnmarcarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Enmarcar1.png"))); // NOI18N
+        EnmarcarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnmarcarProductoActionPerformed(evt);
+            }
+        });
 
-        TablaProducto.setBackground(new java.awt.Color(204, 204, 255));
+        TablaProducto.setBackground(new java.awt.Color(255, 255, 255));
         TablaProducto.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TablaProducto.setForeground(new java.awt.Color(51, 51, 51));
         TablaProducto.setModel(new javax.swing.table.DefaultTableModel(
@@ -108,6 +110,13 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                 "Código de producto", "Nombre de producto", "Descripción del producto", "Marca", "Fecha de vencimiento", "Cantidad de producto", "Precio de producto", "Categoría", "Forma de dosificación", "Tamaño"
             }
         ));
+        TablaProducto.setFocusable(false);
+        TablaProducto.setGridColor(new java.awt.Color(153, 204, 255));
+        TablaProducto.setRowHeight(25);
+        TablaProducto.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        TablaProducto.setShowHorizontalLines(true);
+        TablaProducto.getTableHeader().setResizingAllowed(false);
+        TablaProducto.getTableHeader().setReorderingAllowed(false);
         TablaProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaProductoMouseClicked(evt);
@@ -172,6 +181,18 @@ public class VistaProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        lista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/lista.png"))); // NOI18N
+        lista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaMouseClicked(evt);
+            }
+        });
+        lista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -186,26 +207,29 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(AgregarProducto)
                         .addGap(18, 18, 18)
+                        .addComponent(lista)
+                        .addGap(18, 18, 18)
                         .addComponent(EnmarcarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(EditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(EliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 686, Short.MAX_VALUE)
                         .addComponent(InsertarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonMostrar)
-                .addGap(197, 197, 197))
+                .addGap(148, 148, 148))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(BotonMostrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(EliminarProducto)
@@ -214,12 +238,13 @@ public class VistaProducto extends javax.swing.JInternalFrame {
                             .addComponent(BuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(AgregarProducto)))
-                    .addComponent(EnmarcarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EnmarcarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lista))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(InsertarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,14 +255,43 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void EnmarcarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnmarcarProductoActionPerformed
+
+    }//GEN-LAST:event_EnmarcarProductoActionPerformed
+
+    private void TablaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoMouseClicked
+        datoSeleccionado = TablaProducto.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_TablaProductoMouseClicked
+
+    private void BuscarProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarProductoFocusLost
+        BuscarProducto.setText("Buscar por código, nombre");
+        BuscarProducto.setForeground(Color.gray);
+    }//GEN-LAST:event_BuscarProductoFocusLost
+
+    private void BuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarProductoMouseClicked
+        BuscarProducto.setText("");
+    }//GEN-LAST:event_BuscarProductoMouseClicked
+
+    private void BuscarProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarProductoKeyReleased
+        try {
+
+            DefaultTableModel modelo;
+            CRUDProducto prod = new CRUDProducto();
+            modelo = prod.buscarDatos(BuscarProducto.getText());
+            TablaProducto.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_BuscarProductoKeyReleased
+
     private void EditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarProductoActionPerformed
-          Productos pro = new Productos();
+        Productos pro = new Productos();
         int x = (Menu.desktopPane.getWidth() / 2) - pro.getWidth() / 2;
         int y = (Menu.desktopPane.getHeight() / 2) - pro.getHeight() / 2;
         pro.setLocation(x, y);
@@ -263,45 +317,37 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_EditarProductoActionPerformed
 
-    private void BuscarProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarProductoKeyReleased
-        try {
-
-            DefaultTableModel modelo;
-            CRUDProducto prod = new CRUDProducto();
-            modelo = prod.buscarDatos(BuscarProducto.getText());
-            TablaProducto.setModel(modelo);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_BuscarProductoKeyReleased
-
     private void EliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarProductoActionPerformed
         if (datoSeleccionado >= 0) {
             int codigo = Integer.parseInt((String) TablaProducto.getValueAt(datoSeleccionado, 0));
             CRUDProducto pro = new CRUDProducto();
             if (JOptionPane.showConfirmDialog(rootPane,
-                    "Se eliminará el registro, ¿Desea continuar?",
-                    "Eliminar Registro",
-                    JOptionPane.WARNING_MESSAGE,
-                    JOptionPane.YES_NO_OPTION)
-                    == JOptionPane.YES_OPTION) {
-                pro.eliminar(codigo);
-                mostrar();
-                JOptionPane.showMessageDialog(null,
-                        "Dato eliminado correctamente");
-            }
+                "Se eliminará el registro, ¿Desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION) {
+            pro.eliminar(codigo);
+            mostrar();
+            JOptionPane.showMessageDialog(null,
+                "Dato eliminado correctamente");
+        }
         } else {
             JOptionPane.showMessageDialog(null,
-                    "Debe seleccionar un registro de la tabla");
+                "Debe seleccionar un registro de la tabla");
         }
     }//GEN-LAST:event_EliminarProductoActionPerformed
 
-    private void TablaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductoMouseClicked
-       datoSeleccionado = TablaProducto.rowAtPoint(evt.getPoint());
-    }//GEN-LAST:event_TablaProductoMouseClicked
+    private void InsertarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarProductoActionPerformed
+
+    }//GEN-LAST:event_InsertarProductoActionPerformed
+
+    private void BotonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarActionPerformed
+        mostrar();
+    }//GEN-LAST:event_BotonMostrarActionPerformed
 
     private void AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoActionPerformed
-          Productos pro = new Productos();
+        Productos pro = new Productos();
         int x = (Menu.desktopPane.getWidth() / 2) - pro.getWidth() / 2;
         int y = (Menu.desktopPane.getHeight() / 2) - pro.getHeight() / 2;
         pro.setLocation(x, y);
@@ -310,22 +356,21 @@ public class VistaProducto extends javax.swing.JInternalFrame {
         pro.setVisible(true);
     }//GEN-LAST:event_AgregarProductoActionPerformed
 
-    private void BuscarProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarProductoFocusLost
-       BuscarProducto.setText("Buscar por código, nombre");
-       BuscarProducto.setForeground(Color.gray);
-    }//GEN-LAST:event_BuscarProductoFocusLost
+    private void listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaMouseClicked
+        //       String report="C:\\Users\\Joy Cruz\\OneDrive\\Documentos\\respos\\FarmaciaGlorys\\src\\Vista\\formularios\\ReporteProducto.jrxml";
+        //       JasperReport jr;
+        //       try (Connection con=Conexion.getConexion();) {
+            //           jr =JasperCompileManager.compileReport(report);
+            //           JasperPrint jp=JasperFillManager.fillReport(jr, null,con);
+            //           JasperViewer.viewReport(jp);
+            //         }catch (SQLException | JRException ex) {
+            //             Logger.getLogger(VistaProducto.class.getName()).log(Level.SEVERE, null, ex);
+            //         }
+    }//GEN-LAST:event_listaMouseClicked
 
-    private void BuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarProductoMouseClicked
-         BuscarProducto.setText("");
-    }//GEN-LAST:event_BuscarProductoMouseClicked
-
-    private void BotonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarActionPerformed
-        mostrar();
-    }//GEN-LAST:event_BotonMostrarActionPerformed
-
-    private void InsertarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarProductoActionPerformed
-         
-    }//GEN-LAST:event_InsertarProductoActionPerformed
+    private void listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -340,6 +385,6 @@ public class VistaProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton lista;
     // End of variables declaration//GEN-END:variables
-
 }

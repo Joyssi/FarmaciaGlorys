@@ -22,10 +22,10 @@ public class VistaInformeVenta extends javax.swing.JInternalFrame {
     
     public void mostrar() {
         try {
-            DefaultTableModel modelo;
-            CRUDVenta venta = new CRUDVenta();
-            modelo = venta.mostrarDatos();
-            TablaVenta.setModel(modelo);
+//            DefaultTableModel modelo;
+//            CRUDVenta venta = new CRUDVenta();
+//            modelo = venta.mostrarDatos();
+//            TablaVenta.setModel(modelo);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -153,15 +153,15 @@ public class VistaInformeVenta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarVentaKeyReleased
-         try {
-
-            DefaultTableModel modelo;
-            CRUDVenta venta = new CRUDVenta();
-            modelo = venta.buscarDatos(BuscarVenta.getText());
-            TablaVenta.setModel(modelo);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+//         try {
+//
+//            DefaultTableModel modelo;
+//            CRUDVenta venta = new CRUDVenta();
+//            modelo = venta.buscarDatos(BuscarVenta.getText());
+//            TablaVenta.setModel(modelo);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
     }//GEN-LAST:event_BuscarVentaKeyReleased
 
 
