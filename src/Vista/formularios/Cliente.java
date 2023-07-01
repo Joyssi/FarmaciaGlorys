@@ -1,79 +1,79 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Vista.formularios;
 
 import Controlador.CRUDCliente;
 import Modelo.POJOCliente;
+import Vista.Menu.Main;
+import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Joy Cruz
  */
-public class Cliente extends javax.swing.JInternalFrame {
+public class Cliente extends javax.swing.JPanel {
 
     /**
      * Creates new form Cliente
      */
     public Cliente() {
         initComponents();
-         AcualizarCliente.setVisible(false);
-        Cancelar.setVisible(false);
     }
     
-     public void mostrar() {
+    public void mostrar() {
         try {
             DefaultTableModel modelo;
             CRUDCliente cli = new CRUDCliente();
             modelo = cli.mostrarDatos();
-            VistaCliente.TablaCliente.setModel(modelo);
+            GestionCliente.TablaClientes.setModel(modelo);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-       public void limpiar() {
-        Direccion.setText("");
-        NombresC.setText("");
-        ApellidosC.setText("");
-        Cedula.setText("");
+
+        public void limpiar(){
+        Nombres.setText("");
+        Apellidos.setText("");
+        Telefono.setText("");
         Correo.setText("");
-        TelCliente.setText("");
+        direc.setText("");
+        Ced.setText("");
     }
-     
-      public void guardarCliente() {
+    
+     public void guardarCliente() {
 
-        CRUDCliente cc = new CRUDCliente();
+        CRUDCliente cli = new CRUDCliente();
 
-        POJOCliente cl = new POJOCliente(
-                Cedula.getText(),
-                NombresC.getText(),
-                ApellidosC.getText(),
-                Direccion.getText(),
-                TelCliente.getText(),
-                 Correo.getText());
-        cc.Guardar(cl);
+        POJOCliente em = new POJOCliente(
+                Ced.getText(),
+                Nombres.getText(),
+                Apellidos.getText(),
+                direc.getText(),
+                Telefono.getText(),
+                Correo.getText());
+        cli.Guardar(em);
 
     }
-      
-        public void editarCliente() {
 
-        CRUDCliente cc = new CRUDCliente();
+    public void editarCliente() {
 
-        POJOCliente cl = new POJOCliente (
-                Cedula.getText(),
-                NombresC.getText(),
-                ApellidosC.getText(),
-                Direccion.getText(),
-                TelCliente.getText(),
-        Correo.getText());
-        cc.actualizar(cl);
+        CRUDCliente cli = new CRUDCliente();
+
+        POJOCliente clie = new POJOCliente(
+                Ced.getText(),
+                Nombres.getText(),
+                Apellidos.getText(),
+                direc.getText(),
+                Telefono.getText(),
+                Correo.getText());
+        cli.actualizar(clie);
 
     }
 
@@ -86,391 +86,358 @@ public class Cliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
-        jInternalFrame3 = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
+        jSeparator7 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Nombres = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        Ced = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        Apellidos = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        Telefono = new javax.swing.JFormattedTextField();
+        jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        ApellidosC = new javax.swing.JTextField();
-        NombresC = new javax.swing.JTextField();
-        Cedula = new javax.swing.JFormattedTextField();
-        TelCliente = new javax.swing.JFormattedTextField();
         Correo = new javax.swing.JTextField();
-        GuardarCliente = new javax.swing.JButton();
-        AcualizarCliente = new javax.swing.JButton();
-        Direccion = new javax.swing.JTextField();
-        Cod = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        direc = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        Guardar = new Vista.Menu.BorderPanel();
+        jLabel8 = new javax.swing.JLabel();
+        Actualizar = new Vista.Menu.BorderPanel();
         jLabel9 = new javax.swing.JLabel();
-        Cancelar = new javax.swing.JButton();
+        Cancelar = new Vista.Menu.BorderPanel();
+        jLabel10 = new javax.swing.JLabel();
 
-        setClosable(true);
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
-        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
-        jInternalFrame3Layout.setHorizontalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame3Layout.setVerticalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel1.setText("Clientes");
 
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
-            .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 461, Short.MAX_VALUE)
-            .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel2.setText("Cédula");
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        Nombres.setBackground(new java.awt.Color(255, 255, 255));
+        Nombres.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        Nombres.setForeground(new java.awt.Color(51, 51, 51));
+        Nombres.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nombres.setBorder(null);
+        Nombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombresKeyTyped(evt);
+            }
+        });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo de cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 36), new java.awt.Color(51, 102, 255))); // NOI18N
+        jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel1.setText("Cédula");
+        Ced.setBackground(new java.awt.Color(255, 255, 255));
+        Ced.setBorder(null);
+        Ced.setForeground(new java.awt.Color(51, 51, 51));
+        try {
+            Ced.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        Ced.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel2.setText("Apellidos");
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Nombres");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel6.setText("Dirección");
+        jSeparator2.setForeground(new java.awt.Color(51, 102, 255));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel7.setText("Teléfono");
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel4.setText("Apellidos");
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel8.setText("Correo");
-
-        ApellidosC.setBackground(new java.awt.Color(255, 255, 255));
-        ApellidosC.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        ApellidosC.setForeground(new java.awt.Color(51, 51, 51));
-        ApellidosC.addKeyListener(new java.awt.event.KeyAdapter() {
+        Apellidos.setBackground(new java.awt.Color(255, 255, 255));
+        Apellidos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        Apellidos.setForeground(new java.awt.Color(51, 51, 51));
+        Apellidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Apellidos.setToolTipText("");
+        Apellidos.setBorder(null);
+        Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                ApellidosCKeyTyped(evt);
+                ApellidosKeyTyped(evt);
             }
         });
 
-        NombresC.setBackground(new java.awt.Color(255, 255, 255));
-        NombresC.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        NombresC.setForeground(new java.awt.Color(51, 51, 51));
-        NombresC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                NombresCKeyTyped(evt);
-            }
-        });
+        jSeparator3.setForeground(new java.awt.Color(51, 102, 255));
 
-        Cedula.setBackground(new java.awt.Color(255, 255, 255));
-        Cedula.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel5.setText("Teléfono");
+
+        Telefono.setBackground(new java.awt.Color(255, 255, 255));
+        Telefono.setBorder(null);
+        Telefono.setForeground(new java.awt.Color(51, 51, 51));
         try {
-            Cedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+            Telefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        Telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        TelCliente.setBackground(new java.awt.Color(255, 255, 255));
-        TelCliente.setForeground(new java.awt.Color(51, 51, 51));
-        try {
-            TelCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jSeparator4.setForeground(new java.awt.Color(51, 102, 255));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel6.setText("Correo");
 
         Correo.setBackground(new java.awt.Color(255, 255, 255));
-        Correo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Correo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         Correo.setForeground(new java.awt.Color(51, 51, 51));
-        Correo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                CorreoKeyTyped(evt);
+        Correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Correo.setBorder(null);
+
+        jSeparator5.setForeground(new java.awt.Color(51, 102, 255));
+        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jSeparator6.setForeground(new java.awt.Color(51, 102, 255));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel7.setText("Dirección");
+
+        direc.setBackground(new java.awt.Color(255, 255, 255));
+        direc.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        direc.setForeground(new java.awt.Color(51, 51, 51));
+        direc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        direc.setBorder(null);
+
+        jSeparator8.setForeground(new java.awt.Color(51, 102, 255));
+
+        Guardar.setBackground(new java.awt.Color(51, 102, 255));
+        Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GuardarMouseClicked(evt);
             }
         });
 
-        GuardarCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        GuardarCliente.setForeground(new java.awt.Color(0, 102, 255));
-        GuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/disquete.png"))); // NOI18N
-        GuardarCliente.setText("Guardar");
-        GuardarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarClienteActionPerformed(evt);
-            }
-        });
+        jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Guardar");
 
-        AcualizarCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        AcualizarCliente.setForeground(new java.awt.Color(0, 102, 255));
-        AcualizarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/boton-actualizar.png"))); // NOI18N
-        AcualizarCliente.setText("Actualizar");
-        AcualizarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcualizarClienteActionPerformed(evt);
-            }
-        });
-
-        Direccion.setBackground(new java.awt.Color(255, 255, 255));
-        Direccion.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Direccion.setForeground(new java.awt.Color(51, 51, 51));
-
-        Cod.setBackground(new java.awt.Color(255, 255, 255));
-        Cod.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Cod.setForeground(new java.awt.Color(51, 51, 51));
-        Cod.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                CodKeyTyped(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel9.setText("Código");
-
-        Cancelar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Cancelar.setForeground(new java.awt.Color(51, 102, 255));
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(Cod, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(TelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel3)
-                    .addComponent(NombresC, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(ApellidosC, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(Direccion))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GuardarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AcualizarCliente))
-                .addGap(66, 66, 66))
+        javax.swing.GroupLayout GuardarLayout = new javax.swing.GroupLayout(Guardar);
+        Guardar.setLayout(GuardarLayout);
+        GuardarLayout.setHorizontalGroup(
+            GuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GuardarLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel8))
-                .addGap(4, 4, 4)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NombresC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ApellidosC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GuardarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AcualizarCliente)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+        GuardarLayout.setVerticalGroup(
+            GuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        Actualizar.setBackground(new java.awt.Color(51, 102, 255));
+        Actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ActualizarMouseClicked(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Actualizar");
+
+        javax.swing.GroupLayout ActualizarLayout = new javax.swing.GroupLayout(Actualizar);
+        Actualizar.setLayout(ActualizarLayout);
+        ActualizarLayout.setHorizontalGroup(
+            ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(23, 23, 23))
+        );
+        ActualizarLayout.setVerticalGroup(
+            ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+
+        Cancelar.setBackground(new java.awt.Color(51, 102, 255));
+        Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CancelarMouseClicked(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Cancelar");
+
+        javax.swing.GroupLayout CancelarLayout = new javax.swing.GroupLayout(Cancelar);
+        Cancelar.setLayout(CancelarLayout);
+        CancelarLayout.setHorizontalGroup(
+            CancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CancelarLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        CancelarLayout.setVerticalGroup(
+            CancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 235, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 235, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4)
+                    .addComponent(Nombres)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jSeparator1)
+                    .addComponent(Ced)
+                    .addComponent(jSeparator2)
+                    .addComponent(Apellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(jSeparator3))
+                .addGap(86, 86, 86)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5)
+                    .addComponent(Telefono)
+                    .addComponent(jSeparator4)
+                    .addComponent(jLabel6)
+                    .addComponent(Correo)
+                    .addComponent(jSeparator6)
+                    .addComponent(jLabel7)
+                    .addComponent(direc)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ced, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7))
+                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(direc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ApellidosCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosCKeyTyped
-        char car = evt.getKeyChar();
-        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
-            && car != 'á'
-            && car != 'é'
-            && car != 'í'
-            && car != 'ó'
-            && car != 'ú'
-            && car != 'Á'
-            && car != 'É'
-            && car != 'Í'
-            && car != 'Ó'
-            && car != 'Ú'
-            && car != 'Ü'
-            && car != 'ü'
-            && car != 'Ñ'
-            && car != 'ñ'
-            && (car != (char) KeyEvent.VK_SPACE)) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_ApellidosCKeyTyped
-
-    private void NombresCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombresCKeyTyped
-        char car = evt.getKeyChar();
-        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
-            && car != 'á'
-            && car != 'é'
-            && car != 'í'
-            && car != 'ó'
-            && car != 'ú'
-            && car != 'Á'
-            && car != 'É'
-            && car != 'Í'
-            && car != 'Ó'
-            && car != 'Ú'
-            && car != 'Ü'
-            && car != 'ü'
-            && car != 'Ñ'
-            && car != 'ñ'
-            && (car != (char) KeyEvent.VK_SPACE)) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_NombresCKeyTyped
-
-    private void CorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorreoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CorreoKeyTyped
-
-    private void GuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarClienteActionPerformed
-        CRUDCliente cl = new CRUDCliente();
+    private void GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseClicked
         try {
-            if ((Cedula.getText().equals("   -      -     "))
-                || (NombresC.getText().equals(""))
-                || (ApellidosC.getText().equals(""))
-                || (Direccion.getText().equals(""))
-                || (TelCliente.getText().equals("    -    "))
-                || (Correo.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
-            } else {
-                if (cl.verificarDatos(Cedula.getText())) {
-                    JOptionPane.showMessageDialog(null, "Ya existe Cliente con esa Cédula");
-                } else {
-                    guardarCliente();
-                    limpiar();
-                    mostrar();
-                    AcualizarCliente.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
-                }
+            if ((Ced.getText().equals("   -      -     ")
+                || (Nombres.getText().equals(""))
+                || (Apellidos.getText().equals(""))
+                || (direc.getText().equals(""))
+                || (Telefono.getText().equals("    -    "))
+                || Correo.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+        } else {
+            guardarCliente();
+            limpiar();
+            mostrar();
+            GestionCliente cli = new GestionCliente();
+        cli.setSize(560, 970);
+        cli.setLocation(0,0);
 
-            }
+        Main.mainForm.removeAll();
+        Main.mainForm.add(cli, BorderLayout.CENTER);
+        Main.mainForm.revalidate();
+        Main.mainForm.repaint();
+            JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+        }
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-    }//GEN-LAST:event_GuardarClienteActionPerformed
+    }//GEN-LAST:event_GuardarMouseClicked
 
-    private void AcualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcualizarClienteActionPerformed
+    private void ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarMouseClicked
         try {
-            if ((Cedula.getText().equals("   -      -     "))
-                ||(NombresC.getText().equals(""))
-                || (ApellidosC.getText().equals(""))
-                || (Direccion.getText().equals(""))
-                || (TelCliente.getText().equals("    -    "))
+            if ((Ced.getText().equals(""))
+                || (Nombres.getText().equals(""))
+                || (Apellidos.getText().equals(""))
+                || (direc.getText().equals(""))
+                || (Telefono.getText().equals(""))
                 || (Correo.getText().equals(""))) {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
             } else {
                 editarCliente();
                 mostrar();
                 limpiar();
-                AcualizarCliente.setVisible(false);
-                GuardarCliente.setVisible(true);
-                Cedula.setEnabled(true);
-                Cancelar.setVisible(false);
+                GestionCliente cli = new GestionCliente();
+        cli.setSize(560, 970);
+        cli.setLocation(0,0);
+
+        Main.mainForm.removeAll();
+        Main.mainForm.add(cli, BorderLayout.CENTER);
+        Main.mainForm.revalidate();
+        Main.mainForm.repaint();
+
                 JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
 
             }
@@ -478,40 +445,91 @@ public class Cliente extends javax.swing.JInternalFrame {
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-    }//GEN-LAST:event_AcualizarClienteActionPerformed
+    }//GEN-LAST:event_ActualizarMouseClicked
 
-    private void CodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CodKeyTyped
+    private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
+         GestionCliente cli = new GestionCliente();
+        cli.setSize(560, 970);
+        cli.setLocation(0,0);
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        limpiar();
-        dispose();
+        Main.mainForm.removeAll();
+        Main.mainForm.add(cli, BorderLayout.CENTER);
+        Main.mainForm.revalidate();
+        Main.mainForm.repaint();
+    }//GEN-LAST:event_CancelarMouseClicked
 
-    }//GEN-LAST:event_CancelarActionPerformed
+    private void NombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombresKeyTyped
+         char car = evt.getKeyChar();
+        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
+            && car != 'á'
+            && car != 'é'
+            && car != 'í'
+            && car != 'ó'
+            && car != 'ú'
+            && car != 'Á'
+            && car != 'É'
+            && car != 'Í'
+            && car != 'Ó'
+            && car != 'Ú'
+            && car != 'Ü'
+            && car != 'ü'
+            && car != 'Ñ'
+            && car != 'ñ'
+            && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombresKeyTyped
+
+    private void ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ApellidosKeyTyped
+         char car = evt.getKeyChar();
+        if ((car< 'a' || car> 'z')&& (car < 'A' || car> 'z')
+            && car != 'á'
+            && car != 'é'
+            && car != 'í'
+            && car != 'ó'
+            && car != 'ú'
+            && car != 'Á'
+            && car != 'É'
+            && car != 'Í'
+            && car != 'Ó'
+            && car != 'Ú'
+            && car != 'Ü'
+            && car != 'ü'
+            && car != 'Ñ'
+            && car != 'ñ'
+            && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ApellidosKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AcualizarCliente;
-    public static javax.swing.JTextField ApellidosC;
-    private javax.swing.JButton Cancelar;
-    public static javax.swing.JFormattedTextField Cedula;
-    public static javax.swing.JTextField Cod;
+    public static Vista.Menu.BorderPanel Actualizar;
+    public static javax.swing.JTextField Apellidos;
+    private Vista.Menu.BorderPanel Cancelar;
+    public static javax.swing.JFormattedTextField Ced;
     public static javax.swing.JTextField Correo;
-    public static javax.swing.JTextField Direccion;
-    private javax.swing.JButton GuardarCliente;
-    public static javax.swing.JTextField NombresC;
-    public static javax.swing.JFormattedTextField TelCliente;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JInternalFrame jInternalFrame3;
+    public static Vista.Menu.BorderPanel Guardar;
+    public static javax.swing.JTextField Nombres;
+    public static javax.swing.JFormattedTextField Telefono;
+    public static javax.swing.JTextField direc;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     // End of variables declaration//GEN-END:variables
 }

@@ -44,6 +44,32 @@ public class CRUDMarca {
         }
     }
     
+    public DefaultTableModel mostrarDatos() {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"Código de marca", "Nombre de Marca"};
+        String[] registro = new String[2];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarMarca}");
+            rs = cbstc.executeQuery();
+
+            while (rs.next()) {
+                registro[0] = rs.getString("IDMarca");
+                registro[1] = rs.getString("NombreMarca");
+
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+
+    }
+    
     public boolean verificarDatos(String dato) {
         ResultSet rs;
 

@@ -16,6 +16,11 @@ public class POJOPresentacion {
         this.FormaDosificacion = FormaDosificacion;
     }
 
+    public POJOPresentacion(String FormaDosificacion) {
+        this.FormaDosificacion = FormaDosificacion;
+    }
+
+
     //Constructor vacío
     public POJOPresentacion() {
     }

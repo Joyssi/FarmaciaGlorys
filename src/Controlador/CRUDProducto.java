@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 /**
  *
  * @author Joy Cruz
@@ -15,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
 public class CRUDProducto {
  
       private final Conexion con = new Conexion();
-    private final Connection cn = (Connection) con.conectar();
+    private Connection cn = (Connection) con.conectar();
+    PreparedStatement ps;
+    ResultSet rs;
 
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
@@ -49,6 +52,32 @@ public class CRUDProducto {
             return null;
         }
 
+    }
+    
+    public POJOProducto listarID(int id) {
+        POJOProducto p = new POJOProducto();
+        String sql="select * from producto where IDProducto=?";
+        try{
+            cn=con.conectar();
+            ps=cn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs=ps.executeQuery();
+            while (rs.next()) {
+                p.setIDProducto(rs.getInt(1));
+                p.setNomProducto(rs.getString(2));
+                p.setDescripProducto(rs.getString(3));
+                p.setCantProducto(rs.getInt(4));
+                p.setPrecioProducto(rs.getDouble(5));
+                p.setFechaVencimiento(rs.getString(6));
+                p.setIDMarca(rs.getInt(7));
+                p.setIDCategoria(rs.getInt(8));
+                p.setIDPresentacion(rs.getInt(9));
+            }
+            
+        }catch (Exception e){
+            
+        }
+        return p;
     }
     
     public ArrayList mostrarDatosCombo() {
@@ -164,7 +193,7 @@ public class CRUDProducto {
 
     public void Guardar(POJOProducto cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call InsertarProductos(?,?,?,?,?,?,?,?)}");
             cbst.setString(1, cl.getNomProducto());
             cbst.setString(2, cl.getDescripProducto());
             cbst.setInt(3, cl.getCantProducto());

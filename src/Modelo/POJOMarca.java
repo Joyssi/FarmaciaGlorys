@@ -16,6 +16,11 @@ public class POJOMarca {
         this.NombreMarca = NombreMarca;
     }
 
+    public POJOMarca(String NombreMarca) {
+        this.NombreMarca = NombreMarca;
+    }
+
+
     //Constructor vacío
     public POJOMarca() {
     }

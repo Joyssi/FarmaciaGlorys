@@ -60,6 +60,32 @@ public class CRUDPresentacion {
         }
 
     }
+    
+      public DefaultTableModel mostrarDatos() {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"Código de presentación", "Forma de Dosificación"};
+        String[] registro = new String[2];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarPresentacion}");
+            rs = cbstc.executeQuery();
+
+            while (rs.next()) {
+                registro[0] = rs.getString("IDPresentacion");
+                registro[1] = rs.getString("FormaDosificacion");
+
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+
+    }
 
     public void Guardar(POJOPresentacion cl) {
         try {

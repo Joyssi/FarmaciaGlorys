@@ -21,8 +21,9 @@ public class CRUDCompra {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor"};
-        String[] registro = new String[3];
+        String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor",
+            "Código de Producto", "Precio de Compra", "Cantidad de productos comprados"};
+        String[] registro = new String[6];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -34,6 +35,9 @@ public class CRUDCompra {
                 registro[0] = rs.getString("IDCompra");
                 registro[1] = rs.getString("FechaCompra");
                 registro[2] = rs.getString("CedulaP");
+                registro[3] = rs.getString("IDProducto");
+                registro[4] = rs.getString("PrecioCompra");
+                registro[5] = rs.getString("CantProductosComprados");
 
                 modelo.addRow(registro);
             }
@@ -55,7 +59,7 @@ public class CRUDCompra {
         modelo = new DefaultTableModel(null, titulos);
 
         try {
-            CallableStatement call = cn.prepareCall("{call ConsultarCompra(?)}");
+            CallableStatement call = cn.prepareCall("{call ConsultarCompras(?)}");
             call.setString(1, dato);
             rs = call.executeQuery();
 
@@ -77,7 +81,7 @@ public class CRUDCompra {
         ResultSet rs;
 
         try {
-            CallableStatement call = cn.prepareCall("{call ConsultarCompra(?)}");
+            CallableStatement call = cn.prepareCall("{call ConsultarCompras(?)}");
             call.setString(1, dato);
             rs = call.executeQuery();
 
@@ -102,16 +106,7 @@ public class CRUDCompra {
         }
     }
     
-//      public void eliminar(String dato) {
-//        try {
-//            CallableStatement cbst = cn.prepareCall("{call EliminarCompra(?)}");
-//            cbst.setString(1, dato);
-//            cbst.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//    }
+
 //    
 //    public void actualizar(POJOCompra cl) {
 //        try {

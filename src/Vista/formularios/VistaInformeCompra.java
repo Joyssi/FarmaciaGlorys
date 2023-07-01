@@ -4,7 +4,6 @@
  */
 package Vista.formularios;
 import Controlador.CRUDCompra;
-import Vista.Menu.Menu;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
@@ -216,13 +215,13 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BuscarCompraKeyReleased
 
     private void AgregarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompraActionPerformed
-        VistaCompra com = new VistaCompra();
-        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
-        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
-        com.setLocation(x, y);
-        Menu.desktopPane.add(com);
-        com.toFront();
-        com.setVisible(true);
+//        VistaCompra com = new VistaCompra();
+//        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
+//        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
+//        com.setLocation(x, y);
+//        Menu.desktopPane.add(com);
+//        com.toFront();
+//        com.setVisible(true);
     }//GEN-LAST:event_AgregarCompraActionPerformed
 
     private void BuscarCompraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarCompraFocusLost
@@ -235,13 +234,13 @@ public class VistaInformeCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BuscarCompraMouseClicked
 
     private void DetalleCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetalleCompraActionPerformed
-        DetallaVenta com = new DetallaVenta();
-        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
-        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
-        com.setLocation(x, y);
-        Menu.desktopPane.add(com);
-        com.toFront();
-        com.setVisible(true);
+//        DetallaVenta com = new DetallaVenta();
+//        int x = (Menu.desktopPane.getWidth() / 2) - com.getWidth() / 2;
+//        int y = (Menu.desktopPane.getHeight() / 2) - com.getHeight() / 2;
+//        com.setLocation(x, y);
+//        Menu.desktopPane.add(com);
+//        com.toFront();
+//        com.setVisible(true);
     }//GEN-LAST:event_DetalleCompraActionPerformed
 
     private void EditarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarCompraActionPerformed
