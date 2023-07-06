@@ -8,12 +8,12 @@ package Vista.formularios;
  *
  * @author Joy Cruz
  */
-public class form extends javax.swing.JPanel {
+public class button extends javax.swing.JPanel {
 
     /**
-     * Creates new form form
+     * Creates new form button
      */
-    public form() {
+    public button() {
         initComponents();
     }
 
