@@ -196,7 +196,6 @@ public class Producto extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         Cantidad = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        Vencimiento = new javax.swing.JFormattedTextField();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         ComboCategoria = new javax.swing.JComboBox<>();
@@ -219,6 +218,7 @@ public class Producto extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         CategoriaDatos = new javax.swing.JButton();
         DatosDosificacion = new javax.swing.JButton();
+        Vencimiento = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -296,16 +296,6 @@ public class Producto extends javax.swing.JPanel {
         Cantidad.setBorder(null);
 
         jSeparator5.setForeground(new java.awt.Color(51, 102, 255));
-
-        Vencimiento.setBackground(new java.awt.Color(255, 255, 255));
-        Vencimiento.setBorder(null);
-        Vencimiento.setForeground(new java.awt.Color(51, 51, 51));
-        try {
-            Vencimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        Vencimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jSeparator6.setForeground(new java.awt.Color(51, 102, 255));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -495,6 +485,12 @@ public class Producto extends javax.swing.JPanel {
             }
         });
 
+        Vencimiento.setBackground(new java.awt.Color(255, 255, 255));
+        Vencimiento.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        Vencimiento.setForeground(new java.awt.Color(51, 51, 51));
+        Vencimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Vencimiento.setBorder(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -528,13 +524,13 @@ public class Producto extends javax.swing.JPanel {
                             .addComponent(jSeparator8)
                             .addComponent(ComboCategoria, 0, 330, Short.MAX_VALUE)
                             .addComponent(jSeparator7)
-                            .addComponent(Vencimiento)
                             .addComponent(jLabel5)
                             .addComponent(ComboDosificacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator9)
                             .addComponent(jLabel8)
                             .addComponent(ComboMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator10))
+                            .addComponent(jSeparator10)
+                            .addComponent(Vencimiento))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(94, 94, 94)
@@ -590,11 +586,11 @@ public class Producto extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Vencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Vencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -618,9 +614,9 @@ public class Producto extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(ComboDosificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(CategoriaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(CategoriaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ComboDosificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(DatosDosificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -781,7 +777,7 @@ public class Producto extends javax.swing.JPanel {
     public static javax.swing.JTextField Nombre;
     public static javax.swing.JTextField Precio;
     private Vista.Menu.BorderPanel Presentacion;
-    public static javax.swing.JFormattedTextField Vencimiento;
+    public static javax.swing.JTextField Vencimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

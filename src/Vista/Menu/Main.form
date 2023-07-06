@@ -6,28 +6,8 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuDarkMode">
-          <Properties>
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuDarkModeActionPerformed"/>
-          </Events>
-          <SubComponents>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Modo Oscuro"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
@@ -77,14 +57,14 @@
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="mainForm" max="32767" attributes="0"/>
-                      <Component id="panelGradient1" pref="629" max="32767" attributes="0"/>
+                      <Component id="panelGradient1" pref="1058" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="menu1" max="32767" attributes="0"/>
+              <Component id="menu1" pref="518" max="32767" attributes="0"/>
               <Component id="mainForm1" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <Component id="panelGradient1" min="-2" pref="173" max="-2" attributes="0"/>
@@ -115,114 +95,58 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="Dise&#xf1;o.MenuItem" name="menuItem1">
+            <Component class="Dise&#xf1;o.MenuItem" name="Inicio">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="33" red="33" type="rgb"/>
+                  <Color blue="cc" green="0" red="66" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="33" red="ff" type="rgb"/>
+                  <Color blue="ff" green="66" red="99" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="menuItem1"/>
-                <Property name="menuIcon" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="7">
-                    <StringItem index="0" value="Icon/Registros.png"/>
-                    <StringItem index="1" value="Icon/Registros.png"/>
-                    <StringItem index="2" value="Icon/Registros.png"/>
-                    <StringItem index="3" value="Icon/Registros.png"/>
-                    <StringItem index="4" value="Icon/Registros.png"/>
-                    <StringItem index="5" value="Icon/Registros.png"/>
-                    <StringItem index="6" value=" "/>
-                  </StringArray>
-                </Property>
-                <Property name="menuModel" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="7">
-                    <StringItem index="0" value="Gesti&#xf3;n de Productos"/>
-                    <StringItem index="1" value="Gesti&#xf3;n de Ventas"/>
-                    <StringItem index="2" value="Gesti&#xf3;n de Compras"/>
-                    <StringItem index="3" value="Gesti&#xf3;n de Clientes"/>
-                    <StringItem index="4" value="Gesti&#xf3;n de Proveedores"/>
-                    <StringItem index="5" value="Gesti&#xf3;n de Empleados"/>
-                    <StringItem index="6" value=" "/>
-                  </StringArray>
-                </Property>
+                <Property name="text" type="java.lang.String" value="menuItem5"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InicioActionPerformed"/>
               </Events>
             </Component>
-            <Component class="Dise&#xf1;o.MenuItem" name="menuItem2">
+            <Component class="Dise&#xf1;o.MenuItem" name="Cat&#xe1;logos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="66" red="0" type="rgb"/>
+                  <Color blue="99" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="0" red="cc" type="rgb"/>
+                  <Color blue="66" green="66" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="menuItem2"/>
-                <Property name="menuIcon" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="Icon/Nuevo.png"/>
-                    <StringItem index="1" value="Icon/Nuevo.png"/>
-                    <StringItem index="2" value="Icon/Nuevo.png"/>
-                    <StringItem index="3" value="Icon/Nuevo.png"/>
-                    <StringItem index="4" value="Icon/Nuevo.png"/>
-                    <StringItem index="5" value="Icon/Nuevo.png"/>
-                  </StringArray>
-                </Property>
-                <Property name="menuModel" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="Nuevo Producto"/>
-                    <StringItem index="1" value="Nueva Venta"/>
-                    <StringItem index="2" value="Nueva Compra"/>
-                    <StringItem index="3" value="Nuevo Cliente"/>
-                    <StringItem index="4" value="Nuevo Proveedor"/>
-                    <StringItem index="5" value="Nuevo Empleado"/>
-                  </StringArray>
-                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Cat&#xe1;logosActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="Dise&#xf1;o.MenuItem" name="Reportes">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="menuItem1"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportesActionPerformed"/>
               </Events>
             </Component>
             <Component class="Dise&#xf1;o.MenuItem" name="menuItem3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="33" red="33" type="rgb"/>
+                  <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="0" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="menuItem3"/>
-                <Property name="menuIcon" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Icon/Informes.png"/>
-                    <StringItem index="1" value="Icon/Informes.png"/>
-                    <StringItem index="2" value="Icon/Informes.png"/>
-                  </StringArray>
-                </Property>
-                <Property name="menuModel" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Reporte de Productos"/>
-                    <StringItem index="1" value="Reporte de Venta"/>
-                    <StringItem index="2" value="Reporte de Compras"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="Dise&#xf1;o.MenuItem" name="menuItem5">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="33" type="rgb"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="33" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="menuItem5"/>
+                <Property name="text" type="java.lang.String" value="menuItem3"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem5ActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -284,11 +208,40 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xa1;Bienvenido!"/>
+                <Property name="text" type="java.lang.String" value="&#xa1;Bienvenido a Farmacia Glorys!"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="430" y="40" width="280" height="80"/>
+                  <AbsoluteConstraints x="290" y="10" width="660" height="80"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Viner Hand ITC" size="24" style="2"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sentimos contigo...."/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="290" y="80" width="240" height="30"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="VIVIMOS PARA TU SALUD"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="320" y="110" width="150" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

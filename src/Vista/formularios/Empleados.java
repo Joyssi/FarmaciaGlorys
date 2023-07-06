@@ -7,7 +7,6 @@ package Vista.formularios;
 import Controlador.CRUDEmpleado;
 import Modelo.POJOEmpleado;
 import Vista.Menu.Main;
-import static groovy.ui.text.FindReplaceUtility.dispose;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;

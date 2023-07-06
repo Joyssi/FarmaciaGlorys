@@ -9,6 +9,7 @@ import Vista.Menu.Main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,6 +28,12 @@ public class GestionEmpleado extends javax.swing.JPanel {
         initComponents();
                 mostrar();
         Mostrar.setVisible(false);
+        
+        TablaEmpleados.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
+        TablaEmpleados.getTableHeader().setOpaque(false);
+        TablaEmpleados.getTableHeader().setBackground(new Color(51,102,255));
+        TablaEmpleados.getTableHeader().setForeground(new Color(255,255,255));
+        TablaEmpleados.setRowHeight(25);
     }
     
       public void mostrar() {
@@ -72,7 +79,7 @@ public class GestionEmpleado extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/busqueda.png"))); // NOI18N
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -100,6 +107,7 @@ public class GestionEmpleado extends javax.swing.JPanel {
         TablaEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         TablaEmpleados.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         TablaEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        TablaEmpleados.setForeground(new java.awt.Color(51, 51, 51));
         TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -112,11 +120,13 @@ public class GestionEmpleado extends javax.swing.JPanel {
             }
         ));
         TablaEmpleados.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        TablaEmpleados.setGridColor(new java.awt.Color(51, 102, 255));
+        TablaEmpleados.setGridColor(new java.awt.Color(255, 255, 255));
         TablaEmpleados.setRowHeight(25);
+        TablaEmpleados.setSelectionBackground(new java.awt.Color(102, 153, 255));
         TablaEmpleados.setSelectionForeground(new java.awt.Color(255, 255, 255));
         TablaEmpleados.setShowGrid(false);
         TablaEmpleados.setShowHorizontalLines(true);
+        TablaEmpleados.getTableHeader().setReorderingAllowed(false);
         TablaEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaEmpleadosMouseClicked(evt);
@@ -210,29 +220,31 @@ public class GestionEmpleado extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1)
-                            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
-                        .addGap(56, 56, 56)
-                        .addComponent(Mostrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jSeparator1)
+                                            .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
+                                        .addGap(56, 56, 56)
+                                        .addComponent(Mostrar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(647, Short.MAX_VALUE)
                         .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

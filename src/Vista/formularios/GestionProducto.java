@@ -5,12 +5,22 @@
 package Vista.formularios;
 
 import Controlador.CRUDProducto;
+import Controlador.Conexion;
 import Vista.Menu.Main;
+import com.sun.jdi.connect.spi.Connection;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 /**
  *
@@ -27,6 +37,12 @@ public class GestionProducto extends javax.swing.JPanel {
         initComponents();
         mostrar();
         BotonMostrar.setVisible(false);
+        
+        TablaProductos.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
+        TablaProductos.getTableHeader().setOpaque(false);
+        TablaProductos.getTableHeader().setBackground(new Color(51,102,255));
+        TablaProductos.getTableHeader().setForeground(new Color(255,255,255));
+        TablaProductos.setRowHeight(25);
     }
 
       public void mostrar() {
@@ -62,6 +78,8 @@ public class GestionProducto extends javax.swing.JPanel {
         Nuevo = new Vista.Menu.BorderPanel();
         jLabel5 = new javax.swing.JLabel();
         BotonMostrar = new javax.swing.JButton();
+        Reporte = new Vista.Menu.BorderPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,6 +88,8 @@ public class GestionProducto extends javax.swing.JPanel {
         jLabel1.setText("Gestion de Productos");
 
         TablaProductos.setBackground(new java.awt.Color(255, 255, 255));
+        TablaProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        TablaProductos.setForeground(new java.awt.Color(51, 51, 51));
         TablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -81,6 +101,11 @@ public class GestionProducto extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablaProductos.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaProductos.setRowHeight(25);
+        TablaProductos.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        TablaProductos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        TablaProductos.getTableHeader().setReorderingAllowed(false);
         TablaProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaProductosMouseClicked(evt);
@@ -88,7 +113,7 @@ public class GestionProducto extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(TablaProductos);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/busqueda.png"))); // NOI18N
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -194,6 +219,31 @@ public class GestionProducto extends javax.swing.JPanel {
             }
         });
 
+        Reporte.setBackground(new java.awt.Color(51, 102, 255));
+        Reporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ReporteMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Reporte");
+
+        javax.swing.GroupLayout ReporteLayout = new javax.swing.GroupLayout(Reporte);
+        Reporte.setLayout(ReporteLayout);
+        ReporteLayout.setHorizontalGroup(
+            ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReporteLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel6)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        ReporteLayout.setVerticalGroup(
+            ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,6 +266,8 @@ public class GestionProducto extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,12 +293,12 @@ public class GestionProducto extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Editar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Borrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Nuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Borrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Nuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Reporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -330,6 +382,22 @@ public class GestionProducto extends javax.swing.JPanel {
         mostrar();
     }//GEN-LAST:event_BotonMostrarActionPerformed
 
+    private void ReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReporteMouseClicked
+          Conexion con = new Conexion();
+        java.sql.Connection cn = (java.sql.Connection) con.conectar();
+ 
+        String path = "C:\\Users\\Joy Cruz\\Downloads\\FarmaciaGlorys\\src\\Vista.Reportes\\ReporteProducto.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte, false);
+
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_ReporteMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.Menu.BorderPanel Borrar;
@@ -337,12 +405,14 @@ public class GestionProducto extends javax.swing.JPanel {
     private javax.swing.JTextField Buscar;
     private Vista.Menu.BorderPanel Editar;
     private Vista.Menu.BorderPanel Nuevo;
+    private Vista.Menu.BorderPanel Reporte;
     public static javax.swing.JTable TablaProductos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

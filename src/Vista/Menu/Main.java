@@ -4,18 +4,10 @@
  */
 package Vista.Menu;
 
-import Diseño.EventMenu;
-import Diseño.MainForm;
-import Diseño.MenuItem;
-import Vista.formularios.Inicio;
-import com.formdev.flatlaf.FlatDarculaLaf;
+
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.EventQueue;
+
 
 /**
  *
@@ -48,20 +40,19 @@ public class Main extends javax.swing.JFrame {
         Panel = new javax.swing.JPanel();
         menu1 = new Diseño.Menu();
         jLabel1 = new javax.swing.JLabel();
-        menuItem1 = new Diseño.MenuItem();
-        menuItem2 = new Diseño.MenuItem();
+        Inicio = new Diseño.MenuItem();
+        Catálogos = new Diseño.MenuItem();
+        Reportes = new Diseño.MenuItem();
         menuItem3 = new Diseño.MenuItem();
-        menuItem5 = new Diseño.MenuItem();
         mainForm1 = new Diseño.MainForm();
         mainForm = new Diseño.MainForm();
         panelGradient1 = new Diseño.PanelGradient();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        menuDarkMode = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,70 +63,40 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logo.png"))); // NOI18N
         menu1.add(jLabel1);
 
-        menuItem1.setBackground(new java.awt.Color(51, 51, 255));
-        menuItem1.setForeground(new java.awt.Color(255, 51, 204));
-        menuItem1.setText("menuItem1");
-        menuItem1.setMenuIcon(new javax.swing.AbstractListModel() {
-            String[] strings = { "Icon/Registros.png", "Icon/Registros.png", "Icon/Registros.png", "Icon/Registros.png", "Icon/Registros.png", "Icon/Registros.png", " " };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        menuItem1.setMenuModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Gestión de Productos", "Gestión de Ventas", "Gestión de Compras", "Gestión de Clientes", "Gestión de Proveedores", "Gestión de Empleados", " " };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        menuItem1.addActionListener(new java.awt.event.ActionListener() {
+        Inicio.setBackground(new java.awt.Color(102, 0, 204));
+        Inicio.setForeground(new java.awt.Color(153, 102, 255));
+        Inicio.setText("menuItem5");
+        Inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItem1ActionPerformed(evt);
+                InicioActionPerformed(evt);
             }
         });
-        menu1.add(menuItem1);
+        menu1.add(Inicio);
 
-        menuItem2.setBackground(new java.awt.Color(0, 102, 204));
-        menuItem2.setForeground(new java.awt.Color(204, 0, 255));
-        menuItem2.setText("menuItem2");
-        menuItem2.setMenuIcon(new javax.swing.AbstractListModel() {
-            String[] strings = { "Icon/Nuevo.png", "Icon/Nuevo.png", "Icon/Nuevo.png", "Icon/Nuevo.png", "Icon/Nuevo.png", "Icon/Nuevo.png" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        menuItem2.setMenuModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Nuevo Producto", "Nueva Venta", "Nueva Compra", "Nuevo Cliente", "Nuevo Proveedor", "Nuevo Empleado" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        menuItem2.addActionListener(new java.awt.event.ActionListener() {
+        Catálogos.setBackground(new java.awt.Color(255, 0, 153));
+        Catálogos.setForeground(new java.awt.Color(255, 102, 102));
+        Catálogos.setText("menuItem2");
+        Catálogos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItem2ActionPerformed(evt);
+                CatálogosActionPerformed(evt);
             }
         });
-        menu1.add(menuItem2);
+        menu1.add(Catálogos);
 
-        menuItem3.setBackground(new java.awt.Color(51, 51, 255));
-        menuItem3.setForeground(new java.awt.Color(255, 0, 255));
+        Reportes.setBackground(new java.awt.Color(0, 102, 102));
+        Reportes.setForeground(new java.awt.Color(0, 204, 204));
+        Reportes.setText("menuItem1");
+        Reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportesActionPerformed(evt);
+            }
+        });
+        menu1.add(Reportes);
+
+        menuItem3.setBackground(new java.awt.Color(0, 0, 204));
+        menuItem3.setForeground(new java.awt.Color(51, 102, 255));
         menuItem3.setText("menuItem3");
-        menuItem3.setMenuIcon(new javax.swing.AbstractListModel() {
-            String[] strings = { "Icon/Informes.png", "Icon/Informes.png", "Icon/Informes.png" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        menuItem3.setMenuModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Reporte de Productos", "Reporte de Venta", "Reporte de Compras" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         menu1.add(menuItem3);
-
-        menuItem5.setBackground(new java.awt.Color(51, 102, 255));
-        menuItem5.setForeground(new java.awt.Color(255, 51, 204));
-        menuItem5.setText("menuItem5");
-        menuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItem5ActionPerformed(evt);
-            }
-        });
-        menu1.add(menuItem5);
 
         mainForm1.setBackground(new java.awt.Color(255, 255, 255));
         mainForm1.setForeground(new java.awt.Color(102, 153, 255));
@@ -151,9 +112,20 @@ public class Main extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 2, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("¡Bienvenido!");
+        jLabel3.setText("¡Bienvenido a Farmacia Glorys!");
         panelGradient1.add(jLabel3);
-        jLabel3.setBounds(430, 40, 280, 80);
+        jLabel3.setBounds(290, 10, 660, 80);
+
+        jLabel4.setFont(new java.awt.Font("Viner Hand ITC", 2, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Sentimos contigo....");
+        panelGradient1.add(jLabel4);
+        jLabel4.setBounds(290, 80, 240, 30);
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("VIVIMOS PARA TU SALUD");
+        panelGradient1.add(jLabel5);
+        jLabel5.setBounds(320, 110, 150, 16);
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
@@ -166,11 +138,11 @@ public class Main extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)))
+                    .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
             .addComponent(mainForm1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
                 .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,23 +150,8 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Opciones");
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        menuDarkMode.setText("Opciones");
-        menuDarkMode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuDarkModeActionPerformed(evt);
-            }
-        });
-
-        jCheckBoxMenuItem1.setText("Modo Oscuro");
-        menuDarkMode.add(jCheckBoxMenuItem1);
-
-        jMenuBar1.add(menuDarkMode);
 
         setJMenuBar(jMenuBar1);
 
@@ -213,56 +170,32 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem1ActionPerformed
-       Menup menu = new Menup();
-         
-         mainForm1.removeAll();
-         mainForm1.add(menu, BorderLayout.CENTER);
-         mainForm1.revalidate();
-         mainForm1.repaint();  
-    }//GEN-LAST:event_menuItem1ActionPerformed
-
-    private void menuDarkModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDarkModeActionPerformed
-        if (menuDarkMode.isSelected()){
-            EventQueue.invokeLater(new Runnable(){
-                @Override
-                public void run() {
-                    FlatAnimatedLafChange.showSnapshot();
-                    FlatDarculaLaf.setup();
-                    FlatLaf.updateUI();
-                    FlatAnimatedLafChange.hideSnapshotWithAnimation();
-                }
-            });
-        }else{
-            EventQueue.invokeLater(new Runnable(){
-                @Override
-                public void run() {
-                    FlatAnimatedLafChange.showSnapshot();
-                    FlatIntelliJLaf.setup();
-                    FlatLaf.updateUI();
-                    FlatAnimatedLafChange.hideSnapshotWithAnimation();
-                }
-            });
-        }
-    }//GEN-LAST:event_menuDarkModeActionPerformed
-
-    private void menuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem5ActionPerformed
+    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
          InicioMenu menu = new InicioMenu();
          
          mainForm1.removeAll();
          mainForm1.add(menu, BorderLayout.CENTER);
          mainForm1.revalidate();
          mainForm1.repaint();
-    }//GEN-LAST:event_menuItem5ActionPerformed
+    }//GEN-LAST:event_InicioActionPerformed
 
-    private void menuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem2ActionPerformed
-        SubMenu1 menu = new SubMenu1();
+    private void CatálogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CatálogosActionPerformed
+         Menup menu = new Menup();
          
          mainForm1.removeAll();
          mainForm1.add(menu, BorderLayout.CENTER);
          mainForm1.revalidate();
-         mainForm1.repaint();
-    }//GEN-LAST:event_menuItem2ActionPerformed
+         mainForm1.repaint();  
+    }//GEN-LAST:event_CatálogosActionPerformed
+
+    private void ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesActionPerformed
+        MenuReportes report = new MenuReportes();
+         
+         mainForm1.removeAll();
+         mainForm1.add(report, BorderLayout.CENTER);
+         mainForm1.revalidate();
+         mainForm1.repaint();  
+    }//GEN-LAST:event_ReportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,22 +211,21 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Diseño.MenuItem Catálogos;
+    private Diseño.MenuItem Inicio;
     private javax.swing.JPanel Panel;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private Diseño.MenuItem Reportes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     public static Diseño.MainForm mainForm;
     private Diseño.MainForm mainForm1;
     private Diseño.Menu menu1;
-    private javax.swing.JMenu menuDarkMode;
-    private Diseño.MenuItem menuItem1;
-    private Diseño.MenuItem menuItem2;
     private Diseño.MenuItem menuItem3;
-    private Diseño.MenuItem menuItem5;
     private Diseño.PanelGradient panelGradient1;
     // End of variables declaration//GEN-END:variables
 }

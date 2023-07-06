@@ -53,7 +53,7 @@ public class Menup extends javax.swing.JPanel {
         subMenuPanel1.setForeground(new java.awt.Color(51, 51, 51));
 
         Producto.setBackground(new java.awt.Color(204, 204, 255));
-        Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Registros.png"))); // NOI18N
+        Producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/gestion.png"))); // NOI18N
         Producto.setText("Gestión de Productos");
         Producto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
         Producto.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +64,7 @@ public class Menup extends javax.swing.JPanel {
         subMenuPanel1.add(Producto);
 
         Venta.setBackground(new java.awt.Color(204, 204, 255));
+        Venta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/tienda.png"))); // NOI18N
         Venta.setText("Gestion de Ventas");
         Venta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
         Venta.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +75,7 @@ public class Menup extends javax.swing.JPanel {
         subMenuPanel1.add(Venta);
 
         Compra.setBackground(new java.awt.Color(204, 204, 255));
+        Compra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/carrito-de-compras.png"))); // NOI18N
         Compra.setText("Gestión de Compras");
         Compra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
         Compra.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +86,7 @@ public class Menup extends javax.swing.JPanel {
         subMenuPanel1.add(Compra);
 
         Cliente.setBackground(new java.awt.Color(204, 204, 255));
+        Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/usuarios.png"))); // NOI18N
         Cliente.setText("Gestión de Clientes");
         Cliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
         Cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +97,7 @@ public class Menup extends javax.swing.JPanel {
         subMenuPanel1.add(Cliente);
 
         Proveedor.setBackground(new java.awt.Color(204, 204, 255));
+        Proveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/usuarios-alt.png"))); // NOI18N
         Proveedor.setText("Gestión de Proveedores");
         Proveedor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
         Proveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +108,7 @@ public class Menup extends javax.swing.JPanel {
         subMenuPanel1.add(Proveedor);
 
         Empleado.setBackground(new java.awt.Color(204, 204, 255));
+        Empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/gestion.png"))); // NOI18N
         Empleado.setText("Gestión de Empleados");
         Empleado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
         Empleado.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +122,7 @@ public class Menup extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(subMenuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(subMenuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,12 +198,12 @@ public class Menup extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cliente;
-    private javax.swing.JButton Compra;
-    private javax.swing.JButton Empleado;
-    private javax.swing.JButton Producto;
-    private javax.swing.JButton Proveedor;
-    private javax.swing.JButton Venta;
+    public static javax.swing.JButton Cliente;
+    public static javax.swing.JButton Compra;
+    public static javax.swing.JButton Empleado;
+    public static javax.swing.JButton Producto;
+    public static javax.swing.JButton Proveedor;
+    public static javax.swing.JButton Venta;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private Diseño.SubMenuPanel subMenuPanel1;

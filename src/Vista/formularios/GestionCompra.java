@@ -5,11 +5,19 @@
 package Vista.formularios;
 
 import Controlador.CRUDCompra;
+import Controlador.Conexion;
 import Vista.Menu.Main;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -25,6 +33,12 @@ public class GestionCompra extends javax.swing.JPanel {
     public GestionCompra() {
         initComponents();
         mostrar();
+        
+        TablaCompras.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
+        TablaCompras.getTableHeader().setOpaque(false);
+        TablaCompras.getTableHeader().setBackground(new Color(51,102,255));
+        TablaCompras.getTableHeader().setForeground(new Color(255,255,255));
+        TablaCompras.setRowHeight(25);
     }
     
     public void mostrar() {
@@ -58,6 +72,8 @@ public class GestionCompra extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         Nuevo = new Vista.Menu.BorderPanel();
         jLabel4 = new javax.swing.JLabel();
+        Reporte = new Vista.Menu.BorderPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -65,7 +81,7 @@ public class GestionCompra extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Gestión de Compras");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/busqueda.png"))); // NOI18N
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -91,6 +107,8 @@ public class GestionCompra extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
 
         TablaCompras.setBackground(new java.awt.Color(255, 255, 255));
+        TablaCompras.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        TablaCompras.setForeground(new java.awt.Color(51, 51, 51));
         TablaCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -102,6 +120,12 @@ public class GestionCompra extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablaCompras.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaCompras.setRowHeight(25);
+        TablaCompras.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        TablaCompras.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        TablaCompras.setShowHorizontalLines(true);
+        TablaCompras.getTableHeader().setReorderingAllowed(false);
         TablaCompras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaComprasMouseClicked(evt);
@@ -156,7 +180,32 @@ public class GestionCompra extends javax.swing.JPanel {
         );
         NuevoLayout.setVerticalGroup(
             NuevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
+        Reporte.setBackground(new java.awt.Color(51, 102, 255));
+        Reporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ReporteMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Reporte");
+
+        javax.swing.GroupLayout ReporteLayout = new javax.swing.GroupLayout(Reporte);
+        Reporte.setLayout(ReporteLayout);
+        ReporteLayout.setHorizontalGroup(
+            ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReporteLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(16, 16, 16))
+        );
+        ReporteLayout.setVerticalGroup(
+            ReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -167,6 +216,8 @@ public class GestionCompra extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,11 +245,12 @@ public class GestionCompra extends javax.swing.JPanel {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Reporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,16 +296,34 @@ public class GestionCompra extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BuscarKeyReleased
 
+    private void ReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReporteMouseClicked
+         Conexion con = new Conexion();
+        java.sql.Connection cn = (java.sql.Connection) con.conectar();
+ 
+        String path = "C:\\Users\\Joy Cruz\\Downloads\\FarmaciaGlorys\\src\\Vista.Reportes\\ReporteCompra.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte, false);
+
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_ReporteMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar;
     private Vista.Menu.BorderPanel Editar;
     private Vista.Menu.BorderPanel Nuevo;
+    private Vista.Menu.BorderPanel Reporte;
     public static javax.swing.JTable TablaCompras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

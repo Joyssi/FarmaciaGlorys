@@ -9,6 +9,7 @@ import Vista.Menu.Main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,12 @@ public class GestionProveedor extends javax.swing.JPanel {
     public GestionProveedor() {
         initComponents();
         mostrar();
+        
+        TablaProveedores.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
+        TablaProveedores.getTableHeader().setOpaque(false);
+        TablaProveedores.getTableHeader().setBackground(new Color(51,102,255));
+        TablaProveedores.getTableHeader().setForeground(new Color(255,255,255));
+        TablaProveedores.setRowHeight(25);
     }
 
      public void mostrar() {
@@ -69,7 +76,7 @@ public class GestionProveedor extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Gestión de Proveedores");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/busqueda.png"))); // NOI18N
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -98,6 +105,8 @@ public class GestionProveedor extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
 
         TablaProveedores.setBackground(new java.awt.Color(255, 255, 255));
+        TablaProveedores.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        TablaProveedores.setForeground(new java.awt.Color(51, 51, 51));
         TablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -109,6 +118,11 @@ public class GestionProveedor extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablaProveedores.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaProveedores.setRowHeight(25);
+        TablaProveedores.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        TablaProveedores.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        TablaProveedores.getTableHeader().setReorderingAllowed(false);
         TablaProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaProveedoresMouseClicked(evt);
@@ -205,7 +219,7 @@ public class GestionProveedor extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1)
                             .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))))
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addContainerGap(457, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -236,7 +250,7 @@ public class GestionProveedor extends javax.swing.JPanel {
                     .addComponent(Nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

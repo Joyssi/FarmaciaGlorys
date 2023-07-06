@@ -9,6 +9,7 @@ import Vista.Menu.Main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,13 @@ public class GestionCliente extends javax.swing.JPanel {
     public GestionCliente() {
         initComponents();
         mostrar();
+        
+        TablaClientes.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
+        TablaClientes.getTableHeader().setOpaque(false);
+        TablaClientes.getTableHeader().setBackground(new Color(51,102,255));
+        TablaClientes.getTableHeader().setForeground(new Color(255,255,255));
+        TablaClientes.setRowHeight(25);
+        
     }
     
     
@@ -69,7 +77,7 @@ public class GestionCliente extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Gestión de Clientes");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buscar1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/busqueda.png"))); // NOI18N
 
         Buscar.setBackground(new java.awt.Color(255, 255, 255));
         Buscar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -95,8 +103,30 @@ public class GestionCliente extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
 
         TablaClientes.setBackground(new java.awt.Color(255, 255, 255));
+        TablaClientes.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        TablaClientes.setForeground(new java.awt.Color(51, 51, 51));
         TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,6 +136,12 @@ public class GestionCliente extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablaClientes.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaClientes.setRowHeight(25);
+        TablaClientes.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        TablaClientes.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        TablaClientes.setShowHorizontalLines(true);
+        TablaClientes.getTableHeader().setReorderingAllowed(false);
         TablaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaClientesMouseClicked(evt);
@@ -228,10 +264,9 @@ public class GestionCliente extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Nuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

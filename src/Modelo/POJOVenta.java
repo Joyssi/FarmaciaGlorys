@@ -6,7 +6,7 @@ import java.util.Date;
  *
  * @author Joy Cruz
  */
-public class POJOVenta {
+public class POJOVenta extends POJOVentaProducto{
     
     //Atributos
     int IDVenta;
@@ -18,6 +18,17 @@ public class POJOVenta {
     //Constructor
 
     public POJOVenta(String CedulaE, String CedulaC, String FechaVenta, String DirecPedidoVenta) {
+        this.CedulaE = CedulaE;
+        this.CedulaC = CedulaC;
+        this.FechaVenta = FechaVenta;
+        this.DirecPedidoVenta = DirecPedidoVenta;
+    }
+    
+    //Contructor de herencia
+    public POJOVenta(String CedulaE, String CedulaC, String FechaVenta, String DirecPedidoVenta, 
+            int IDProducto, int CantProductosVendidos) {
+        super(IDProducto, CantProductosVendidos);  
+       this.IDVenta = IDVenta;
         this.CedulaE = CedulaE;
         this.CedulaC = CedulaC;
         this.FechaVenta = FechaVenta;

@@ -14,6 +14,8 @@ import Modelo.POJOCompraProducto;
 import Modelo.POJOProducto;
 import Vista.Menu.Main;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -39,6 +41,12 @@ public class Compra extends javax.swing.JPanel {
      
     public Compra() {
         initComponents();
+        
+        TablaProducto.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
+        TablaProducto.getTableHeader().setOpaque(false);
+        TablaProducto.getTableHeader().setBackground(new Color(51,102,255));
+        TablaProducto.getTableHeader().setForeground(new Color(255,255,255));
+        TablaProducto.setRowHeight(25);
     }
     
     public void mostrar() {
@@ -355,6 +363,9 @@ public class Compra extends javax.swing.JPanel {
 
         jSeparator10.setForeground(new java.awt.Color(51, 102, 255));
 
+        TablaProducto.setBackground(new java.awt.Color(255, 255, 255));
+        TablaProducto.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        TablaProducto.setForeground(new java.awt.Color(51, 51, 51));
         TablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -363,6 +374,11 @@ public class Compra extends javax.swing.JPanel {
                 "Código de Producto", "Nombre", "Cantidad", "Precio", "Total"
             }
         ));
+        TablaProducto.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaProducto.setRowHeight(25);
+        TablaProducto.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        TablaProducto.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        TablaProducto.getTableHeader().setReorderingAllowed(false);
         TablaProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaProductoMouseClicked(evt);
