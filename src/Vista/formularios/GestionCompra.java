@@ -233,8 +233,6 @@ public class GestionCompra extends javax.swing.JPanel {
      Main.mainForm.add(com, BorderLayout.CENTER);
      Main.mainForm.revalidate();
      Main.mainForm.repaint();
-     
-     Compra.Actualizar.setVisible(false);
     }//GEN-LAST:event_NuevoMouseClicked
 
     private void TablaComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaComprasMouseClicked

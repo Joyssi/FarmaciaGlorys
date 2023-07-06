@@ -144,7 +144,7 @@ public class Venta extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         TotalPaga = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
-        fecha = new javax.swing.JTextField();
+        fecha = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -688,10 +688,15 @@ public class Venta extends javax.swing.JPanel {
         jSeparator16.setForeground(new java.awt.Color(51, 102, 255));
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
-        fecha.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        fecha.setForeground(new java.awt.Color(51, 51, 51));
-        fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fecha.setBorder(null);
+        fecha.setForeground(new java.awt.Color(51, 51, 51));
+        try {
+            fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fecha.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -746,8 +751,8 @@ public class Venta extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -957,7 +962,7 @@ public class Venta extends javax.swing.JPanel {
     public static javax.swing.JTextField TotalPaga;
     public static javax.swing.JTextField codProducto;
     public static javax.swing.JTextField direc;
-    public static javax.swing.JTextField fecha;
+    public static javax.swing.JFormattedTextField fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
