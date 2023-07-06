@@ -75,20 +75,6 @@ public class Venta extends javax.swing.JPanel {
             NombreProducto.setText("");
         }
         
-         public void editarVenta() {
-
-        CRUDVenta venta = new CRUDVenta();
-
-        POJOVenta emp = new POJOVenta(
-                CedEmpleado.getText(),
-                CedCliente.getText(),
-                fecha.getText(),
-                direc.getText(),
-        Integer.parseInt(codProducto.getText()),
-        Integer.parseInt(Cantidad.getName()));
-        venta.actualizar(emp);
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,8 +139,6 @@ public class Venta extends javax.swing.JPanel {
         jSeparator14 = new javax.swing.JSeparator();
         Guardar = new Vista.Menu.BorderPanel();
         jLabel15 = new javax.swing.JLabel();
-        Actualizar = new Vista.Menu.BorderPanel();
-        jLabel16 = new javax.swing.JLabel();
         Cancelar = new Vista.Menu.BorderPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -665,31 +649,6 @@ public class Venta extends javax.swing.JPanel {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
         );
 
-        Actualizar.setBackground(new java.awt.Color(51, 102, 255));
-        Actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ActualizarMouseClicked(evt);
-            }
-        });
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Actualizar");
-
-        javax.swing.GroupLayout ActualizarLayout = new javax.swing.GroupLayout(Actualizar);
-        Actualizar.setLayout(ActualizarLayout);
-        ActualizarLayout.setHorizontalGroup(
-            ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(21, 21, 21))
-        );
-        ActualizarLayout.setVerticalGroup(
-            ActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
         Cancelar.setBackground(new java.awt.Color(51, 102, 255));
         Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -758,7 +717,6 @@ public class Venta extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(TotalPaga)
                             .addGroup(layout.createSequentialGroup()
@@ -805,10 +763,8 @@ public class Venta extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addGap(97, 97, 97)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TotalPaga, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -977,36 +933,9 @@ public class Venta extends javax.swing.JPanel {
      Main.mainForm.repaint();
     }//GEN-LAST:event_CancelarMouseClicked
 
-    private void ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarMouseClicked
-        try {
-            if ((CedEmpleado.getText().equals("   -      -     "))
-                || (CedCliente.getText().equals("   -      -     "))
-                || (fecha.getText().equals(""))
-                || (direc.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
-            }  
-            limpiar();
-            mostrar();
-            GestiónVenta venta = new GestiónVenta();
-     venta.setSize(560, 970);
-     venta.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(venta, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
-             JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
-
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e);
-        }
-
-    }//GEN-LAST:event_ActualizarMouseClicked
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static Vista.Menu.BorderPanel Actualizar;
     private Vista.Menu.BorderPanel AgregarProducto;
     private Vista.Menu.BorderPanel BorrarProducto;
     private Vista.Menu.BorderPanel BuscarCliente;
@@ -1036,7 +965,6 @@ public class Venta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;

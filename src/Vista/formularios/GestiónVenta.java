@@ -69,8 +69,6 @@ public class GestiónVenta extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaVenta = new javax.swing.JTable();
-        Editar = new Vista.Menu.BorderPanel();
-        jLabel4 = new javax.swing.JLabel();
         Nuevo = new Vista.Menu.BorderPanel();
         jLabel5 = new javax.swing.JLabel();
         Reporte = new Vista.Menu.BorderPanel();
@@ -132,31 +130,6 @@ public class GestiónVenta extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(TablaVenta);
-
-        Editar.setBackground(new java.awt.Color(51, 102, 255));
-        Editar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EditarMouseClicked(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Editar");
-
-        javax.swing.GroupLayout EditarLayout = new javax.swing.GroupLayout(Editar);
-        Editar.setLayout(EditarLayout);
-        EditarLayout.setHorizontalGroup(
-            EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(32, 32, 32))
-        );
-        EditarLayout.setVerticalGroup(
-            EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-        );
 
         Nuevo.setBackground(new java.awt.Color(51, 102, 255));
         Nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,9 +204,7 @@ public class GestiónVenta extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1072, Short.MAX_VALUE))
                         .addGap(37, 37, 37))))
         );
@@ -252,36 +223,11 @@ public class GestiónVenta extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Nuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Reporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void EditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMouseClicked
-         if (datoSeleccionado >= 0) {
-               Venta venta = new Venta();
-        Main.mainForm.removeAll();
-        Main.mainForm.add(venta, BorderLayout.CENTER);
-        Main.mainForm.revalidate();
-        Main.mainForm.repaint();
-            
-            //mandar datos al formulario
-            Venta.CedEmpleado.setText(String.valueOf(TablaVenta.getValueAt(datoSeleccionado, 1)));
-            Venta.CedCliente.setText(String.valueOf(TablaVenta.getValueAt(datoSeleccionado, 2)));
-            Venta.fecha.setText(String.valueOf(TablaVenta.getValueAt(datoSeleccionado, 3)));
-            Venta.direc.setText(String.valueOf(TablaVenta.getValueAt(datoSeleccionado, 4)));
-            Venta.codProducto.setText(String.valueOf(TablaVenta.getValueAt(datoSeleccionado, 5)));
-            Venta.CedEmpleado.enable(false);
-            Venta.CedCliente.enable(false);
-            Venta.Guardar.setVisible(false);
-            Venta.Actualizar.setVisible(true);
-             venta.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
-        }
-    }//GEN-LAST:event_EditarMouseClicked
 
     private void NuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoMouseClicked
      Venta venta = new Venta();
@@ -293,7 +239,6 @@ public class GestiónVenta extends javax.swing.JPanel {
      Main.mainForm.revalidate();
      Main.mainForm.repaint();
      
-     Venta.Actualizar.setVisible(false);
     }//GEN-LAST:event_NuevoMouseClicked
 
     private void TablaVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaVentaMouseClicked
@@ -340,14 +285,12 @@ public class GestiónVenta extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar;
-    private Vista.Menu.BorderPanel Editar;
     private Vista.Menu.BorderPanel Nuevo;
     private Vista.Menu.BorderPanel Reporte;
     public static javax.swing.JTable TablaVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
