@@ -112,33 +112,7 @@ public class CRUDVenta {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-        public void eliminar(int dato) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call EliminarVenta(?)}");
-            cbst.setInt(1, dato);
-            cbst.executeUpdate();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-
-    
-    public void actualizar(POJOVenta cl) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call ActualizarVenta(?,?,?,?,?)}");
-            cbst.setInt(1, cl.getIDVenta());
-            cbst.setString(2, cl.getCedulaE());
-            cbst.setString(3, cl.getCedulaC());
-            cbst.setString(4,  cl.getFechaVenta());
-            cbst.setString(5,cl.getDirecPedidoVenta());
-            cbst.executeUpdate();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
+   
 
 }
 
