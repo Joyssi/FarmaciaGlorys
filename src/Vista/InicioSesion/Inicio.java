@@ -289,13 +289,19 @@ public class Inicio extends javax.swing.JFrame {
 
     private void IniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarMouseClicked
        try{
-               if(usuario.getText().equals("Joy")
-                       || contraseña.getText().equals("123")) {
+               if(usuario.getText().equals("")
+                       || contraseña.getText().equals("")) {
+                   JOptionPane.showMessageDialog(null, "Ingrese usuario y contraseña");
+                   
+               }else{
+                   if(usuario.getText().equals("admin")
+                       || contraseña.getText().equals("12345")) {
                    JOptionPane.showMessageDialog(null, "Bienvenido");
                    Main menu = new Main();
                    menu.setVisible(true);
+                   dispose();
+                   }
                }
-           
        }catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error" + e);
 

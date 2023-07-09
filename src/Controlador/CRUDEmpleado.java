@@ -83,16 +83,16 @@ public class CRUDEmpleado {
 
     }
     
-     public String buscarDatosEmpleados(String dato) {
+     public String buscarDatosEmpleados(String Nombres) {
         ResultSet rs;
         String respuesta="";
 
         try {
             CallableStatement call = cn.prepareCall("{call ConsultarEmpleado(?)}");
-            call.setString(1, dato);
+            call.setString(1, Nombres);
             rs = call.executeQuery();
             while (rs.next()) {
-                respuesta = rs.getString("nombres")+" "+rs.getString("apellidos");
+                respuesta = rs.getString("Cedula");
             }
             return respuesta;
         } catch (SQLException e) {
