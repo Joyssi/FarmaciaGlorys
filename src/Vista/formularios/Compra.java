@@ -17,7 +17,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,11 +44,19 @@ public class Compra extends javax.swing.JPanel {
     public Compra() {
         initComponents();
         
+        Fecha.setText(fechaActual());
+        
         TablaProducto.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
         TablaProducto.getTableHeader().setOpaque(false);
         TablaProducto.getTableHeader().setBackground(new Color(51,102,255));
         TablaProducto.getTableHeader().setForeground(new Color(255,255,255));
         TablaProducto.setRowHeight(25);
+    }
+    
+     public static String fechaActual() {
+        Date fecha = new Date();
+        SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatofecha.format(fecha);
     }
     
     public void mostrar() {
@@ -107,12 +117,12 @@ public class Compra extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        NombreProveedor = new javax.swing.JTextField();
         BuscarProveedor = new Vista.Menu.BorderPanel();
         jLabel3 = new javax.swing.JLabel();
         CedProveedor = new javax.swing.JFormattedTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        NombreProveedor = new javax.swing.JTextField();
         Proveedor2 = new javax.swing.JLabel();
         Proveedor1 = new javax.swing.JLabel();
         Fecha = new javax.swing.JFormattedTextField();
@@ -162,13 +172,7 @@ public class Compra extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel2.setText("CED: Proveedor");
-
-        NombreProveedor.setBackground(new java.awt.Color(255, 255, 255));
-        NombreProveedor.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        NombreProveedor.setForeground(new java.awt.Color(51, 51, 51));
-        NombreProveedor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        NombreProveedor.setBorder(null);
+        jLabel2.setText("Proveedor");
 
         BuscarProveedor.setBackground(new java.awt.Color(51, 102, 255));
         BuscarProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,9 +213,15 @@ public class Compra extends javax.swing.JPanel {
 
         jSeparator2.setForeground(new java.awt.Color(51, 102, 255));
 
+        NombreProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        NombreProveedor.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        NombreProveedor.setForeground(new java.awt.Color(51, 51, 51));
+        NombreProveedor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        NombreProveedor.setBorder(null);
+
         Proveedor2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         Proveedor2.setForeground(new java.awt.Color(51, 102, 255));
-        Proveedor2.setText("Proveedor");
+        Proveedor2.setText("CED: Proveedor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,22 +229,19 @@ public class Compra extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CedProveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(NombreProveedor)
-                    .addComponent(jSeparator2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(CedProveedor)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                .addComponent(NombreProveedor))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(Proveedor2))
                 .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(Proveedor2)
-                    .addContainerGap(218, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,20 +251,17 @@ public class Compra extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(CedProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(NombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Proveedor2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CedProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(101, Short.MAX_VALUE)
-                    .addComponent(Proveedor2)
-                    .addGap(89, 89, 89)))
         );
 
         Proveedor1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -643,17 +647,6 @@ public class Compra extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(Proveedor1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -671,12 +664,24 @@ public class Compra extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(Proveedor1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarProveedorMouseClicked
         CRUDProveedor cc = new CRUDProveedor();
-        NombreProveedor.setText(cc.buscarDatosProveedor(CedProveedor.getText()));
+        CedProveedor.setText(cc.buscarDatosProveedor(NombreProveedor.getText()));
     }//GEN-LAST:event_BuscarProveedorMouseClicked
 
     private void BuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarProductoMouseClicked
@@ -773,7 +778,8 @@ public class Compra extends javax.swing.JPanel {
                     int IDProducto = Integer.parseInt(TablaProducto.getValueAt(i, 0).toString());
                     double PrecioCompra = Double.parseDouble(TablaProducto.getValueAt(i, 3).toString());
                     int CantProductosComprados = Integer.parseInt(TablaProducto.getValueAt(i, 2).toString());
-                    POJOCompraProducto cg = new POJOCompraProducto(IDProducto, PrecioCompra, CantProductosComprados);
+                    double total = Double.parseDouble(TablaProducto.getValueAt(i, 4).toString());
+                    POJOCompraProducto cg = new POJOCompraProducto(IDProducto, PrecioCompra, CantProductosComprados, total);
                     CRUDCompraProducto ccg = new CRUDCompraProducto();
                     ccg.InsertarCompraProducto(cg);
                     mostrar();

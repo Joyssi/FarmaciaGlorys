@@ -40,9 +40,10 @@ public class CRUDVentaProducto {
 
     public void InsertarVentaProducto(POJOVentaProducto cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarVentaProducto(?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call InsertarVentaProducto(?,?,?)}");
             cbst.setInt(1,  cl.getIDProducto());
             cbst.setInt (2,  cl.getCantProductosVendidos());
+            cbst.setDouble (3,  cl.getTotalVenta());
             cbst.executeUpdate();
 
         } catch (SQLException e) {
@@ -50,16 +51,5 @@ public class CRUDVentaProducto {
         }
     }
     
-    public void actualizar(POJOVentaProducto cl) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call ActualizarVentaProductos(?,?,?)}");
-            cbst.setInt(1, cl.getIDProducto());
-            cbst.setInt(2, cl.getCantProductosVendidos());
-            cbst.setInt(3, cl.getIDVenta());
-            cbst.executeUpdate();
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
 }

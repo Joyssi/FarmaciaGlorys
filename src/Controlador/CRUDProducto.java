@@ -19,6 +19,7 @@ public class CRUDProducto {
     private Connection cn = (Connection) con.conectar();
     PreparedStatement ps;
     ResultSet rs;
+    int r;
 
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
@@ -78,6 +79,20 @@ public class CRUDProducto {
             
         }
         return p;
+    }
+    
+    public int actualizarStock (int cant, int idp) {
+        String sql= "update Producto set CantProducto=? where IDProducto=?";
+        try{
+            cn=con.conectar();
+            ps=cn.prepareStatement(sql);
+            ps.setInt(1, cant);
+            ps.setInt(2, idp);
+            ps.executeUpdate();
+        }catch (Exception e) {
+            
+        }
+        return r;
     }
     
     public ArrayList mostrarDatosCombo() {

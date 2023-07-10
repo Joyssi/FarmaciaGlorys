@@ -7,14 +7,20 @@ package Vista.Menu;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.BorderLayout;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 /**
  *
  * @author Joy Cruz
  */
-public class Main extends javax.swing.JFrame {
-
+public class Main extends javax.swing.JFrame implements Runnable{
+String hora, minutos, segundos;
+Thread hilo;
+    
     /**
      * Creates new form Main
      */
@@ -24,9 +30,39 @@ public class Main extends javax.swing.JFrame {
         this.setTitle("Sistema de Inventario Farmacia Glorys");
         this.setLayout(null);
         
+        Fecha.setText(fechaActual());
+        
+        hilo = new Thread(this);
+        hilo.start();
+        setVisible(true);
+        
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         Panel.setBounds(0, 0, ancho, (alto));
+    }
+    
+    public static String fechaActual() {
+        Date fecha = new Date();
+        SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatofecha.format(fecha);
+    }
+    
+    public void hora() {
+        Calendar calendario = new GregorianCalendar();
+        Date horaactual = new Date();
+         calendario.setTime(horaactual);
+         hora=calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
+         minutos=calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+         segundos=calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
+    }
+    
+    public void run() {
+        Thread current = Thread.currentThread();
+        
+        while(current==hilo) {
+            hora();
+            Hora.setText(hora+":"+minutos+":"+segundos);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +87,10 @@ public class Main extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        Fecha = new javax.swing.JLabel();
+        Hora = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -126,6 +166,30 @@ public class Main extends javax.swing.JFrame {
         jLabel5.setText("VIVIMOS PARA TU SALUD");
         panelGradient1.add(jLabel5);
         jLabel5.setBounds(320, 110, 150, 16);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Fecha:");
+        panelGradient1.add(jLabel6);
+        jLabel6.setBounds(10, 150, 60, 21);
+
+        Fecha.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        Fecha.setForeground(new java.awt.Color(255, 255, 255));
+        Fecha.setText("DD/MM/YYYY");
+        panelGradient1.add(Fecha);
+        Fecha.setBounds(70, 150, 90, 20);
+
+        Hora.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        Hora.setForeground(new java.awt.Color(255, 255, 255));
+        Hora.setText("00:00:00");
+        panelGradient1.add(Hora);
+        Hora.setBounds(987, 150, 60, 20);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Hora:");
+        panelGradient1.add(jLabel9);
+        jLabel9.setBounds(940, 150, 50, 21);
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
@@ -212,6 +276,8 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Diseño.MenuItem Catálogos;
+    private javax.swing.JLabel Fecha;
+    private javax.swing.JLabel Hora;
     private Diseño.MenuItem Inicio;
     private javax.swing.JPanel Panel;
     private Diseño.MenuItem Reportes;
@@ -220,6 +286,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     public static Diseño.MainForm mainForm;

@@ -13,21 +13,23 @@ public class POJOVentaProducto {
     int IDProducto;
     int IDVenta;
     int CantProductosVendidos;
+    double TotalVenta;
 
     public POJOVentaProducto() {
     }
 
-    public POJOVentaProducto(int IDProducto, int IDVenta, int CantProductosVendidos) {
+    public POJOVentaProducto(int IDProducto, int IDVenta, int CantProductosVendidos, double TotalVenta) {
         this.IDProducto = IDProducto;
         this.IDVenta = IDVenta;
         this.CantProductosVendidos = CantProductosVendidos;
+        this.TotalVenta = TotalVenta;
     }
 
-    public POJOVentaProducto(int IDProducto, int CantProductosVendidos) {
+    public POJOVentaProducto(int IDProducto, int CantProductosVendidos, double TotalVenta) {
         this.IDProducto = IDProducto;
         this.CantProductosVendidos = CantProductosVendidos;
+        this.TotalVenta = TotalVenta;
     }
-
     
     public int getIDProducto() {
         return IDProducto;
@@ -52,6 +54,15 @@ public class POJOVentaProducto {
     public void setCantProductoVendidos(int CantProductosVendidos) {
         this.CantProductosVendidos = CantProductosVendidos;
     }
+
+    public double getTotalVenta() {
+        return TotalVenta;
+    }
+
+    public void setTotalVenta(double TotalVenta) {
+        this.TotalVenta = TotalVenta;
+    }
+    
     
     
 }

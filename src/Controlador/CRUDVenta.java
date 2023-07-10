@@ -21,8 +21,8 @@ public class CRUDVenta {
         ResultSet rs;
         DefaultTableModel modelo;
         String[] titulos = {"Código de Venta", "Cédula de Empleado", "Cédula de Cliente", 
-            "Fecha de Venta", "Dirección", "Código de Producto", "Cantidad de productos vendidos"};
-        String[] registro = new String[7];
+            "Fecha de Venta", "Dirección", "Código de Producto", "Cantidad de productos vendidos", "Total"};
+        String[] registro = new String[8];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -38,6 +38,7 @@ public class CRUDVenta {
                 registro[4] = rs.getString("DirecPedidoVenta");
                 registro[5] = rs.getString("IDProducto");
                 registro[6] = rs.getString("CantProductosVendidos");
+                registro[7] = rs.getString("TotalVenta");
 
                 modelo.addRow(registro);
             }
@@ -54,8 +55,8 @@ public class CRUDVenta {
         DefaultTableModel modelo;
 
         String[] titulos = {"Código de Venta", "Cédula de Empleado", "Cédula de Cliente", 
-            "Fecha de Venta", "Dirección", "Código de Producto", "Cantidad de productos vendidos"};
-        String[] registro = new String[7];
+            "Fecha de Venta", "Dirección", "Código de Producto", "Cantidad de productos vendidos", "Total"};
+        String[] registro = new String[8];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -72,6 +73,7 @@ public class CRUDVenta {
                 registro[4] = rs.getString("DirecPedidoVenta");
                 registro[5] = rs.getString("IDProducto");
                 registro[6] = rs.getString("CantProductosVendidos");
+                registro[7] = rs.getString("TotalVenta");
                 modelo.addRow(registro);
             }
             return modelo;

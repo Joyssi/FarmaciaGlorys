@@ -22,8 +22,8 @@ public class CRUDCompra {
         ResultSet rs;
         DefaultTableModel modelo;
         String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor",
-            "Código de Producto", "Precio de Compra", "Cantidad de productos comprados"};
-        String[] registro = new String[6];
+            "Código de Producto", "Precio de Compra", "Cantidad de productos comprados", "TotalCompra"};
+        String[] registro = new String[7];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -38,6 +38,7 @@ public class CRUDCompra {
                 registro[3] = rs.getString("IDProducto");
                 registro[4] = rs.getString("PrecioCompra");
                 registro[5] = rs.getString("CantProductosComprados");
+                registro[6] = rs.getString("TotalCompra");
 
                 modelo.addRow(registro);
             }
@@ -106,19 +107,4 @@ public class CRUDCompra {
         }
     }
     
-
-//    
-//    public void actualizar(POJOCompra cl) {
-//        try {
-//            CallableStatement cbst = cn.prepareCall("{call ActualizarCompra(?,?,?)}");
-//            cbst.setInt(1, cl.getIDCompra());
-//            cbst.setDate(2, (Date) cl.getFechaCompra());
-//            cbst.setString(3, cl.getCedulaP());
-//            cbst.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//    }
-
 }

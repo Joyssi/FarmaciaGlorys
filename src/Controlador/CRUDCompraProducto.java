@@ -21,34 +21,7 @@ public class CRUDCompraProducto {
     
       private final Conexion con = new Conexion();
     private final Connection cn = (Connection) con.conectar();
-    
-    public DefaultTableModel mostrarDatos() {
-        ResultSet rs;
-        DefaultTableModel modelo;
-        String[] titulos = {"Código de Producto", "Código de Compra", "Precio de Compra", "Cantidad"};
-        String[] registro = new String[4];
 
-        modelo = new DefaultTableModel(null, titulos);
-
-        try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarCompraProducto}");
-            rs = cbstc.executeQuery();
-
-            while (rs.next()) {
-                registro[0] = rs.getString("IDProducto");
-                registro[1] = rs.getString("IDCompra");
-                registro[2] = rs.getString("PrecioCompra");
-                registro[3] = rs.getString("CantProductosComprados");
-
-                modelo.addRow(registro);
-            }
-            return modelo;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            return null;
-        }
-
-    }
 
      public boolean verificarDatos(String dato) {
         ResultSet rs;
@@ -69,10 +42,11 @@ public class CRUDCompraProducto {
 
     public void InsertarCompraProducto(POJOCompraProducto cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call InsertarCompraProducto(?,?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call InsertarCompraProducto(?,?,?,?)}");
             cbst.setInt(1,  cl.getIDProducto());
             cbst.setDouble (2, (Double) cl.getPrecioCompra());
             cbst.setInt(3, cl.getCantProductosComprados());
+            cbst.setDouble(4, cl.getTotalCompra());
             cbst.executeUpdate();
 
         } catch (SQLException e) {

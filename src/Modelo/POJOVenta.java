@@ -26,8 +26,8 @@ public class POJOVenta extends POJOVentaProducto{
     
     //Contructor de herencia
     public POJOVenta(String CedulaE, String CedulaC, String FechaVenta, String DirecPedidoVenta, 
-            int IDProducto, int CantProductosVendidos) {
-        super(IDProducto, CantProductosVendidos);  
+            int IDProducto, int CantProductosVendidos, double TotalVenta) {
+        super(IDProducto, CantProductosVendidos, TotalVenta);  
        this.IDVenta = IDVenta;
         this.CedulaE = CedulaE;
         this.CedulaC = CedulaC;

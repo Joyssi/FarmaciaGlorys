@@ -17,7 +17,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -43,11 +45,19 @@ public class Venta extends javax.swing.JPanel {
         initComponents();
         mostrar();
         
+        fecha.setText(fechaActual());
+        
         TablaProducto.getTableHeader().setFont(new Font("Seoge UI Emoji", Font.PLAIN, 14));
         TablaProducto.getTableHeader().setOpaque(false);
         TablaProducto.getTableHeader().setBackground(new Color(51,102,255));
         TablaProducto.getTableHeader().setForeground(new Color(255,255,255));
         TablaProducto.setRowHeight(25);
+    }
+    
+     public static String fechaActual() {
+        Date fecha = new Date();
+        SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatofecha.format(fecha);
     }
     
         public void mostrar() {
@@ -89,7 +99,6 @@ public class Venta extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        CedCliente = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         BuscarCliente = new Vista.Menu.BorderPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -97,15 +106,16 @@ public class Venta extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         NombreCliente = new javax.swing.JTextField();
+        CedCliente = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        CedEmpleado = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         BuscarEmpleado = new Vista.Menu.BorderPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         Empleado = new javax.swing.JLabel();
         NombreEmpleado = new javax.swing.JTextField();
+        CedEmpleado = new javax.swing.JFormattedTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -158,12 +168,6 @@ public class Venta extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)), "Datos de Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Emoji", 0, 18), new java.awt.Color(51, 102, 255))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(51, 102, 255));
 
-        CedCliente.setBackground(new java.awt.Color(255, 255, 255));
-        CedCliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        CedCliente.setForeground(new java.awt.Color(51, 51, 51));
-        CedCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        CedCliente.setBorder(null);
-
         jSeparator2.setForeground(new java.awt.Color(51, 102, 255));
 
         BuscarCliente.setBackground(new java.awt.Color(51, 102, 255));
@@ -193,13 +197,13 @@ public class Venta extends javax.swing.JPanel {
 
         Cliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         Cliente.setForeground(new java.awt.Color(51, 102, 255));
-        Cliente.setText("Cliente");
+        Cliente.setText("COD: Cliente");
 
         jSeparator3.setForeground(new java.awt.Color(51, 102, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel3.setText("COD: Cliente");
+        jLabel3.setText("Cliente");
 
         NombreCliente.setBackground(new java.awt.Color(255, 255, 255));
         NombreCliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -207,13 +211,24 @@ public class Venta extends javax.swing.JPanel {
         NombreCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NombreCliente.setBorder(null);
 
+        CedCliente.setBackground(new java.awt.Color(255, 255, 255));
+        CedCliente.setBorder(null);
+        CedCliente.setForeground(new java.awt.Color(51, 51, 51));
+        try {
+            CedCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        CedCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CedCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Cliente)
@@ -223,8 +238,7 @@ public class Venta extends javax.swing.JPanel {
                                 .addComponent(NombreCliente))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator3)
-                        .addComponent(CedCliente)))
+                        .addComponent(jSeparator3)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -241,9 +255,9 @@ public class Venta extends javax.swing.JPanel {
                     .addComponent(BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Cliente)
-                .addGap(1, 1, 1)
-                .addComponent(CedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -254,12 +268,6 @@ public class Venta extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("COD: Empleado");
-
-        CedEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        CedEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        CedEmpleado.setForeground(new java.awt.Color(51, 51, 51));
-        CedEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        CedEmpleado.setBorder(null);
 
         jSeparator4.setForeground(new java.awt.Color(51, 102, 255));
 
@@ -300,23 +308,37 @@ public class Venta extends javax.swing.JPanel {
         NombreEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NombreEmpleado.setBorder(null);
 
+        CedEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        CedEmpleado.setBorder(null);
+        CedEmpleado.setForeground(new java.awt.Color(51, 51, 51));
+        try {
+            CedEmpleado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        CedEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CedEmpleado)
-                    .addComponent(Empleado)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(CedEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                            .addComponent(NombreEmpleado))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator5))
+                            .addComponent(Empleado)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(NombreEmpleado)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator5))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -335,8 +357,8 @@ public class Venta extends javax.swing.JPanel {
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addGap(4, 4, 4)
-                .addComponent(CedEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CedEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -911,11 +933,13 @@ public class Venta extends javax.swing.JPanel {
                 for (int i = 0; i < modelo.getRowCount(); i++) {
                     int IDProducto = Integer.parseInt(TablaProducto.getValueAt(i, 0).toString());
                     int CantProductoVendidos = Integer.parseInt(TablaProducto.getValueAt(i, 2).toString());
-                    POJOVentaProducto cg = new POJOVentaProducto(IDProducto, CantProductoVendidos);
+                    double total = Double.parseDouble(TablaProducto.getValueAt(i, 4).toString());
+                    POJOVentaProducto cg = new POJOVentaProducto(IDProducto, CantProductoVendidos, total);
                     CRUDVentaProducto ccg = new CRUDVentaProducto();
                     ccg.InsertarVentaProducto(cg);
                     limpiar();
                     mostrar();
+                    actualizarStock();
                        GestiónVenta venta = new GestiónVenta();
      venta.setSize(560, 970);
      venta.setLocation(0,0);
@@ -933,6 +957,18 @@ public class Venta extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_GuardarMouseClicked
 
+    public void actualizarStock() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            POJOProducto pr = new POJOProducto();
+            CRUDProducto pdao = new CRUDProducto();
+            idp = Integer.parseInt(TablaProducto.getValueAt(i, 0).toString());
+            cant = Integer.parseInt(TablaProducto.getValueAt(i, 2).toString());
+            pr = pdao.listarID(idp);
+            int sa = pr.getCantProducto() - cant;
+            pdao.actualizarStock(sa, idp);
+        }
+    }
+    
     private void CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelarMouseClicked
            GestiónVenta venta = new GestiónVenta();
      venta.setSize(560, 970);
@@ -954,8 +990,8 @@ public class Venta extends javax.swing.JPanel {
     private Vista.Menu.BorderPanel BuscarProducto;
     public static Vista.Menu.BorderPanel Cancelar;
     public static javax.swing.JSpinner Cantidad;
-    public static javax.swing.JTextField CedCliente;
-    public static javax.swing.JTextField CedEmpleado;
+    public static javax.swing.JFormattedTextField CedCliente;
+    public static javax.swing.JFormattedTextField CedEmpleado;
     private javax.swing.JLabel Cliente;
     private javax.swing.JLabel Empleado;
     public static Vista.Menu.BorderPanel Guardar;

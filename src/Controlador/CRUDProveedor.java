@@ -82,16 +82,16 @@ public class CRUDProveedor {
 
     }
     
-    public String buscarDatosProveedor(String dato) {
+    public String buscarDatosProveedor(String Nombres) {
         ResultSet rs;
         String respuesta="";
 
         try {
             CallableStatement call = cn.prepareCall("{call ConsultarProveedor(?)}");
-            call.setString(1, dato);
+            call.setString(1, Nombres);
             rs = call.executeQuery();
             while (rs.next()) {
-                respuesta = rs.getString("nombres")+" "+rs.getString("apellidos");
+                respuesta = rs.getString("Cedula");
             }
             return respuesta;
         } catch (SQLException e) {

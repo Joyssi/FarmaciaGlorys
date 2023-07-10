@@ -14,13 +14,26 @@ public class POJOCompraProducto {
     int IDCompra;
     double PrecioCompra;
     int CantProductosComprados;
+    double TotalCompra;
 
-    public POJOCompraProducto(int IDProducto, double PrecioCompra, int CantProductosComprados) {
+    public POJOCompraProducto(int IDProducto, int IDCompra, double PrecioCompra, int CantProductosComprados, double TotalCompra) {
+        this.IDProducto = IDProducto;
+        this.IDCompra = IDCompra;
+        this.PrecioCompra = PrecioCompra;
+        this.CantProductosComprados = CantProductosComprados;
+        this.TotalCompra = TotalCompra;
+    }
+
+    public POJOCompraProducto(int IDProducto, double PrecioCompra, int CantProductosComprados, double TotalCompra) {
         this.IDProducto = IDProducto;
         this.PrecioCompra = PrecioCompra;
         this.CantProductosComprados = CantProductosComprados;
+        this.TotalCompra = TotalCompra;
     }
 
+    
+  
+    
     public POJOCompraProducto() {
     }
     
@@ -57,6 +70,15 @@ public class POJOCompraProducto {
     public void setCantProductosComprados(int CantProductosComprados) {
         this.CantProductosComprados = CantProductosComprados;
     }
+
+    public double getTotalCompra() {
+        return TotalCompra;
+    }
+
+    public void setTotalCompra(double TotalCompra) {
+        this.TotalCompra = TotalCompra;
+    }
+    
     
     
 }
