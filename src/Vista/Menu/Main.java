@@ -79,7 +79,6 @@ Thread hilo;
         Inicio = new Diseño.MenuItem();
         Catálogos = new Diseño.MenuItem();
         Reportes = new Diseño.MenuItem();
-        menuItem3 = new Diseño.MenuItem();
         mainForm1 = new Diseño.MainForm();
         mainForm = new Diseño.MainForm();
         panelGradient1 = new Diseño.PanelGradient();
@@ -92,7 +91,6 @@ Thread hilo;
         Hora = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,11 +130,6 @@ Thread hilo;
             }
         });
         menu1.add(Reportes);
-
-        menuItem3.setBackground(new java.awt.Color(0, 0, 204));
-        menuItem3.setForeground(new java.awt.Color(51, 102, 255));
-        menuItem3.setText("menuItem3");
-        menu1.add(menuItem3);
 
         mainForm1.setBackground(new java.awt.Color(255, 255, 255));
         mainForm1.setForeground(new java.awt.Color(102, 153, 255));
@@ -206,16 +199,13 @@ Thread hilo;
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
             .addComponent(mainForm1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
                 .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jMenu1.setText("Opciones");
-        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -288,12 +278,10 @@ Thread hilo;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     public static Diseño.MainForm mainForm;
     private Diseño.MainForm mainForm1;
     private Diseño.Menu menu1;
-    private Diseño.MenuItem menuItem3;
     private Diseño.PanelGradient panelGradient1;
     // End of variables declaration//GEN-END:variables
 }

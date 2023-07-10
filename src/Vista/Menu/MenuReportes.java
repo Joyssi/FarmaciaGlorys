@@ -74,6 +74,11 @@ public class MenuReportes extends javax.swing.JPanel {
                 ReporteCompraMouseClicked(evt);
             }
         });
+        ReporteCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteCompraActionPerformed(evt);
+            }
+        });
         subMenuPanel1.add(ReporteCompra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -135,6 +140,22 @@ public class MenuReportes extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_ReporteCompraMouseClicked
+
+    private void ReporteCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteCompraActionPerformed
+         Conexion con = new Conexion();
+        java.sql.Connection cn = (java.sql.Connection) con.conectar();
+ 
+        String path = "C:\\Users\\Joy Cruz\\Downloads\\FarmaciaGlorys\\src\\Vista.Reportes\\ReporteCompra.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte, false);
+
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_ReporteCompraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

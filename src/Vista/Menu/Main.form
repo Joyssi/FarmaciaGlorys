@@ -3,13 +3,6 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
-      <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Opciones"/>
-          </Properties>
-        </Menu>
-      </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
@@ -64,7 +57,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="menu1" pref="518" max="32767" attributes="0"/>
+              <Component id="menu1" pref="540" max="32767" attributes="0"/>
               <Component id="mainForm1" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <Component id="panelGradient1" min="-2" pref="173" max="-2" attributes="0"/>
@@ -136,17 +129,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportesActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="Dise&#xf1;o.MenuItem" name="menuItem3">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="66" red="33" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="menuItem3"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

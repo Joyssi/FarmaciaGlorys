@@ -31,8 +31,6 @@ public class InicioMenu extends javax.swing.JPanel {
 
         subMenuPanel1 = new Diseño.SubMenuPanel();
         Inicio = new javax.swing.JButton();
-        Ajustes = new javax.swing.JButton();
-        Ayuda = new javax.swing.JButton();
 
         subMenuPanel1.setBackground(new java.awt.Color(0, 0, 255));
         subMenuPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(80, 1, 1, 1));
@@ -47,18 +45,6 @@ public class InicioMenu extends javax.swing.JPanel {
             }
         });
         subMenuPanel1.add(Inicio);
-
-        Ajustes.setBackground(new java.awt.Color(204, 204, 255));
-        Ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/ajustes (1).png"))); // NOI18N
-        Ajustes.setText("Ajustes");
-        Ajustes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-        subMenuPanel1.add(Ajustes);
-
-        Ayuda.setBackground(new java.awt.Color(204, 204, 255));
-        Ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/interrogatorio.png"))); // NOI18N
-        Ayuda.setText("Ayuda");
-        Ayuda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
-        subMenuPanel1.add(Ayuda);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,8 +71,6 @@ public class InicioMenu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Ajustes;
-    private javax.swing.JButton Ayuda;
     private javax.swing.JButton Inicio;
     private Diseño.SubMenuPanel subMenuPanel1;
     // End of variables declaration//GEN-END:variables
