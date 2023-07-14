@@ -20,9 +20,10 @@ public class CRUDVenta {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Venta", "Cédula de Empleado", "Cédula de Cliente", 
-            "Fecha de Venta", "Dirección", "Código de Producto", "Cantidad de productos vendidos", "Total"};
-        String[] registro = new String[8];
+        String[] titulos = {"Código", "Empleado", "Cliente", 
+            "Fecha de Venta", "Producto", "Nombre", "Marca", "Presentación", "Cantidad",
+        "Total", "Dirección"};
+        String[] registro = new String[11];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -32,13 +33,16 @@ public class CRUDVenta {
 
             while (rs.next()) {
                 registro[0] = rs.getString("IDVenta");
-                registro[1] = rs.getString("CedulaE");
+                registro[1] = rs.getString("Nombres");
                 registro[2] = rs.getString("CedulaC");
                 registro[3] = rs.getString("FechaVenta");
-                registro[4] = rs.getString("DirecPedidoVenta");
-                registro[5] = rs.getString("IDProducto");
-                registro[6] = rs.getString("CantProductosVendidos");
-                registro[7] = rs.getString("TotalVenta");
+                registro[4] = rs.getString("IDProducto");
+                registro[5] = rs.getString("NomProducto");
+                registro[6] = rs.getString("NombreMarca");
+                registro[7] = rs.getString("FormaDosificacion");
+                registro[8] = rs.getString("CantProductosVendidos");
+                registro[9] = rs.getString("TotalVenta");
+                registro[10] = rs.getString("DirecPedidoVenta");
 
                 modelo.addRow(registro);
             }
@@ -54,9 +58,10 @@ public class CRUDVenta {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Venta", "Cédula de Empleado", "Cédula de Cliente", 
-            "Fecha de Venta", "Dirección", "Código de Producto", "Cantidad de productos vendidos", "Total"};
-        String[] registro = new String[8];
+        String[] titulos = {"Código", "Empleado", "Cliente", 
+            "Fecha de Venta", "Producto", "Nombre", "Marca", "Presentación", "Cantidad",
+        "Total", "Dirección"};
+        String[] registro = new String[11];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -67,13 +72,16 @@ public class CRUDVenta {
 
             while (rs.next()) {
                  registro[0] = rs.getString("IDVenta");
-                registro[1] = rs.getString("CedulaE");
+                registro[1] = rs.getString("Nombres");
                 registro[2] = rs.getString("CedulaC");
                 registro[3] = rs.getString("FechaVenta");
-                registro[4] = rs.getString("DirecPedidoVenta");
-                registro[5] = rs.getString("IDProducto");
-                registro[6] = rs.getString("CantProductosVendidos");
-                registro[7] = rs.getString("TotalVenta");
+                registro[4] = rs.getString("IDProducto");
+                registro[5] = rs.getString("NomProducto");
+                registro[6] = rs.getString("NombreMarca");
+                registro[7] = rs.getString("FormaDosificacion");
+                registro[8] = rs.getString("CantProductosVendidos");
+                registro[9] = rs.getString("TotalVenta");
+                registro[10] = rs.getString("DirecPedidoVenta");
                 modelo.addRow(registro);
             }
             return modelo;

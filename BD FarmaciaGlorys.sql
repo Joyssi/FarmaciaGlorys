@@ -524,13 +524,20 @@ GO
 CREATE PROCEDURE MostrarProducto
 AS
 BEGIN
-SELECT Producto.IDProducto, NomProducto, DescripProducto, CantProducto, PrecioProducto, FechaVencimiento, IDMarca, IDCategoria, IDPresentacion
-FROM Producto
+SELECT Producto.IDProducto, NomProducto, DescripProducto, CantProducto, PrecioProducto, FechaVencimiento, 
+NombreMarca, NombreCategoria, FormaDosificacion
+  FROM Producto INNER JOIN Marca
+   ON Producto.IDMarca = Marca.IDMarca
+ INNER JOIN Categoria 
+   ON Producto.IDCategoria = Categoria.IDCategoria
+ INNER JOIN Presentacion
+   ON Producto.IDPresentacion = Presentacion.IDPresentacion
 END
 GO
 
 EXECUTE MostrarProducto
-GO
+GO 
+
 ----------------------------------------------------------------------------
 
 --Procedimiento almacenado para insertar un nuevo registro en la tabla Producto
@@ -550,7 +557,7 @@ AS
   END
   GO
 
-  EXECUTE InsertarProductos 'Cetirizina', 'Producto de PASHA S.A', 800, 4.50, '2024-03-12', 2, 1, 1
+  EXECUTE InsertarProductos 'Cetirizina', 'Producto de PASHA S.A', 800, 4.50, '2024-03-12', 1, 1, 1
   GO
 
   --------------------------------------------------------------------------------------
@@ -577,7 +584,7 @@ WHERE IDProducto=@IDProducto
 END
 GO
 
-EXECUTE ActualizarProducto 3, 'Cetirizina', 'Producto de PASHA S.A', 900, 5, '2021-03-12', 2, 1, 1
+EXECUTE ActualizarProducto 2, 'Loratadina', 'Producto de PASHA S.A', 900, 5, '2021-03-12', 1, 1, 1
 GO
 
 ------------------------------------------------------------------------------------
@@ -602,11 +609,18 @@ CREATE PROCEDURE ConsultarProducto
 @NomProducto VARCHAR(20)
 AS
 BEGIN
-SELECT Producto.IDProducto, NomProducto, DescripProducto, CantProducto, PrecioProducto, FechaVencimiento, IDMarca, IDCategoria, IDPresentacion
-FROM Producto
+SELECT Producto.IDProducto, NomProducto, DescripProducto, CantProducto, PrecioProducto, 
+FechaVencimiento, NombreMarca, NombreCategoria, FormaDosificacion
+FROM Producto INNER JOIN Marca
+ON Producto.IDMarca = Marca.IDMarca
+INNER JOIN Categoria
+ON Producto.IDCategoria = Categoria.IDCategoria
+INNER JOIN Presentacion
+ON Producto.IDPresentacion = Presentacion.IDPresentacion
 WHERE Producto.NomProducto like '%'+RTRIM(@NomProducto)+'%' or PrecioProducto like
 '%'+RTRIM(@NomProducto)+'%' or FechaVencimiento like '%'+RTRIM(@NomProducto)+'%' or
-CantProducto like '%'+RTRIM(@NomProducto)+'%'
+CantProducto like '%'+RTRIM(@NomProducto)+'%' or NombreMarca like '%'+RTRIM(@NomProducto)+'%'
+or NombreCategoria like '%'+RTRIM(@NomProducto)+'%' or FormaDosificacion like '%'+RTRIM(@NomProducto)+'%'
 END
 GO
 
@@ -618,8 +632,14 @@ GO
 --Vista de la tabla Producto
 CREATE VIEW Listado_Producto
 AS
-SELECT IDProducto, NomProducto, DescripProducto, CantProducto, PrecioProducto, FechaVencimiento, IDMarca, IDCategoria, IDPresentacion
-FROM Producto
+SELECT IDProducto, NomProducto, DescripProducto, CantProducto, 
+PrecioProducto, FechaVencimiento, NombreMarca, NombreCategoria, FormaDosificacion
+FROM Producto INNER JOIN Marca
+ON Producto.IDMarca = Marca.IDMarca
+INNER JOIN Categoria
+ON Producto.IDCategoria = Categoria.IDCategoria
+INNER JOIN Presentacion
+ON Producto.IDPresentacion = Presentacion.IDPresentacion
 GO
 
 SELECT * FROM Listado_Producto
@@ -633,8 +653,18 @@ GO
 CREATE PROCEDURE MostrarVenta
 AS
 BEGIN
-SELECT Venta.IDVenta, CedulaE, CedulaC, FechaVenta, DirecPedidoVenta, IDProducto, CantProductosVendidos, TotalVenta
-FROM Venta inner join VentaProducto ON Venta.IDVenta=VentaProducto.IDVenta
+SELECT Venta.IDVenta, Nombres, CedulaC, FechaVenta, VentaProducto.IDProducto, NomProducto,
+ NombreMarca, FormaDosificacion, CantProductosVendidos, TotalVenta, DirecPedidoVenta
+FROM Venta INNER JOIN VentaProducto 
+ON Venta.IDVenta=VentaProducto.IDVenta
+INNER JOIN Persona
+ON Persona.Cedula = Venta.CedulaE
+INNER JOIN Producto
+ON VentaProducto.IDProducto = Producto.IDProducto
+INNER JOIN Marca
+ON Marca.IDMarca = Producto.IDMarca
+INNER JOIN Presentacion
+ON Presentacion.IDPresentacion = Producto.IDPresentacion
 END
 GO
 
@@ -664,12 +694,23 @@ CREATE PROCEDURE ConsultarVentas
 @CedulaE VARCHAR(40)
 AS
 BEGIN
-SELECT Venta.IDVenta, CedulaE, CedulaC, FechaVenta, DirecPedidoVenta, IDProducto, CantProductosVendidos, TotalVenta
-FROM Venta inner join VentaProducto
+SELECT Venta.IDVenta, Nombres, CedulaC, FechaVenta, DirecPedidoVenta, VentaProducto.IDProducto, NomProducto, NombreMarca, FormaDosificacion,
+CantProductosVendidos, TotalVenta
+FROM Venta INNER JOIN VentaProducto
 ON Venta.IDVenta=VentaProducto.IDVenta
+INNER JOIN Persona
+ON Venta.CedulaE = Persona.Nombres
+INNER JOIN Producto
+ON VentaProducto.IDProducto = Producto.IDProducto
+INNER JOIN Marca
+ON Producto.IDMarca = Marca.IDMarca
+INNER JOIN Presentacion
+ON Producto.IDPresentacion = Presentacion.IDPresentacion
 WHERE Venta.IDVenta like '%'+RTRIM(@CedulaE)+'%' or CedulaC like
-'%'+RTRIM(@CedulaE)+'%' or FechaVenta like '%'+RTRIM(@CedulaE)+'%' or IDProducto like '%'+RTRIM(@CedulaE)+'%'
-or CantProductosVendidos like '%'+RTRIM(@CedulaE)+'%'
+'%'+RTRIM(@CedulaE)+'%' or FechaVenta like '%'+RTRIM(@CedulaE)+'%' or VentaProducto.IDProducto like '%'+RTRIM(@CedulaE)+'%'
+or CantProductosVendidos like '%'+RTRIM(@CedulaE)+'%' or NomProducto like '%'+RTRIM(@CedulaE)+'%'
+or NombreMarca like '%'+RTRIM(@CedulaE)+'%' or FormaDosificacion like '%'+RTRIM(@CedulaE)+'%'
+or Nombres like '%'+RTRIM(@CedulaE)+'%'
 END
 GO
 
@@ -681,9 +722,18 @@ GO
 --Vista de la tabla Venta
 CREATE VIEW Listado_Venta
 AS
-SELECT Venta.IDVenta, CedulaE, CedulaC, FechaVenta, DirecPedidoVenta, IDVentaProducto, IDProducto, CantProductosVendidos, TotalVenta
-FROM Venta inner join VentaProducto
+SELECT Venta.IDVenta, Nombres, CedulaC, FechaVenta, DirecPedidoVenta, IDVentaProducto, VentaProducto.IDProducto, 
+ NomProducto, NombreMarca, FormaDosificacion, CantProductosVendidos, TotalVenta
+FROM Venta INNER JOIN VentaProducto
 ON Venta.IDVenta=VentaProducto.IDVenta
+INNER JOIN Persona
+ON Venta.CedulaE = Persona.Cedula
+INNER JOIN Producto
+ON VentaProducto.IDProducto = Producto.IDProducto
+INNER JOIN Marca
+ON Producto.IDMarca = Marca.IDMarca
+INNER JOIN Presentacion
+ON Producto.IDPresentacion = Presentacion.IDPresentacion
 GO
 
 SELECT * FROM Listado_Venta
@@ -716,7 +766,7 @@ CREATE PROCEDURE MostrarProveedor
 AS
 BEGIN
 SELECT Proveedor.Cedula, Nombres, Apellidos, Direccion, Telefono, CorreoP
-FROM Proveedor inner join Persona ON Proveedor.Cedula=Persona.Cedula
+FROM Proveedor INNER JOIN Persona ON Proveedor.Cedula=Persona.Cedula
 END
 GO
 
@@ -785,10 +835,10 @@ CREATE PROCEDURE ConsultarProveedor
 AS
 BEGIN
 SELECT Proveedor.Cedula, Nombres, Apellidos, Direccion, Telefono, CorreoP
-FROM Proveedor inner join Persona
+FROM Proveedor INNER JOIN Persona
 ON Proveedor.Cedula=Persona.Cedula
-WHERE Proveedor.Cedula like '%'+RTRIM(@Nombres)+'%' or Nombres like
-'%'+RTRIM(@Nombres)+'%' or Apellidos like '%'+RTRIM(@Nombres)+'%'
+WHERE Proveedor.Cedula LIKE '%'+RTRIM(@Nombres)+'%' OR Nombres LIKE
+'%'+RTRIM(@Nombres)+'%' OR Apellidos like '%'+RTRIM(@Nombres)+'%'
 END
 GO
 
@@ -801,7 +851,7 @@ GO
 CREATE VIEW Listado_Proveedor
 AS
 SELECT Proveedor.Cedula, Nombres, Apellidos, Direccion, Telefono, CorreoP
-FROM Proveedor inner join Persona
+FROM Proveedor INNER JOIN Persona
 ON Proveedor.Cedula=Persona.Cedula
 GO
 
@@ -815,8 +865,18 @@ GO
 CREATE PROCEDURE MostrarCompra
 AS
 BEGIN
-SELECT Compra.IDCompra, FechaCompra, CedulaP, IDProducto, PrecioCompra, CantProductosComprados, TotalCompra
-FROM Compra inner join CompraProducto ON Compra.IDCompra=CompraProducto.IDCompra
+SELECT Compra.IDCompra, FechaCompra, Nombres, CompraProducto.IDProducto, NomProducto, NombreMarca, FormaDosificacion, PrecioCompra, 
+CantProductosComprados, TotalCompra
+FROM Compra INNER JOIN CompraProducto 
+ON Compra.IDCompra=CompraProducto.IDCompra
+INNER JOIN Persona
+ON Persona.Cedula = Compra.CedulaP
+INNER JOIN Producto
+ON Producto.IDProducto = CompraProducto.IDProducto
+INNER JOIN Marca
+ON Marca.IDMarca = Producto.IDMarca
+INNER JOIN Presentacion
+ON Presentacion.IDPresentacion = Producto.IDProducto
 END
 GO
 
@@ -841,12 +901,23 @@ CREATE PROCEDURE ConsultarCompras
 @CedulaP VARCHAR(40)
 AS
 BEGIN
-SELECT Compra.IDCompra, FechaCompra, CedulaP,IDProducto, PrecioCompra, CantProductosComprados, TotalCompra
-FROM Compra inner join CompraProducto
-ON Compra.IDCompra=CompraProducto.IDCompra
+SELECT Compra.IDCompra, FechaCompra, Nombres, CompraProducto.IDProducto, NomProducto, 
+NombreMarca, FormaDosificacion, PrecioCompra, CantProductosComprados, TotalCompra
+FROM Compra INNER JOIN CompraProducto
+ON Compra.IDCompra = CompraProducto.IDCompra
+INNER JOIN Producto
+ON CompraProducto.IDProducto = Producto.IDProducto
+INNER JOIN Marca
+ON Producto.IDMarca = Marca.IDMarca
+INNER JOIN Presentacion
+ON Producto.IDPresentacion = Presentacion.IDPresentacion
+INNER JOIN Persona
+ON Compra.CedulaP = Persona.Cedula
 WHERE Compra.IDCompra like '%'+RTRIM(@CedulaP)+'%' or FechaCompra like
-'%'+RTRIM(@CedulaP)+'%' or CedulaP like '%'+RTRIM(@CedulaP)+'%' or IDProducto like '%'+RTRIM(@CedulaP)+'%'
+'%'+RTRIM(@CedulaP)+'%' or CedulaP like '%'+RTRIM(@CedulaP)+'%' or CompraProducto.IDProducto like '%'+RTRIM(@CedulaP)+'%'
 or PrecioCompra like '%'+RTRIM(@CedulaP)+'%' or CantProductosComprados like '%'+RTRIM(@CedulaP)+'%'
+or NomProducto like '%'+RTRIM(@CedulaP)+'%' or NombreMarca like '%'+RTRIM(@CedulaP)+'%'
+or FormaDosificacion like '%'+RTRIM(@CedulaP)+'%' or Nombres like '%'+RTRIM(@CedulaP)+'%'
 END
 GO
 
@@ -858,9 +929,18 @@ GO
 --Vista de la tabla Compra
 CREATE VIEW Listado_Compra
 AS
-SELECT Compra.IDCompra, FechaCompra, CedulaP, IDCompraProducto, IDProducto, PrecioCompra, CantProductosComprados, TotalCompra
-FROM Compra inner join CompraProducto
+SELECT Compra.IDCompra, FechaCompra, Nombres, IDCompraProducto, CompraProducto.IDProducto, NomProducto,
+NombreMarca, FormaDosificacion, PrecioCompra, CantProductosComprados, TotalCompra
+FROM Compra INNER JOIN CompraProducto
 ON Compra.IDCompra=CompraProducto.IDCompra
+INNER JOIN Persona
+ON Compra.CedulaP = Persona.Cedula
+INNER JOIN Producto
+ON CompraProducto.IDProducto = Producto.IDProducto
+INNER JOIN Marca
+ON Producto.IDMarca = Marca.IDMarca
+INNER JOIN Presentacion
+ON Producto.IDPresentacion = Presentacion.IDPresentacion
 GO
 
 SELECT * FROM Listado_Compra

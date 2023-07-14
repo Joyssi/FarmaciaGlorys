@@ -59,14 +59,7 @@ public class InicioMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        Inicio cli = new Inicio();
-        cli.setSize(560, 970);
-        cli.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(cli, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+    
     }//GEN-LAST:event_InicioActionPerformed
 
 

@@ -21,9 +21,9 @@ public class CRUDCompra {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor",
-            "Código de Producto", "Precio de Compra", "Cantidad de productos comprados", "TotalCompra"};
-        String[] registro = new String[7];
+        String[] titulos = {"Código", "Fecha de Compra", "Proveedor",
+            "Producto", "Nombre", "Marca", "Presentación", "Precio de Compra", "Cantidad", "Total"};
+        String[] registro = new String[10];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -34,11 +34,14 @@ public class CRUDCompra {
             while (rs.next()) {
                 registro[0] = rs.getString("IDCompra");
                 registro[1] = rs.getString("FechaCompra");
-                registro[2] = rs.getString("CedulaP");
+                registro[2] = rs.getString("Nombres");
                 registro[3] = rs.getString("IDProducto");
-                registro[4] = rs.getString("PrecioCompra");
-                registro[5] = rs.getString("CantProductosComprados");
-                registro[6] = rs.getString("TotalCompra");
+                registro[4] = rs.getString("NomProducto");
+                registro[5] = rs.getString("NombreMarca");
+                registro[6] = rs.getString("FormaDosificacion");
+                registro[7] = rs.getString("PrecioCompra");
+                registro[8] = rs.getString("CantProductosComprados");
+                registro[9] = rs.getString("TotalCompra");
 
                 modelo.addRow(registro);
             }
@@ -54,8 +57,9 @@ public class CRUDCompra {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Compra", "Fecha de Compra", "Cédula de Proveedor"};
-        String[] registro = new String[3];
+        String[] titulos = {"Código", "Fecha de Compra", "Proveedor",
+            "Producto", "Nombre", "Marca", "Presentación", "Precio de Compra", "Cantidad", "Total"};
+        String[] registro = new String[10];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -65,9 +69,16 @@ public class CRUDCompra {
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("IDCompra");
+                 registro[0] = rs.getString("IDCompra");
                 registro[1] = rs.getString("FechaCompra");
-                registro[2] = rs.getString("CedulaP");
+                registro[2] = rs.getString("Nombres");
+                registro[3] = rs.getString("IDProducto");
+                registro[4] = rs.getString("NomProducto");
+                registro[5] = rs.getString("NombreMarca");
+                registro[6] = rs.getString("FormaDosificacion");
+                registro[7] = rs.getString("PrecioCompra");
+                registro[8] = rs.getString("CantProductosComprados");
+                registro[9] = rs.getString("TotalCompra");
                 modelo.addRow(registro);
             }
             return modelo;

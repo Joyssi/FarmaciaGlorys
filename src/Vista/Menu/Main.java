@@ -80,7 +80,6 @@ Thread hilo;
         Catálogos = new Diseño.MenuItem();
         Reportes = new Diseño.MenuItem();
         mainForm1 = new Diseño.MainForm();
-        mainForm = new Diseño.MainForm();
         panelGradient1 = new Diseño.PanelGradient();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -90,6 +89,7 @@ Thread hilo;
         Fecha = new javax.swing.JLabel();
         Hora = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        desktopPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,14 +134,12 @@ Thread hilo;
         mainForm1.setBackground(new java.awt.Color(255, 255, 255));
         mainForm1.setForeground(new java.awt.Color(102, 153, 255));
 
-        mainForm.setBackground(new java.awt.Color(255, 255, 255));
-
         panelGradient1.setBackground(new java.awt.Color(51, 51, 255));
         panelGradient1.setColorGradient(new java.awt.Color(153, 0, 204));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logo-fotor-20230623204242.png"))); // NOI18N
         panelGradient1.add(jLabel2);
-        jLabel2.setBounds(20, 30, 100, 100);
+        jLabel2.setBounds(20, 10, 100, 100);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 2, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,25 +162,38 @@ Thread hilo;
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha:");
         panelGradient1.add(jLabel6);
-        jLabel6.setBounds(10, 150, 60, 21);
+        jLabel6.setBounds(10, 130, 60, 21);
 
         Fecha.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         Fecha.setForeground(new java.awt.Color(255, 255, 255));
         Fecha.setText("DD/MM/YYYY");
         panelGradient1.add(Fecha);
-        Fecha.setBounds(70, 150, 90, 20);
+        Fecha.setBounds(70, 130, 90, 20);
 
         Hora.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         Hora.setForeground(new java.awt.Color(255, 255, 255));
         Hora.setText("00:00:00");
         panelGradient1.add(Hora);
-        Hora.setBounds(987, 150, 60, 20);
+        Hora.setBounds(990, 130, 60, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Hora:");
         panelGradient1.add(jLabel9);
-        jLabel9.setBounds(940, 150, 50, 21);
+        jLabel9.setBounds(940, 130, 50, 21);
+
+        desktopPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
@@ -194,17 +205,18 @@ Thread hilo;
                 .addComponent(mainForm1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)))
+                    .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
+                    .addComponent(desktopPane)))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
             .addComponent(mainForm1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(desktopPane)
+                .addContainerGap())
         );
 
         setJMenuBar(jMenuBar1);
@@ -271,6 +283,7 @@ Thread hilo;
     private Diseño.MenuItem Inicio;
     private javax.swing.JPanel Panel;
     private Diseño.MenuItem Reportes;
+    public static javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -279,7 +292,6 @@ Thread hilo;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
-    public static Diseño.MainForm mainForm;
     private Diseño.MainForm mainForm1;
     private Diseño.Menu menu1;
     private Diseño.PanelGradient panelGradient1;

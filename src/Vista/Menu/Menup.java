@@ -5,13 +5,13 @@
 package Vista.Menu;
 
 import Vista.Menu.Main;
-import Vista.formularios.GestionCliente;
-import Vista.formularios.GestionCompra;
-import Vista.formularios.GestionEmpleado;
-import Vista.formularios.GestionProducto;
-import Vista.formularios.GestionProveedor;
-import Vista.formularios.GestiónVenta;
-import java.awt.BorderLayout;
+import Vista.formularios.Gestion;
+import Vista.formularios.GestionClientes;
+import Vista.formularios.GestionCompras;
+import Vista.formularios.GestionEmpleados;
+import Vista.formularios.GestionProductos;
+import Vista.formularios.GestionProveedores;
+import Vista.formularios.GestionVentas;
 /**
  *
  * @author Joy Cruz
@@ -131,69 +131,40 @@ public class Menup extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductoActionPerformed
-     GestionProducto pro = new GestionProducto();
-     pro.setSize(560, 970);
-     pro.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(pro, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+     Gestion pro = new Gestion();
+     Main.desktopPane.add(pro);
+     pro.setVisible(true);
     }//GEN-LAST:event_ProductoActionPerformed
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
-     GestionCliente cli = new GestionCliente();
-     cli.setSize(560, 970);
-     cli.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(cli, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+      GestionClientes cli = new GestionClientes();
+      Main.desktopPane.add(cli);
+      cli.setVisible(true);
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadoActionPerformed
-     GestionEmpleado emple = new GestionEmpleado();
-     emple.setSize(560, 970);
-     emple.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(emple, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+       GestionEmpleados emple = new GestionEmpleados();
+       Main.desktopPane.add(emple);
+       emple.setVisible(true);
     }//GEN-LAST:event_EmpleadoActionPerformed
 
     private void VentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentaActionPerformed
-        GestiónVenta venta = new GestiónVenta();
-     venta.setSize(560, 970);
-     venta.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(venta, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+        GestionVentas venta = new GestionVentas();
+     Main.desktopPane.add(venta);
+     venta.setVisible(true);
     }//GEN-LAST:event_VentaActionPerformed
 
     private void ProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProveedorActionPerformed
-     GestionProveedor prove = new GestionProveedor();
-     prove.setSize(560, 970);
-     prove.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(prove, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+     GestionProveedores prove = new GestionProveedores();
+     Main.desktopPane.add(prove);
+     prove.setVisible(true);
+
     }//GEN-LAST:event_ProveedorActionPerformed
 
     private void CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompraActionPerformed
-     GestionCompra com = new GestionCompra();
-     com.setSize(560, 970);
-     com.setLocation(0,0);
-     
-     Main.mainForm.removeAll();
-     Main.mainForm.add(com, BorderLayout.CENTER);
-     Main.mainForm.revalidate();
-     Main.mainForm.repaint();
+     GestionCompras com = new GestionCompras();
+     Main.desktopPane.add(com);
+     com.setVisible(true);
     }//GEN-LAST:event_CompraActionPerformed
 
 

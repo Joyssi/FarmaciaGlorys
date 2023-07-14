@@ -296,7 +296,7 @@ public class Inicio extends javax.swing.JFrame {
                }else{
                    if(usuario.getText().equals("admin")
                        || contraseña.getText().equals("12345")) {
-                   JOptionPane.showMessageDialog(null, "Bienvenido");
+                   JOptionPane.showMessageDialog(null, "Bienvenid@");
                    Main menu = new Main();
                    menu.setVisible(true);
                    dispose();

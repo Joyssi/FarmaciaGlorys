@@ -24,8 +24,9 @@ public class CRUDProducto {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Código de Produco", "Nombre de Producto", "Descripción de Producto", 
-          "Cantidad", "Precio", "Fecha de Vencimiento", "Marca", "Categoria", "Presentación"};
+        String[] titulos = {"Código", "Producto", "Descripción", 
+          "Cantidad", "Precio", "Vencimiento", "Marca", "Categoria",
+                "Presentación"};
         String[] registro = new String[9];
 
         modelo = new DefaultTableModel(null, titulos);
@@ -41,9 +42,9 @@ public class CRUDProducto {
                 registro[3] = rs.getString("CantProducto");
                 registro[4] = rs.getString("PrecioProducto");
                 registro[5] = rs.getString("FechaVencimiento");
-                registro[6] = rs.getString("IDMarca");
-                registro[7] = rs.getString("IDCategoria");
-                registro[8] = rs.getString("IDPresentacion");
+                registro[6] = rs.getString("NombreMarca");
+                registro[7] = rs.getString("NombreCategoria");
+                registro[8] = rs.getString("FormaDosificacion");
 
                 modelo.addRow(registro);
             }
@@ -54,6 +55,7 @@ public class CRUDProducto {
         }
 
     }
+    
     
     public POJOProducto listarID(int id) {
         POJOProducto p = new POJOProducto();
@@ -95,51 +97,14 @@ public class CRUDProducto {
         return r;
     }
     
-    public ArrayList mostrarDatosCombo() {
-
-        ArrayList<POJOProducto> Producto = new ArrayList();
-
-        try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarProducto}");
-            ResultSet rs = cbstc.executeQuery();
-            while (rs.next()) {
-                POJOProducto gr = new POJOProducto();
-                gr.setIDProducto(Integer.parseInt(rs.getString("IDProducto")));
-                gr.setNomProducto(rs.getString("NomProducto"));
-                gr.setPrecioProducto(Double.parseDouble(rs.getString("PrecioProducto")));
-                Producto.add(gr);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return Producto;
-    }
-    
-    public ArrayList MostrarDatosCombo() {
-
-        ArrayList<POJOProducto> Producto = new ArrayList();
-
-        try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarProducto}");
-            ResultSet rs = cbstc.executeQuery();
-            while (rs.next()) {
-                POJOProducto gr = new POJOProducto();
-                gr.setIDProducto(Integer.parseInt(rs.getString("IDProducto")));
-                gr.setNomProducto(rs.getString("NomProducto"));
-                Producto.add(gr);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return Producto;
-    }
     
      public DefaultTableModel buscarDatos(String dato) {
         ResultSet rs;
         DefaultTableModel modelo;
 
-        String[] titulos = {"Código de Produco", "Nombre de Producto", "Descripción de Producto", 
-          "Cantidad", "Precio", "Fecha de Vencimiento", "Marca", "Categoria", "Presentación"};
+        String[] titulos = {"Código", "Producto", "Descripción", 
+          "Cantidad", "Precio", "Vencimiento", "Marca", "Categoria",
+                "Presentación"};
         String[] registro = new String[9];
 
         modelo = new DefaultTableModel(null, titulos);
@@ -156,33 +121,14 @@ public class CRUDProducto {
                 registro[3] = rs.getString("CantProducto");
                 registro[4] = rs.getString("PrecioProducto");
                 registro[5] = rs.getString("FechaVencimiento");
-                registro[6] = rs.getString("IDMarca");
-                registro[7] = rs.getString("IDCategoria");
-                registro[8] = rs.getString("IDPresentacion");
+                registro[6] = rs.getString("NombreMarca");
+                registro[7] = rs.getString("NombreCategoria");
+                registro[8] = rs.getString("FormaDosificacion");
 
                 modelo.addRow(registro);
             }
             return modelo;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            return null;
-        }
-
-    }
-     
-     public String buscarDatosProducto(String dato) {
-        ResultSet rs;
-        String respuesta="";
-
-        try {
-            CallableStatement call = cn.prepareCall("{call ConsultarProducto(?)}");
-            call.setString(1, dato);
-            rs = call.executeQuery();
-            while (rs.next()) {
-                respuesta = rs.getString("Nombre");
-            }
-            return respuesta;
-        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             return null;
         }

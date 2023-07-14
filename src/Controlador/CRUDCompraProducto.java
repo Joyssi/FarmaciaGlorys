@@ -44,7 +44,7 @@ public class CRUDCompraProducto {
         try {
             CallableStatement cbst = cn.prepareCall("{call InsertarCompraProducto(?,?,?,?)}");
             cbst.setInt(1,  cl.getIDProducto());
-            cbst.setDouble (2, (Double) cl.getPrecioCompra());
+            cbst.setDouble (2, cl.getPrecioCompra());
             cbst.setInt(3, cl.getCantProductosComprados());
             cbst.setDouble(4, cl.getTotalCompra());
             cbst.executeUpdate();
